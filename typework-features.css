@@ -1,0 +1,281 @@
+/* Features — layout + left nav (see typework-features-canvas.css for Forms canvas) */
+
+.tw-features {
+  background: #fff;
+}
+
+.tw-features__head--split {
+  display: grid;
+  gap: var(--tw-space-6);
+  margin-bottom: var(--tw-space-12);
+}
+
+@media (min-width: 768px) {
+  .tw-features__head--split {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: end;
+    gap: var(--tw-space-10);
+  }
+
+  .tw-features__head--split .tw-kicker {
+    margin-bottom: var(--tw-space-4);
+  }
+
+  .tw-features__head--split .tw-section-title {
+    max-width: 18ch;
+    margin-bottom: 0;
+  }
+
+  .tw-features__head-lead {
+    margin: 0;
+    padding-bottom: 2px;
+  }
+}
+
+.tw-features__split--feat {
+  display: grid;
+  gap: var(--tw-space-8);
+  align-items: start;
+}
+
+.tw-feat-panels {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .tw-features__split--feat {
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: var(--tw-space-10);
+  }
+}
+
+/* —— Left nav —— */
+.tw-feat-nav {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background: transparent;
+}
+
+.tw-feat-nav__btn {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  gap: var(--tw-space-3);
+  align-items: start;
+  padding: var(--tw-space-4) var(--tw-space-4) calc(var(--tw-space-4) + 6px);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.tw-feat-nav__ico {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: unset;
+  background-color: unset;
+  color: #71717a;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: color 0.2s var(--tw-ease-out);
+}
+
+.tw-feat-nav__ico[class*="tw-feat-nav__ico--"]::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.tw-feat-nav__ico--forms::before {
+  width: 18px;
+  height: 20px;
+  mask-image: url("./figma-assets/tw-feat-nav-forms.svg");
+  -webkit-mask-image: url("./figma-assets/tw-feat-nav-forms.svg");
+}
+
+.tw-feat-nav__ico--hr::before {
+  width: 24px;
+  height: 24px;
+  mask-image: url("./figma-assets/tw-feat-nav-hr.svg");
+  -webkit-mask-image: url("./figma-assets/tw-feat-nav-hr.svg");
+}
+
+.tw-feat-nav__ico--finances::before {
+  width: 20px;
+  height: 20px;
+  mask-image: url("./figma-assets/tw-feat-nav-finances.svg");
+  -webkit-mask-image: url("./figma-assets/tw-feat-nav-finances.svg");
+}
+
+.tw-feat-nav__ico--legal::before {
+  width: 20px;
+  height: 22px;
+  mask-image: url("./figma-assets/tw-feat-nav-legal.svg");
+  -webkit-mask-image: url("./figma-assets/tw-feat-nav-legal.svg");
+}
+
+.tw-feat-nav__ico--sales::before {
+  width: 24px;
+  height: 24px;
+  mask-image: url("./figma-assets/tw-feat-nav-sales.svg");
+  -webkit-mask-image: url("./figma-assets/tw-feat-nav-sales.svg");
+}
+
+.tw-feat-nav__ico--marketing::before {
+  width: 22px;
+  height: 22px;
+  mask-image: url("./figma-assets/tw-feat-nav-marketing.svg");
+  -webkit-mask-image: url("./figma-assets/tw-feat-nav-marketing.svg");
+}
+
+.tw-feat-nav__text {
+  min-width: 0;
+}
+
+.tw-feat-nav__name {
+  display: block;
+  font-family: var(--tw-font-display);
+  font-size: 16px;
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #71717a;
+  margin-bottom: 4px;
+  transition: color 0.2s var(--tw-ease-out);
+}
+
+.tw-feat-nav__desc {
+  display: block;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #a1a1aa;
+}
+
+.tw-feat-nav__go {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #f3e3e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  line-height: 0;
+  color: #95908b;
+  transition:
+    border-color 0.2s var(--tw-ease-out),
+    color 0.2s var(--tw-ease-out);
+  justify-self: end;
+  margin-top: 2px;
+}
+
+.tw-feat-nav__go::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-image: url("./figma-assets/tw-feat-nav-arrow-up.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: url("./figma-assets/tw-feat-nav-arrow-up.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  transform: rotate(90deg);
+}
+
+.tw-feat-nav__btn.is-active .tw-feat-nav__name {
+  color: #ff6f58;
+  font-weight: var(--tw-fw-semibold);
+}
+
+.tw-feat-nav__btn.is-active .tw-feat-nav__desc {
+  color: #79716b;
+}
+
+.tw-feat-nav__btn.is-active .tw-feat-nav__ico {
+  color: #ff6f58;
+}
+
+.tw-feat-nav__btn.is-active .tw-feat-nav__go {
+  border-color: #ff6f58;
+  color: #ff6f58;
+}
+
+.tw-feat-nav__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #f4f4f5;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tw-feat-nav__progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #ea580c 0%, #fb923c 50%, #fdba74 100%);
+}
+
+.tw-feat-nav--run .tw-feat-nav__btn.is-active .tw-feat-nav__progress-fill {
+  animation: twFeatProgress 2s linear forwards;
+}
+
+@keyframes twFeatProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.tw-feat-stub {
+  position: relative;
+  z-index: 1;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--tw-space-10);
+  text-align: center;
+  color: #a1a1aa;
+  font-size: 15px;
+}
+
+.tw-feat-stub[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-feat-nav--run .tw-feat-nav__btn.is-active .tw-feat-nav__progress-fill {
+    animation: none !important;
+  }
+
+  .tw-feat-nav__btn.is-active .tw-feat-nav__progress-fill {
+    transform: scaleX(1);
+  }
+}

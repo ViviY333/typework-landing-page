@@ -1,0 +1,735 @@
+/* Features — Forms workflow canvas + 2s motion timeline */
+
+/* —— Canvas shell (Figma 260:1848: gradient base → tinted frame → white sheet + dot grid) —— */
+.tw-feat-stage {
+  position: relative;
+  min-height: 440px;
+  border-radius: var(--tw-radius-lg);
+  overflow: hidden;
+  /* Layer 1: 彩色渐变底 — 对齐设计稿 from/to/via 透明度 */
+  background: linear-gradient(
+    180deg,
+    rgba(226, 154, 128, 0.24) 0%,
+    rgba(255, 206, 47, 0.17) 52%,
+    rgba(255, 230, 148, 0.22) 100%
+  );
+  /* 左侧略暖（稿中左缘略深） */
+  box-shadow: inset 48px 0 100px -40px rgba(160, 72, 40, 0.09);
+}
+
+/* Layer 2: 与上、左留白，半透明暖色「画框」 */
+.tw-feat-stage__frame {
+  margin: clamp(32px, 6.5vh, 52px) clamp(12px, 2.2vw, 24px) clamp(18px, 3.5vw, 32px)
+    clamp(16px, 2.8vw, 42px);
+  border-radius: 26px;
+  background: rgba(68, 25, 6, 0.04);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Layer 3: 白画布 + 点阵（Figma：纯白底 + 浅灰点阵） */
+.tw-feat-stage__sheet {
+  position: relative;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow:
+    0 1px 1px rgba(68, 25, 6, 0.04),
+    0 3px 6px rgba(68, 25, 6, 0.04),
+    0 12px 28px rgba(68, 25, 6, 0.07);
+}
+
+.tw-feat-stage__dots {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.tw-feat-stage__inner {
+  position: relative;
+  z-index: 1;
+  padding: var(--tw-space-6);
+}
+
+@media (max-width: 599px) {
+  .tw-feat-stage__frame {
+    margin: 24px 12px 16px 14px;
+    border-radius: 20px;
+    padding: 8px;
+  }
+
+  .tw-feat-stage__sheet {
+    border-radius: 14px;
+  }
+}
+
+.tw-feat-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tw-space-3);
+}
+
+@media (min-width: 960px) {
+  .tw-feat-flow {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
+
+@media (max-width: 959px) {
+  .tw-feat-flow {
+    max-width: 420px;
+    margin-inline: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* —— WhatsApp card —— */
+.tw-feat-wa {
+  max-width: 280px;
+  background: #fff;
+  border-radius: 14px;
+  padding: var(--tw-space-4);
+  box-shadow: 0 4px 24px rgba(23, 23, 23, 0.06);
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.tw-feat-canvas--run .tw-feat-wa {
+  animation: twFeatWaIn 0.5s var(--tw-ease-out) forwards;
+}
+
+@keyframes twFeatWaIn {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tw-feat-wa__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tw-feat-wa__wa {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: #25d366;
+  flex-shrink: 0;
+}
+
+.tw-feat-wa__chip {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ea580c;
+  background: rgba(234, 88, 12, 0.08);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.tw-feat-wa__body {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #3f3f46;
+}
+
+/* —— Steps column —— */
+.tw-feat-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 300px;
+}
+
+.tw-feat-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  padding: 10px 0 10px 4px;
+  opacity: 0;
+  transform: translateX(-18px);
+}
+
+.tw-feat-canvas--run .tw-feat-step:nth-child(1) {
+  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.5s forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-step:nth-child(2) {
+  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.65s forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-step:nth-child(3) {
+  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.8s forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-step:nth-child(4) {
+  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.95s forwards;
+}
+
+@keyframes twFeatStepIn {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tw-feat-step__rail {
+  position: absolute;
+  left: 14px;
+  top: 28px;
+  bottom: -6px;
+  width: 0;
+  border-left: 2px dashed rgba(234, 88, 12, 0.45);
+}
+
+.tw-feat-step:last-child .tw-feat-step__rail {
+  display: none;
+}
+
+.tw-feat-step__check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fda4af 0%, #fb923c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25);
+}
+
+.tw-feat-step__card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 16px rgba(23, 23, 23, 0.05);
+}
+
+.tw-feat-step__title {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 4px;
+}
+
+.tw-feat-step__meta {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #71717a;
+}
+
+/* —— Connector WA → steps —— */
+.tw-feat-bridge {
+  width: 2px;
+  height: 14px;
+  margin: -4px 0 2px 18px;
+  border-left: 2px dashed rgba(234, 88, 12, 0.35);
+  opacity: 0;
+}
+
+.tw-feat-canvas--run .tw-feat-bridge {
+  animation: twFeatFadeIn 0.35s var(--tw-ease-out) 0.35s forwards;
+}
+
+@keyframes twFeatFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* —— Logo node —— */
+.tw-feat-node-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 72px;
+  padding-top: var(--tw-space-6);
+}
+
+@media (max-width: 959px) {
+  .tw-feat-node-wrap {
+    flex-direction: row;
+    justify-content: center;
+    padding-top: var(--tw-space-4);
+    width: 100%;
+  }
+}
+
+.tw-feat-node {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(234, 88, 12, 0.12);
+  opacity: 0.85;
+  transform: scale(0.88);
+  filter: brightness(0.95);
+}
+
+.tw-feat-node img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.tw-feat-canvas--run .tw-feat-node {
+  animation: twFeatNodePop 0.55s var(--tw-ease-out) 1s forwards;
+}
+
+@keyframes twFeatNodePop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1.05);
+    box-shadow:
+      0 0 0 1px rgba(234, 88, 12, 0.2),
+      0 0 28px rgba(251, 146, 60, 0.45);
+  }
+}
+
+/* Horizontal dashed segments (steps → logo → table) */
+.tw-feat-seg {
+  flex: 1 1 32px;
+  min-width: 20px;
+  max-width: 100px;
+  height: 0;
+  border-top: 2px dashed rgba(234, 88, 12, 0.42);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  align-self: center;
+}
+
+.tw-feat-canvas--run .tw-feat-seg--a {
+  animation: twFeatWireH 0.45s linear 0.85s forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-seg--b {
+  animation: twFeatWireH 0.45s linear 1.35s forwards;
+}
+
+@keyframes twFeatWireH {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 959px) {
+  .tw-feat-seg {
+    display: none;
+  }
+}
+
+/* —— Table —— */
+.tw-feat-table-wrap {
+  background: #fff;
+  border-radius: 14px;
+  padding: var(--tw-space-4);
+  box-shadow: 0 8px 32px rgba(23, 23, 23, 0.07);
+  opacity: 0;
+  transform: translateX(28px);
+  max-width: 100%;
+}
+
+.tw-feat-canvas--run .tw-feat-table-wrap {
+  animation: twFeatTableIn 0.5s var(--tw-ease-out) 1.5s forwards;
+}
+
+@keyframes twFeatTableIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tw-feat-table__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--tw-space-3);
+}
+
+.tw-feat-table__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.tw-feat-table__live {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ea580c;
+  background: rgba(234, 88, 12, 0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.tw-feat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.tw-feat-table th {
+  text-align: left;
+  color: #a1a1aa;
+  font-weight: 500;
+  padding: 6px 4px;
+  border-bottom: 1px solid #f4f4f5;
+}
+
+.tw-feat-table td {
+  padding: 8px 4px;
+  color: #3f3f46;
+  border-bottom: 1px solid #f4f4f5;
+  vertical-align: middle;
+}
+
+.tw-feat-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tw-feat-table tr.is-hot {
+  background: rgba(234, 88, 12, 0.06);
+}
+
+.tw-feat-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.tw-feat-pill--green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.tw-feat-pill--peach {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+/* Left column stack (WA + steps) */
+.tw-feat-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+@media (max-width: 959px) {
+  .tw-feat-col-left {
+    width: 100%;
+  }
+}
+
+/* —— HR canvas —— */
+.tw-feat-stage--hr {
+  background: linear-gradient(180deg, rgba(125, 119, 255, 0.2) 0%, rgba(153, 207, 255, 0.18) 100%);
+  box-shadow: inset 52px 0 110px -44px rgba(49, 46, 129, 0.14);
+}
+
+.tw-feat-hr-flow {
+  display: grid;
+  gap: var(--tw-space-5);
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .tw-feat-hr-flow {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+    gap: var(--tw-space-6);
+  }
+}
+
+.tw-feat-hr-card {
+  background: #fff;
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(67, 56, 202, 0.1);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.tw-feat-canvas--run .tw-feat-hr-card {
+  animation: twFeatHrCardIn 0.5s var(--tw-ease-out) forwards;
+}
+
+@keyframes twFeatHrCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tw-feat-hr-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.tw-feat-hr-card__badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4338ca;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.14);
+}
+
+.tw-feat-hr-card__meta {
+  font-size: 11px;
+  color: #6366f1;
+}
+
+.tw-feat-hr-card__body {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #3f3f46;
+}
+
+.tw-feat-hr-timeline {
+  list-style: none;
+  margin: var(--tw-space-4) 0 0;
+  padding: 0;
+}
+
+.tw-feat-hr-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  padding: 0 0 12px;
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.tw-feat-canvas--run .tw-feat-hr-step:nth-child(1) {
+  animation: twFeatHrStepIn 0.4s var(--tw-ease-out) 0.45s forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-hr-step:nth-child(2) {
+  animation: twFeatHrStepIn 0.4s var(--tw-ease-out) 0.58s forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-hr-step:nth-child(3) {
+  animation: twFeatHrStepIn 0.4s var(--tw-ease-out) 0.71s forwards;
+}
+
+@keyframes twFeatHrStepIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tw-feat-hr-step::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 20px;
+  bottom: -2px;
+  border-left: 2px dashed rgba(99, 102, 241, 0.35);
+}
+
+.tw-feat-hr-step:last-child::after {
+  display: none;
+}
+
+.tw-feat-hr-step__dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #818cf8 0%, #22d3ee 100%);
+  box-shadow: 0 6px 14px rgba(67, 56, 202, 0.22);
+  margin-top: 4px;
+}
+
+.tw-feat-hr-step__card {
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(99, 102, 241, 0.11);
+  padding: 10px 12px;
+}
+
+.tw-feat-hr-step__card strong {
+  display: block;
+  font-size: 13px;
+  color: #18181b;
+  margin-bottom: 4px;
+}
+
+.tw-feat-hr-step__card p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #71717a;
+}
+
+.tw-feat-hr-board {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  padding: 14px;
+  box-shadow: 0 12px 32px rgba(56, 189, 248, 0.12);
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+.tw-feat-canvas--run .tw-feat-hr-board {
+  animation: twFeatHrBoardIn 0.48s var(--tw-ease-out) 0.9s forwards;
+}
+
+@keyframes twFeatHrBoardIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tw-feat-hr-board__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tw-feat-hr-board__head h3 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.tw-feat-hr-board__head span {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: #4f46e5;
+  background: rgba(99, 102, 241, 0.12);
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+.tw-feat-hr-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.tw-feat-hr-metric {
+  background: linear-gradient(180deg, #eef2ff 0%, #f0f9ff 100%);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.tw-feat-hr-metric p {
+  margin: 0 0 4px;
+  font-size: 10px;
+  color: #6366f1;
+}
+
+.tw-feat-hr-metric strong {
+  font-size: 20px;
+  line-height: 1;
+  color: #1f2937;
+}
+
+.tw-feat-hr-shifts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.tw-feat-hr-shifts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 11px;
+  color: #334155;
+}
+
+.tw-feat-hr-shifts em {
+  font-style: normal;
+  color: #4f46e5;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-feat-canvas--run .tw-feat-wa,
+  .tw-feat-canvas--run .tw-feat-step,
+  .tw-feat-canvas--run .tw-feat-bridge,
+  .tw-feat-canvas--run .tw-feat-node,
+  .tw-feat-canvas--run .tw-feat-table-wrap,
+  .tw-feat-canvas--run .tw-feat-seg--a,
+  .tw-feat-canvas--run .tw-feat-seg--b,
+  .tw-feat-canvas--run .tw-feat-hr-card,
+  .tw-feat-canvas--run .tw-feat-hr-step,
+  .tw-feat-canvas--run .tw-feat-hr-board {
+    animation: none !important;
+  }
+
+  .tw-feat-wa,
+  .tw-feat-step,
+  .tw-feat-bridge,
+  .tw-feat-node,
+  .tw-feat-table-wrap,
+  .tw-feat-hr-card,
+  .tw-feat-hr-step,
+  .tw-feat-hr-board {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .tw-feat-node {
+    filter: none;
+  }
+}

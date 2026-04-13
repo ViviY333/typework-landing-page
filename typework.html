@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>typework — Build Your Business AI System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./typework-tokens.css" />
+    <link rel="stylesheet" href="./typework-base.css" />
+    <link rel="stylesheet" href="./typework-hero.css" />
+    <link rel="stylesheet" href="./typework-hero-setup.css" />
+    <link rel="stylesheet" href="./typework-industries.css" />
+    <link rel="stylesheet" href="./typework-sections.css" />
+    <link rel="stylesheet" href="./typework-why-showcase.css" />
+    <link rel="stylesheet" href="./typework-features.css" />
+    <link rel="stylesheet" href="./typework-features-canvas.css" />
+  </head>
+  <body class="tw-page">
+    <main id="top">
+      <section class="tw-hero" aria-labelledby="tw-hero-title">
+        <header class="tw-header">
+          <div class="tw-container tw-header__inner">
+            <a class="tw-brand" href="#top" data-tw-anchor>
+              <img
+                class="tw-brand__mark"
+                src="./Square%20Transparent%201.png"
+                width="60"
+                height="60"
+                alt=""
+              />
+              <span class="tw-brand__text">typework</span>
+            </a>
+            <nav class="tw-nav" aria-label="Primary">
+              <a href="#industries" data-tw-anchor>Industries</a>
+              <a href="#why-typework" data-tw-anchor>Why Typework</a>
+              <a href="#features" data-tw-anchor>Features</a>
+              <a href="#faq" data-tw-anchor>FAQ</a>
+            </nav>
+            <div class="tw-header__actions">
+              <a class="tw-btn tw-btn--ghost" href="#">Log in</a>
+              <a class="tw-btn tw-btn--primary" href="#">Get Started Free</a>
+            </div>
+            <button
+              type="button"
+              class="tw-nav-toggle"
+              aria-expanded="false"
+              aria-controls="tw-nav-panel"
+              data-tw-nav-toggle
+            >
+              <span class="tw-visually-hidden">Menu</span>
+              <span class="tw-nav-toggle__bar" aria-hidden="true"></span>
+              <span class="tw-nav-toggle__bar" aria-hidden="true"></span>
+              <span class="tw-nav-toggle__bar" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div id="tw-nav-panel" class="tw-nav-panel" hidden data-tw-nav-panel>
+            <nav class="tw-nav-panel__inner" aria-label="Mobile">
+              <a href="#industries" data-tw-anchor>Industries</a>
+              <a href="#why-typework" data-tw-anchor>Why Typework</a>
+              <a href="#features" data-tw-anchor>Features</a>
+              <a href="#faq" data-tw-anchor>FAQ</a>
+              <a class="tw-btn tw-btn--ghost tw-nav-panel__full" href="#">Log in</a>
+              <a class="tw-btn tw-btn--primary tw-nav-panel__full" href="#">Get Started Free</a>
+            </nav>
+          </div>
+        </header>
+        <div class="tw-hero__media" aria-hidden="true">
+          <video
+            class="tw-hero__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="./%E6%94%B9%E5%8F%98%E8%89%B2%E8%B0%83%201.jpg"
+            data-tw-hero-video
+          >
+            <source src="./typework%20bg.mp4" type="video/mp4" />
+          </video>
+          <div class="tw-hero__scrim"></div>
+        </div>
+        <div class="tw-container tw-hero__content">
+          <h1 id="tw-hero-title" class="tw-hero__title">
+            <span class="tw-hero__title-line tw-hero__title-line--lead">
+              <span class="tw-hero__title-nowrap" aria-live="polite">
+                Build your
+                <span class="tw-hero__title-rotor">
+                  <span class="tw-hero__title-highlight" data-tw-hero-rotating>Business</span>
+                </span>
+              </span>
+            </span>
+            <span class="tw-hero__title-line">AI System</span>
+          </h1>
+          <div class="tw-prompt-card-shell">
+            <div class="tw-prompt-card">
+              <div class="tw-prompt-card__inner">
+                <div
+                  class="tw-prompt-card__input"
+                  role="textbox"
+                  aria-label="Prompt"
+                  data-tw-prompt
+                >
+                  <span class="tw-prompt-card__caret" data-tw-caret>|</span>
+                </div>
+                <div class="tw-prompt-card__toolbar">
+                  <div class="tw-prompt-card__toolbar-left">
+                    <button type="button" class="tw-prompt-card__attach" aria-label="Attach file">
+                      <img
+                        src="./figma-assets/tw-prompt-attach.svg"
+                        width="16"
+                        height="16"
+                        alt=""
+                      />
+                    </button>
+                    <div class="tw-prompt-card__model">
+                      <img
+                        class="tw-prompt-card__model-logo"
+                        src="./figma-assets/tw-prompt-claude.png"
+                        width="14"
+                        height="11"
+                        alt=""
+                      />
+                      <span class="tw-prompt-card__model-label">Claude 4.6 Opus</span>
+                      <button type="button" class="tw-prompt-card__chev" aria-label="Choose model">
+                        <img
+                          src="./figma-assets/tw-prompt-chev.svg"
+                          width="16"
+                          height="16"
+                          alt=""
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <button type="button" class="tw-prompt-card__send" aria-label="Submit prompt">
+                    <img
+                      class="tw-prompt-card__send-arrow"
+                      src="./figma-assets/tw-prompt-send-arrow.svg"
+                      width="13"
+                      height="13"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tw-hero-cards">
+            <article class="tw-hero-card tw-hero-card--models">
+              <h2 class="tw-hero-card__title tw-hero-card__title--models">
+                <span class="tw-hero-card__title-accent">Advanced </span><span class="tw-hero-card__title-rest">AI Models</span>
+              </h2>
+              <div class="tw-model-chips-grid" role="list">
+                <div class="tw-model-chips-row" role="presentation">
+                  <div class="tw-model-chip" role="listitem">
+                    <div class="tw-model-chip__icon-wrap">
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/2b1efbb2-1e41-42d3-98ca-b2d2655c576d"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="tw-model-chip__meta">
+                      <span class="tw-model-chip__name">Claude 4.6 Opus</span>
+                      <span class="tw-model-chip__tag">CHAT</span>
+                    </span>
+                  </div>
+                  <div class="tw-model-chip" role="listitem">
+                    <div class="tw-model-chip__icon-wrap">
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/c776d292-06ce-4769-b9d9-4b1e485edcdd"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="tw-model-chip__meta">
+                      <span class="tw-model-chip__name">MiniMax M2.7</span>
+                      <span class="tw-model-chip__tag">CHAT</span>
+                    </span>
+                  </div>
+                  <div class="tw-model-chip" role="listitem">
+                    <div class="tw-model-chip__icon-wrap">
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/7afaef28-8f47-4144-9e0d-771c453b8ff2"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="tw-model-chip__meta">
+                      <span class="tw-model-chip__name">Gemini 2.5 Flash</span>
+                      <span class="tw-model-chip__tag">CHAT</span>
+                    </span>
+                  </div>
+                  <div class="tw-model-chip" role="listitem">
+                    <div class="tw-model-chip__icon-wrap">
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/f002b4a9-f314-4b8e-b151-6e9832347f4e"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="tw-model-chip__meta">
+                      <span class="tw-model-chip__name">Qwen3-Coder-Next</span>
+                      <span class="tw-model-chip__tag">CHAT</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="tw-model-chips-row tw-model-chips-row--offset" role="presentation">
+                  <div class="tw-model-chip" role="listitem">
+                    <div class="tw-model-chip__icon-wrap">
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/738a3477-73bf-47d8-b741-0778bf2724fc"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="tw-model-chip__meta">
+                      <span class="tw-model-chip__name">KimiK2.5</span>
+                      <span class="tw-model-chip__tag">CHAT</span>
+                    </span>
+                  </div>
+                  <div class="tw-model-chip" role="listitem">
+                    <div class="tw-model-chip__icon-wrap">
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/00bbc182-0d23-4f97-929b-8397a156e32e"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="tw-model-chip__meta">
+                      <span class="tw-model-chip__name">Gemini 2.5 Flash</span>
+                      <span class="tw-model-chip__tag">CHAT</span>
+                    </span>
+                  </div>
+                  <div class="tw-model-chip" role="listitem">
+                    <div class="tw-model-chip__icon-wrap">
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/01e41cc6-9cce-412c-bcc6-2c48b57b1b3c"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span class="tw-model-chip__meta">
+                      <span class="tw-model-chip__name">Grok 4</span>
+                      <span class="tw-model-chip__tag">CHAT</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="tw-hero-card tw-hero-card--files">
+              <h2 class="tw-hero-card__title tw-hero-card__title--files">
+                <span class="tw-hero-card__title-accent">Multi-Format </span><span class="tw-hero-card__title-rest">File Support</span>
+              </h2>
+              <div class="tw-file-stack" aria-hidden="true">
+                <div class="tw-file-doc tw-file-doc--pdf">
+                  <div class="tw-file-doc__sheet">
+                    <div class="tw-file-doc__lines" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <span class="tw-file-doc__badge tw-file-doc__badge--pdf">PDF</span>
+                  </div>
+                </div>
+                <div class="tw-file-doc tw-file-doc--xls">
+                  <div class="tw-file-doc__sheet">
+                    <div class="tw-file-doc__lines" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <span class="tw-file-doc__badge tw-file-doc__badge--xls">XLS</span>
+                  </div>
+                </div>
+                <div class="tw-file-doc tw-file-doc--csv">
+                  <div class="tw-file-doc__sheet">
+                    <div class="tw-file-doc__lines" aria-hidden="true">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <span class="tw-file-doc__badge tw-file-doc__badge--csv">
+                      <img
+                        src="./figma-assets/tw-file-csv-icon.svg"
+                        width="26"
+                        height="12"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </div>
+                <div class="tw-file-doc tw-file-doc--jpg">
+                  <div class="tw-file-doc__sheet">
+                    <div class="tw-file-doc__preview">
+                      <img
+                        src="./figma-assets/tw-file-jpg-preview.svg"
+                        width="48"
+                        height="36"
+                        alt=""
+                      />
+                    </div>
+                    <span class="tw-file-doc__badge tw-file-doc__badge--jpg">JPG</span>
+                  </div>
+                </div>
+                <div class="tw-file-doc tw-file-doc--zip">
+                  <div class="tw-file-doc__sheet">
+                    <div class="tw-file-doc__preview tw-file-doc__preview--zip">
+                      <img
+                        src="./figma-assets/tw-file-zip-preview.svg"
+                        width="48"
+                        height="36"
+                        alt=""
+                      />
+                    </div>
+                    <span class="tw-file-doc__badge tw-file-doc__badge--zip">ZIP</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="tw-hero-card tw-hero-card--setup">
+              <h2 class="tw-hero-card__title tw-hero-card__title--setup">
+                <span class="tw-hero-card__title-accent">Fast</span><span class="tw-hero-card__title-rest"> Setup in 5 minutes</span>
+              </h2>
+              <ol class="tw-setup-track">
+                <li class="tw-setup-step tw-setup-step--solid">
+                  <span class="tw-setup-step__icon">
+                    <img src="./figma-assets/tw-setup-icon-1.svg" width="26" height="26" alt="" />
+                  </span>
+                  <span class="tw-setup-step__pill">Read your files</span>
+                </li>
+                <li class="tw-setup-step tw-setup-step--solid">
+                  <span class="tw-setup-step__icon">
+                    <img src="./figma-assets/tw-setup-icon-2.svg" width="26" height="26" alt="" />
+                  </span>
+                  <span class="tw-setup-step__pill">Understand workflows</span>
+                </li>
+                <li class="tw-setup-step tw-setup-step--outline">
+                  <span class="tw-setup-step__icon tw-setup-step__icon--stacked" aria-hidden="true">
+                    <img
+                      class="tw-setup-step__ring"
+                      src="./figma-assets/tw-setup-ellipse.png"
+                      width="26"
+                      height="26"
+                      alt=""
+                    />
+                    <img
+                      class="tw-setup-step__mark"
+                      src="./figma-assets/tw-setup-check.svg"
+                      width="16"
+                      height="16"
+                      alt=""
+                    />
+                  </span>
+                  <span class="tw-setup-step__pill">Build your system</span>
+                </li>
+                <li class="tw-setup-step tw-setup-step--outline">
+                  <span class="tw-setup-step__icon tw-setup-step__icon--stacked" aria-hidden="true">
+                    <img
+                      class="tw-setup-step__ring"
+                      src="./figma-assets/tw-setup-ellipse.png"
+                      width="26"
+                      height="26"
+                      alt=""
+                    />
+                    <img
+                      class="tw-setup-step__mark"
+                      src="./figma-assets/tw-setup-check.svg"
+                      width="16"
+                      height="16"
+                      alt=""
+                    />
+                  </span>
+                  <span class="tw-setup-step__pill">Go Live Everywhere</span>
+                </li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries" class="tw-section tw-industries">
+        <div class="tw-container">
+          <p class="tw-kicker tw-kicker--center">Industries</p>
+          <h2 class="tw-section-title tw-section-title--center">See How Our Clients Use Typework</h2>
+          <p class="tw-section-lead tw-section-lead--center">
+            Real businesses across the supply chain — from sourcing to delivery — are automating
+            their operations with AI agents.
+          </p>
+
+          <div
+            class="tw-industries-accordion"
+            role="region"
+            aria-label="Client case studies"
+            tabindex="0"
+            data-tw-industries
+            data-tw-active-index="0"
+          >
+            <article class="tw-industry-panel is-active" data-tw-industry-panel data-index="0" aria-current="true">
+              <img
+                class="tw-industry-panel__bg"
+                src="./figma-assets/industry-hero.png"
+                alt="Restaurant team reviewing operations on a tablet"
+                loading="lazy"
+              />
+              <img
+                class="tw-industry-panel__logo-mark"
+                src="./figma-assets/industry-logo-mark.png"
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+              />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Rush hours no longer break our workflow.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Typework connected bookings, prep, staffing, and delivery data into one live view.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+38%</strong>
+                  <span>Table turnover at peak</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="1">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-2.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Coach scheduling is finally predictable.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Attendance, PT sessions, shifts, and renewal alerts now run in one operating rhythm.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>-46%</strong>
+                  <span>Manual scheduling time</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="2">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-3.jpg" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Nurses don’t jump across three tools anymore.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Appointments, diagnostics, follow-ups, and billing now flow through one shared process.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>-31%</strong>
+                  <span>Average patient wait time</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="3">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-4.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Launch days no longer overwhelm ops.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Campaigns, orders, stock, and support tickets stay synced from one command layer.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+22%</strong>
+                  <span>Campaign conversion rate</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="4">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-5.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Our team finally works from one funnel.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Leads, tours, follow-ups, and closings are now tracked as one continuous pipeline.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+29%</strong>
+                  <span>Lead-to-tour conversion</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="tw-industries__status" aria-hidden="true">
+            <div class="tw-industries__dots" data-tw-industries-dots></div>
+          </div>
+
+          <div class="tw-industries-trust">
+            <p class="tw-industries-trust__line">Trusted by 10,000 business worldwide</p>
+            <div class="tw-industries-trust__logos" aria-hidden="true">
+              <img src="./figma-assets/industry-trust-1.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-2.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-3.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-4.png" alt="" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why-typework" class="tw-section tw-why">
+        <div class="tw-why-showcase" data-tw-why-showcase>
+          <div class="tw-container tw-why-showcase__head">
+            <p class="tw-kicker tw-kicker--center">Why Typework</p>
+            <h2 class="tw-section-title tw-section-title--center">
+              Your Business Doesn’t Need 10 Software Tools. It Needs One AI Platform.
+            </h2>
+          </div>
+
+          <div class="tw-why-showcase__stage" data-tw-why-pin>
+            <div class="tw-container tw-why-showcase__cols">
+              <div class="tw-why-showcase__left">
+                <article
+                  class="tw-why-stack-card is-active"
+                  data-tw-why-card="0"
+                  aria-current="true"
+                >
+                  <h3>AI sees your whole business</h3>
+                  <p>
+                    Not just your CRM or spreadsheets. Typework connects customers, inventory,
+                    production, and finance — so decisions are made with the full picture.
+                  </p>
+                </article>
+                <article class="tw-why-stack-card" data-tw-why-card="1" aria-current="false">
+                  <h3>Every Client Makes It Smarter</h3>
+                  <p>
+                    The scheduling system built for a gym works for a salon. The billing flow for a
+                    clinic works for a law firm. Every business we serve makes the platform more
+                    powerful for the next one.
+                  </p>
+                </article>
+              </div>
+
+              <div class="tw-why-showcase__center" aria-hidden="true">
+                <div class="tw-why-video-wrap">
+                  <video
+                    class="tw-why-video"
+                    data-tw-why-video
+                    src="./video%20(1).mp4"
+                    muted
+                    playsinline
+                    preload="auto"
+                  ></video>
+                </div>
+              </div>
+
+              <div class="tw-why-showcase__right">
+                <article
+                  class="tw-why-stack-card tw-why-stack-card--enter"
+                  data-tw-why-card="2"
+                  aria-current="false"
+                >
+                  <h3>Real Business, Not Just Software</h3>
+                  <p>
+                    We don’t sell tools. Your workflows train the AI, turning your operational
+                    knowledge into a system that gets smarter every day.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="tw-section tw-features" data-tw-features>
+        <div class="tw-container tw-features__head tw-features__head--split">
+          <div>
+            <p class="tw-kicker">Features</p>
+            <h2 class="tw-section-title">Everything Your Business Needs. All in One Place.</h2>
+          </div>
+          <p class="tw-section-lead tw-features__head-lead">
+            Replace multiple fragmented tools with Typework — the AI platform designed to connect your
+            teams, data, and customers in one workflow.
+          </p>
+        </div>
+        <div class="tw-container tw-features__split tw-features__split--feat">
+          <nav class="tw-feat-nav" aria-label="Product features" data-tw-feat-nav>
+            <button
+              type="button"
+              class="tw-feat-nav__btn is-active"
+              data-tw-feature-tab="0"
+              aria-current="true"
+            >
+              <span class="tw-feat-nav__ico tw-feat-nav__ico--forms" aria-hidden="true"></span>
+              <span class="tw-feat-nav__text">
+                <span class="tw-feat-nav__name">Forms</span>
+                <span class="tw-feat-nav__desc">
+                  Smart, simplified Excel with AI. Collect, store, and manage any operational data.
+                </span>
+              </span>
+              <span class="tw-feat-nav__go" aria-hidden="true"></span>
+              <span class="tw-feat-nav__progress" aria-hidden="true"
+                ><span class="tw-feat-nav__progress-fill"></span
+              ></span>
+            </button>
+            <button type="button" class="tw-feat-nav__btn" data-tw-feature-tab="1">
+              <span class="tw-feat-nav__ico tw-feat-nav__ico--hr" aria-hidden="true"></span>
+              <span class="tw-feat-nav__text">
+                <span class="tw-feat-nav__name">HR</span>
+                <span class="tw-feat-nav__desc">
+                  Hiring, scheduling, and payroll signals — unified for people operations.
+                </span>
+              </span>
+              <span class="tw-feat-nav__go" aria-hidden="true"></span>
+              <span class="tw-feat-nav__progress" aria-hidden="true"
+                ><span class="tw-feat-nav__progress-fill"></span
+              ></span>
+            </button>
+            <button type="button" class="tw-feat-nav__btn" data-tw-feature-tab="2">
+              <span class="tw-feat-nav__ico tw-feat-nav__ico--finances" aria-hidden="true"></span>
+              <span class="tw-feat-nav__text">
+                <span class="tw-feat-nav__name">Finances</span>
+                <span class="tw-feat-nav__desc">
+                  Live P&amp;L tied to operations — invoices, payouts, and reconciliation.
+                </span>
+              </span>
+              <span class="tw-feat-nav__go" aria-hidden="true"></span>
+              <span class="tw-feat-nav__progress" aria-hidden="true"
+                ><span class="tw-feat-nav__progress-fill"></span
+              ></span>
+            </button>
+            <button type="button" class="tw-feat-nav__btn" data-tw-feature-tab="3">
+              <span class="tw-feat-nav__ico tw-feat-nav__ico--legal" aria-hidden="true"></span>
+              <span class="tw-feat-nav__text">
+                <span class="tw-feat-nav__name">Legal</span>
+                <span class="tw-feat-nav__desc">
+                  Contracts, approvals, and audit trails with structured records.
+                </span>
+              </span>
+              <span class="tw-feat-nav__go" aria-hidden="true"></span>
+              <span class="tw-feat-nav__progress" aria-hidden="true"
+                ><span class="tw-feat-nav__progress-fill"></span
+              ></span>
+            </button>
+            <button type="button" class="tw-feat-nav__btn" data-tw-feature-tab="4">
+              <span class="tw-feat-nav__ico tw-feat-nav__ico--sales" aria-hidden="true"></span>
+              <span class="tw-feat-nav__text">
+                <span class="tw-feat-nav__name">Sales &amp; Support</span>
+                <span class="tw-feat-nav__desc">
+                  Inbox, CRM, and fulfillment — one thread from lead to delivery.
+                </span>
+              </span>
+              <span class="tw-feat-nav__go" aria-hidden="true"></span>
+              <span class="tw-feat-nav__progress" aria-hidden="true"
+                ><span class="tw-feat-nav__progress-fill"></span
+              ></span>
+            </button>
+            <button type="button" class="tw-feat-nav__btn" data-tw-feature-tab="5">
+              <span class="tw-feat-nav__ico tw-feat-nav__ico--marketing" aria-hidden="true"></span>
+              <span class="tw-feat-nav__text">
+                <span class="tw-feat-nav__name">Marketing</span>
+                <span class="tw-feat-nav__desc">
+                  Campaigns, attribution, and assets — orchestrated with operational data.
+                </span>
+              </span>
+              <span class="tw-feat-nav__go" aria-hidden="true"></span>
+              <span class="tw-feat-nav__progress" aria-hidden="true"
+                ><span class="tw-feat-nav__progress-fill"></span
+              ></span>
+            </button>
+          </nav>
+
+          <div class="tw-feat-panels" data-tw-feat-panels>
+            <div
+              class="tw-feat-canvas tw-feat-canvas--forms"
+              data-tw-feat-panel="0"
+              data-tw-feat-canvas
+            >
+              <div class="tw-feat-stage">
+                <div class="tw-feat-stage__frame">
+                  <div class="tw-feat-stage__sheet">
+                    <div class="tw-feat-stage__dots" aria-hidden="true"></div>
+                    <div class="tw-feat-stage__inner">
+                      <div class="tw-feat-flow">
+                        <div class="tw-feat-col-left">
+                          <div class="tw-feat-wa">
+                            <div class="tw-feat-wa__top">
+                              <span class="tw-feat-wa__wa" aria-hidden="true"></span>
+                              <span class="tw-feat-wa__chip">Inbound</span>
+                            </div>
+                            <p class="tw-feat-wa__body">
+                              Reserve a table for 4 this Friday at 7 PM. Add the seafood platter please.
+                            </p>
+                          </div>
+                          <div class="tw-feat-bridge" aria-hidden="true"></div>
+                          <div class="tw-feat-steps">
+                            <div class="tw-feat-step">
+                              <span class="tw-feat-step__rail" aria-hidden="true"></span>
+                              <span class="tw-feat-step__check">✓</span>
+                              <div class="tw-feat-step__card">
+                                <span class="tw-feat-step__title">Created reservation</span>
+                                <p class="tw-feat-step__meta">Table 7 · 4 guests · Fri 7:00 PM</p>
+                              </div>
+                            </div>
+                            <div class="tw-feat-step">
+                              <span class="tw-feat-step__rail" aria-hidden="true"></span>
+                              <span class="tw-feat-step__check">✓</span>
+                              <div class="tw-feat-step__card">
+                                <span class="tw-feat-step__title">Added pre-order</span>
+                                <p class="tw-feat-step__meta">Seafood Platter x1 — $88.00</p>
+                              </div>
+                            </div>
+                            <div class="tw-feat-step">
+                              <span class="tw-feat-step__rail" aria-hidden="true"></span>
+                              <span class="tw-feat-step__check">✓</span>
+                              <div class="tw-feat-step__card">
+                                <span class="tw-feat-step__title">Blocked availability</span>
+                                <p class="tw-feat-step__meta">Table 7 unavailable Fri 7–9 PM</p>
+                              </div>
+                            </div>
+                            <div class="tw-feat-step">
+                              <span class="tw-feat-step__check">✓</span>
+                              <div class="tw-feat-step__card">
+                                <span class="tw-feat-step__title">Sent confirmation</span>
+                                <p class="tw-feat-step__meta">WhatsApp message + calendar invite</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <span class="tw-feat-seg tw-feat-seg--a" aria-hidden="true"></span>
+                        <div class="tw-feat-node-wrap">
+                          <div class="tw-feat-node">
+                            <img src="./Square%20Transparent%201.png" width="36" height="36" alt="" />
+                          </div>
+                        </div>
+                        <span class="tw-feat-seg tw-feat-seg--b" aria-hidden="true"></span>
+                        <div class="tw-feat-table-wrap">
+                          <div class="tw-feat-table__head">
+                            <h3 class="tw-feat-table__title">Reservations</h3>
+                            <span class="tw-feat-table__live">LIVE</span>
+                          </div>
+                          <table class="tw-feat-table">
+                            <thead>
+                              <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Pax</th>
+                                <th>Pre-order</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Mar 20</td>
+                                <td>6:30 PM</td>
+                                <td>2</td>
+                                <td>—</td>
+                                <td><span class="tw-feat-pill tw-feat-pill--green">Confirmed</span></td>
+                              </tr>
+                              <tr class="is-hot">
+                                <td>Mar 21</td>
+                                <td>6:30 PM</td>
+                                <td>3</td>
+                                <td>Seafood $88</td>
+                                <td><span class="tw-feat-pill tw-feat-pill--green">New</span></td>
+                              </tr>
+                              <tr>
+                                <td>Mar 20</td>
+                                <td>8:30 PM</td>
+                                <td>6</td>
+                                <td>Set Menu</td>
+                                <td><span class="tw-feat-pill tw-feat-pill--peach">Pending</span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tw-feat-canvas tw-feat-canvas--hr" data-tw-feat-panel="1" hidden>
+              <div class="tw-feat-stage tw-feat-stage--hr">
+                <div class="tw-feat-stage__frame">
+                  <div class="tw-feat-stage__sheet">
+                    <div class="tw-feat-stage__dots" aria-hidden="true"></div>
+                    <div class="tw-feat-stage__inner">
+                      <div class="tw-feat-hr-flow">
+                        <div class="tw-feat-hr-col">
+                          <article class="tw-feat-hr-card tw-feat-hr-card--inbound">
+                            <header class="tw-feat-hr-card__head">
+                              <span class="tw-feat-hr-card__badge">Inbound</span>
+                              <span class="tw-feat-hr-card__meta">WhatsApp</span>
+                            </header>
+                            <p class="tw-feat-hr-card__body">
+                              Need 2 part-time servers for Friday and Saturday night shifts. Must
+                              be available after 5 PM.
+                            </p>
+                          </article>
+                          <ol class="tw-feat-hr-timeline">
+                            <li class="tw-feat-hr-step">
+                              <span class="tw-feat-hr-step__dot" aria-hidden="true"></span>
+                              <div class="tw-feat-hr-step__card">
+                                <strong>Created hiring request</strong>
+                                <p>Role: Server (PT) · 2 headcount</p>
+                              </div>
+                            </li>
+                            <li class="tw-feat-hr-step">
+                              <span class="tw-feat-hr-step__dot" aria-hidden="true"></span>
+                              <div class="tw-feat-hr-step__card">
+                                <strong>Matched candidates</strong>
+                                <p>6 qualified profiles from active pool</p>
+                              </div>
+                            </li>
+                            <li class="tw-feat-hr-step">
+                              <span class="tw-feat-hr-step__dot" aria-hidden="true"></span>
+                              <div class="tw-feat-hr-step__card">
+                                <strong>Auto scheduled interviews</strong>
+                                <p>Thu 4:30 PM · Onsite at outlet #2</p>
+                              </div>
+                            </li>
+                          </ol>
+                        </div>
+                        <aside class="tw-feat-hr-board">
+                          <div class="tw-feat-hr-board__head">
+                            <h3>HR Operations</h3>
+                            <span>LIVE</span>
+                          </div>
+                          <div class="tw-feat-hr-metric-grid">
+                            <div class="tw-feat-hr-metric">
+                              <p>Open Roles</p>
+                              <strong>4</strong>
+                            </div>
+                            <div class="tw-feat-hr-metric">
+                              <p>Interviews Today</p>
+                              <strong>9</strong>
+                            </div>
+                          </div>
+                          <ul class="tw-feat-hr-shifts">
+                            <li><span>Kitchen PM shift</span><em>Filled</em></li>
+                            <li><span>Service AM shift</span><em>1 spot left</em></li>
+                            <li><span>Weekend backup list</span><em>Updated</em></li>
+                          </ul>
+                        </aside>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tw-feat-stub" data-tw-feat-stub hidden>
+              该模块预览即将上线 — 当前完整展示 <strong>Forms</strong> 与 <strong>HR</strong> 工作流动画。
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="faq" class="tw-section tw-faq">
+        <div class="tw-container">
+          <div class="tw-faq__head">
+            <p class="tw-kicker tw-kicker--center">FAQ</p>
+            <h2 class="tw-section-title tw-section-title--center">Have questions? We have answers</h2>
+          </div>
+          <div class="tw-faq__list" data-tw-faq>
+            <div class="tw-faq-item is-open">
+              <button type="button" class="tw-faq-item__trigger" aria-expanded="true" data-tw-faq-trigger>
+                <span>Do I need any technical skills?</span>
+                <span class="tw-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="tw-faq-item__panel" data-tw-faq-panel>
+                <p>
+                  No. Typework is built for operators: connect files, describe your workflow in
+                  plain language, and the platform proposes automations you can approve in minutes.
+                </p>
+              </div>
+            </div>
+            <div class="tw-faq-item">
+              <button type="button" class="tw-faq-item__trigger" aria-expanded="false" data-tw-faq-trigger>
+                <span>Is my business data safe?</span>
+                <span class="tw-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="tw-faq-item__panel" hidden data-tw-faq-panel>
+                <p>
+                  Yes. Data is encrypted in transit and at rest, with role-based access and clear
+                  retention controls. You choose what each agent can read or write.
+                </p>
+              </div>
+            </div>
+            <div class="tw-faq-item">
+              <button type="button" class="tw-faq-item__trigger" aria-expanded="false" data-tw-faq-trigger>
+                <span>What happens when the AI can’t handle something?</span>
+                <span class="tw-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="tw-faq-item__panel" hidden data-tw-faq-panel>
+                <p>
+                  Workflows escalate to your team with full context. Typework keeps humans in the loop
+                  for approvals, exceptions, and anything that needs judgment.
+                </p>
+              </div>
+            </div>
+            <div class="tw-faq-item">
+              <button type="button" class="tw-faq-item__trigger" aria-expanded="false" data-tw-faq-trigger>
+                <span>How long does setup take?</span>
+                <span class="tw-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="tw-faq-item__panel" hidden data-tw-faq-panel>
+                <p>
+                  Most teams connect core files and ship a first workflow within a day. Deeper ERP
+                  or warehouse integrations may take longer depending on your stack.
+                </p>
+              </div>
+            </div>
+            <div class="tw-faq-item">
+              <button type="button" class="tw-faq-item__trigger" aria-expanded="false" data-tw-faq-trigger>
+                <span>Can the AI speak my customers’ language?</span>
+                <span class="tw-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="tw-faq-item__panel" hidden data-tw-faq-panel>
+                <p>
+                  Yes. Multilingual prompts and customer-facing messages are supported so your agents
+                  can match your markets.
+                </p>
+              </div>
+            </div>
+            <div class="tw-faq-item">
+              <button type="button" class="tw-faq-item__trigger" aria-expanded="false" data-tw-faq-trigger>
+                <span>What if I already use Shopify, QuickBooks, etc.?</span>
+                <span class="tw-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="tw-faq-item__panel" hidden data-tw-faq-panel>
+                <p>
+                  Typework connects to common tools and files so you don’t rip-and-replace overnight.
+                  Start with uploads and APIs, then expand as you grow.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="tw-footer">
+      <div class="tw-container tw-footer__top">
+        <div>
+          <p class="tw-footer__brand">typework</p>
+          <p class="tw-footer__tagline">AI-native ERP for teams that ship.</p>
+        </div>
+        <div class="tw-footer__cols">
+          <div>
+            <h3 class="tw-footer__heading">Company</h3>
+            <a href="#">Home</a>
+            <a href="#">About us</a>
+            <a href="#">FAQ</a>
+          </div>
+          <div>
+            <h3 class="tw-footer__heading">Follow us</h3>
+            <a class="tw-footer__social" href="#">
+              <span class="tw-footer__social-icon">X</span>
+              <span>x.com</span>
+            </a>
+            <a class="tw-footer__social" href="#">
+              <span class="tw-footer__social-icon">in</span>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="tw-container tw-footer__bottom">
+        <span>© 2026 typework. All rights reserved.</span>
+        <div class="tw-footer__legal">
+          <a href="#">Cookie settings</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script src="./typework.js" defer></script>
+  </body>
+</html>

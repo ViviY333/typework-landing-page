@@ -1,0 +1,621 @@
+/* Hero: video background, prompt, three cards */
+.tw-hero {
+  position: relative;
+  min-height: min(100vh, 1288px);
+  padding: calc(var(--tw-header-h) + var(--tw-space-8)) 0 var(--tw-space-16);
+  overflow: hidden;
+}
+
+/* Nav sits over video (transparent); scrolls away with hero — not fixed/sticky */
+.tw-hero > .tw-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
+
+.tw-hero .tw-brand {
+  color: var(--tw-color-text);
+  text-shadow: none;
+}
+
+.tw-hero .tw-nav a {
+  color: var(--tw-color-muted);
+}
+
+.tw-hero .tw-nav a:hover {
+  color: var(--tw-color-text);
+  background: rgba(23, 23, 23, 0.04);
+  text-decoration: none;
+}
+
+.tw-hero .tw-nav-toggle__bar {
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.tw-hero .tw-btn--ghost {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: none;
+}
+
+.tw-hero .tw-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: none;
+}
+
+.tw-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--tw-color-bg);
+}
+
+.tw-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+
+.tw-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: unset;
+  background-color: unset;
+  background-image: none;
+  pointer-events: none;
+}
+
+.tw-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--tw-space-8);
+}
+
+.tw-hero__title {
+  margin: 0;
+  max-width: min(22rem, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08em;
+  font-family: var(--tw-font-display);
+  font-weight: var(--tw-fw-medium);
+  font-size: clamp(3rem, 8vw, var(--tw-fs-display-xl));
+  line-height: 1.05;
+  letter-spacing: var(--tw-ls-display-xl);
+  color: var(--tw-color-text);
+}
+
+.tw-hero__title-line {
+  display: block;
+}
+
+/* Keep “Build your” + orange word on one line (second line is only “AI System”) */
+.tw-hero__title-nowrap {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.tw-hero__title-rotor {
+  display: inline;
+  vertical-align: baseline;
+}
+
+.tw-hero__title-highlight {
+  display: inline-block;
+  color: var(--tw-color-brand-primary);
+  transition: opacity 0.28s ease;
+}
+
+.tw-hero__title-highlight[data-tw-hero-rotating].is-fading {
+  opacity: 0;
+}
+
+/* Figma: 249:11776 outer elevation + 249:11777 frosted plate + 249:11778 inner white card */
+.tw-prompt-card-shell {
+  --prompt-s: 0.8;
+  width: 100%;
+  max-width: calc(726px * var(--prompt-s));
+  border-radius: calc(39.615px * var(--prompt-s));
+  box-shadow: 0 calc(16.706px * var(--prompt-s)) calc(37.968px * var(--prompt-s))
+    rgba(0, 0, 0, 0.1);
+}
+
+.tw-prompt-card {
+  width: 100%;
+  padding: calc(12.142px * var(--prompt-s));
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: calc(30.371px * var(--prompt-s));
+  box-sizing: border-box;
+}
+
+.tw-prompt-card__inner {
+  background: #fff;
+  border-radius: calc(19.702px * var(--prompt-s));
+  box-shadow:
+    0 calc(1.32px * var(--prompt-s)) calc(2.641px * var(--prompt-s)) rgba(0, 0, 0, 0.1),
+    0 calc(1.32px * var(--prompt-s)) calc(3.961px * var(--prompt-s)) rgba(0, 0, 0, 0.1);
+  padding: calc(21.857px * var(--prompt-s));
+}
+
+.tw-prompt-card__input {
+  min-height: calc(59px * var(--prompt-s));
+  display: flex;
+  align-items: flex-start;
+  font-size: calc(21.26px * var(--prompt-s));
+  line-height: calc(30.371px * var(--prompt-s));
+  letter-spacing: calc(-0.2126px * var(--prompt-s));
+  color: #78716c;
+  text-align: left;
+}
+
+.tw-prompt-card__caret {
+  margin-right: calc(2px * var(--prompt-s));
+  color: #292524;
+  font-weight: 400;
+  animation: tw-caret-blink 1s step-end infinite;
+}
+
+@keyframes tw-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-prompt-card__caret {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.tw-prompt-card__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(12px * var(--prompt-s));
+  margin-top: calc(21px * var(--prompt-s));
+}
+
+.tw-prompt-card__toolbar-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(8px * var(--prompt-s));
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.tw-prompt-card__attach {
+  flex-shrink: 0;
+  width: calc(41px * var(--prompt-s));
+  height: calc(41px * var(--prompt-s));
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: calc(1.32px * var(--prompt-s)) solid #e2e2e2;
+  border-radius: calc(8px * var(--prompt-s));
+  cursor: pointer;
+  transition: transform 0.15s var(--tw-ease-out);
+}
+
+.tw-prompt-card__attach:hover {
+  transform: translateY(-1px);
+}
+
+.tw-prompt-card__model {
+  display: flex;
+  align-items: center;
+  gap: calc(10px * var(--prompt-s));
+  flex: 1 1 calc(180px * var(--prompt-s));
+  width: 100%;
+  max-width: calc(230px * var(--prompt-s));
+  height: calc(44px * var(--prompt-s));
+  padding: 0 calc(12px * var(--prompt-s)) 0 calc(14px * var(--prompt-s));
+  box-sizing: border-box;
+  background: #fff;
+  border: calc(1.32px * var(--prompt-s)) solid #e2e2e2;
+  border-radius: calc(8px * var(--prompt-s));
+}
+
+.tw-prompt-card__model-logo {
+  flex-shrink: 0;
+  width: calc(18.293px * var(--prompt-s));
+  height: calc(13.72px * var(--prompt-s));
+  object-fit: contain;
+}
+
+.tw-prompt-card__model-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: calc(15.549px * var(--prompt-s));
+  font-weight: 500;
+  line-height: 1.2;
+  color: #7c7c7c;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tw-prompt-card__chev {
+  flex-shrink: 0;
+  display: inline-flex;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.tw-prompt-card__send {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50.179px * var(--prompt-s));
+  height: calc(50.179px * var(--prompt-s));
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #191919;
+  cursor: pointer;
+  transition: transform 0.15s var(--tw-ease-out);
+}
+
+.tw-prompt-card__send-arrow {
+  position: relative;
+  display: block;
+  width: calc(15.5px * var(--prompt-s));
+  height: auto;
+  pointer-events: none;
+}
+
+.tw-prompt-card__send:hover {
+  transform: scale(1.04);
+}
+
+.tw-hero-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: var(--tw-space-4);
+  margin-top: var(--tw-space-4);
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+/* Figma node 720:22579 — shared shell for all hero cards (fixed 254×254, non-fluid) */
+.tw-hero-card {
+  flex: 0 0 254px;
+  width: 254px;
+  height: 254px;
+  box-sizing: border-box;
+  padding: 20px;
+  background: #fffefb;
+  border: 1px solid #ffd2ba;
+  border-radius: 16px;
+  box-shadow: inset 0 0 24px rgba(234, 88, 12, 0.17);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  min-height: 0;
+}
+
+.tw-hero-card__title {
+  margin: 0 0 1rem;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  font-family: var(--tw-font-display);
+  color: #242424;
+}
+
+.tw-hero-card__title--models,
+.tw-hero-card__title--files,
+.tw-hero-card__title--setup {
+  margin: 0;
+}
+
+.tw-hero-card__title-accent {
+  color: var(--tw-color-brand-primary);
+}
+
+.tw-hero-card__title-rest {
+  color: #242424;
+}
+
+.tw-model-chips-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.tw-model-chips-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  align-items: center;
+  width: max-content;
+}
+
+@media (min-width: 480px) {
+  .tw-model-chips-row--offset {
+    margin-left: -21px;
+  }
+}
+
+.tw-model-chips-row.is-marquee {
+  animation: tw-models-marquee-left var(--tw-marquee-duration, 20s) linear infinite;
+  will-change: transform;
+}
+
+.tw-model-chips-row.is-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes tw-models-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 5px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-model-chips-row.is-marquee {
+    animation: none;
+    transform: none;
+  }
+}
+
+.tw-hero-card--models .tw-model-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.tw-model-chip__icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: #f5f5f6;
+  border: 0.7px solid #ebebeb;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.tw-model-chip__icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 4px;
+}
+
+.tw-hero-card--models .tw-model-chip__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+  min-width: 0;
+}
+
+.tw-hero-card--models .tw-model-chip__name {
+  font-size: 14px;
+  font-weight: 400;
+  color: #3d3d3d;
+  line-height: normal;
+}
+
+.tw-hero-card--models .tw-model-chip__tag {
+  font-size: 12px;
+  font-weight: 400;
+  color: #b1b1b1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Figma 713:22378 — Multi-Format File Support document pile */
+.tw-file-stack {
+  position: relative;
+  width: min(100%, 320px);
+  max-width: 320px;
+  aspect-ratio: 320 / 265;
+  margin: 12px auto 0;
+  flex: 1;
+  min-height: 0;
+  align-self: center;
+  overflow: visible;
+  transform: translateX(-30px);
+}
+
+.tw-file-doc {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 127px;
+  height: 96px;
+  transform-origin: center center;
+}
+
+.tw-file-doc--pdf {
+  left: 11.65%;
+  top: 0.02%;
+  transform: rotate(-4.93deg);
+  z-index: 1;
+}
+
+.tw-file-doc--xls {
+  left: 47.12%;
+  top: 0;
+  transform: rotate(6.37deg);
+  z-index: 2;
+}
+
+.tw-file-doc--csv {
+  left: 0;
+  top: 47.32%;
+  transform: rotate(-4.57deg);
+  z-index: 3;
+}
+
+.tw-file-doc--jpg {
+  left: 31.93%;
+  top: 47.76%;
+  transform: rotate(3.27deg);
+  z-index: 4;
+}
+
+.tw-file-doc--zip {
+  left: 59.65%;
+  top: 45.33%;
+  transform: rotate(-8.03deg);
+  z-index: 5;
+}
+
+.tw-file-doc__sheet {
+  position: relative;
+  box-sizing: border-box;
+  width: 65px;
+  height: 80px;
+  background: #fff;
+  border: 0.65px solid #ededed;
+  border-radius: 7.8px;
+  box-shadow: 0 0 7.794px rgba(156, 156, 156, 0.25);
+}
+
+.tw-file-doc__lines {
+  position: absolute;
+  left: 14.2%;
+  top: 17.5%;
+  right: 14.2%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tw-file-doc__lines span {
+  display: block;
+  height: 3px;
+  background: #d9d9d9;
+  border-radius: 9px;
+}
+
+.tw-file-doc__lines span:nth-child(1),
+.tw-file-doc__lines span:nth-child(2) {
+  width: 100%;
+}
+
+.tw-file-doc__lines span:nth-child(3) {
+  width: 32%;
+}
+
+.tw-file-doc__preview {
+  position: absolute;
+  left: 10%;
+  top: 16%;
+  right: 10%;
+  bottom: 38%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tw-file-doc__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.tw-file-doc__preview--zip {
+  left: 12%;
+  top: 14%;
+  right: 12%;
+  bottom: 40%;
+}
+
+.tw-file-doc--jpg .tw-file-doc__preview {
+  left: 50%;
+  top: 16%;
+  width: 58%;
+  height: auto;
+  bottom: auto;
+  aspect-ratio: 1 / 1;
+  transform: translateX(-50%);
+}
+
+.tw-file-doc__badge {
+  position: absolute;
+  left: -4px;
+  bottom: 11px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  font-family: var(--tw-font-body), Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tw-file-doc__badge--pdf {
+  background: #b51e1e;
+}
+
+.tw-file-doc__badge--xls {
+  background: #04910c;
+}
+
+.tw-file-doc__badge--csv {
+  background: #6298cd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 4px;
+  left: -5px;
+}
+
+.tw-file-doc__badge--csv img {
+  display: block;
+  width: 26px;
+  height: auto;
+  max-height: 14px;
+  object-fit: contain;
+}
+
+.tw-file-doc__badge--jpg {
+  background: #8e2b9e;
+}
+
+.tw-file-doc__badge--zip {
+  background: #868686;
+}

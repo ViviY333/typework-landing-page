@@ -1,0 +1,126 @@
+/* Figma 713:22444 — Fast Setup in 5 minutes */
+.tw-setup-track {
+  margin: 12px auto 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+  width: 100%;
+  max-width: 227px;
+}
+
+.tw-setup-step {
+  position: relative;
+  flex-shrink: 0;
+  height: 28px;
+}
+
+.tw-setup-step:nth-child(1) {
+  width: 174px;
+}
+
+.tw-setup-step:nth-child(2) {
+  width: 100%;
+  max-width: 227px;
+}
+
+.tw-setup-step:nth-child(3) {
+  width: 185px;
+}
+
+.tw-setup-step:nth-child(4) {
+  width: 206px;
+}
+
+.tw-setup-step__icon {
+  position: absolute;
+  left: 0;
+  width: 26px;
+  height: 26px;
+}
+
+.tw-setup-step:nth-child(1) .tw-setup-step__icon {
+  top: 1px;
+}
+
+.tw-setup-step:nth-child(n + 2) .tw-setup-step__icon {
+  top: 0;
+}
+
+.tw-setup-step__icon > img:first-child {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.tw-setup-step__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tw-setup-step__mark {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.tw-setup-step__pill {
+  position: absolute;
+  top: 0;
+  height: 28px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: var(--tw-fs-btn-m);
+  font-weight: var(--tw-fw-medium);
+  line-height: var(--tw-lh-btn-m);
+  font-family: var(--tw-font-display);
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.tw-setup-step--solid .tw-setup-step__pill {
+  background: #ea580c;
+  border: 1px dashed #fff;
+  color: #fff;
+}
+
+.tw-setup-step--outline .tw-setup-step__pill {
+  background: #fff;
+  border: 1px dashed #ea580c;
+  color: #242424;
+}
+
+.tw-setup-step:nth-child(1) .tw-setup-step__pill {
+  left: 35px;
+  width: 139px;
+}
+
+.tw-setup-step:nth-child(2) .tw-setup-step__pill {
+  left: 34px;
+  width: 193px;
+}
+
+.tw-setup-step:nth-child(3) .tw-setup-step__pill {
+  left: 34px;
+  width: 151px;
+}
+
+.tw-setup-step:nth-child(4) .tw-setup-step__pill {
+  left: 34px;
+  width: 172px;
+}
