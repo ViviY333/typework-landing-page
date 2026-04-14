@@ -1,4 +1,81 @@
 /* Figma 713:22444 — Fast Setup in 5 minutes */
+
+/* 单步约 1s 淡入（原 0.5s 的 0.5× 速 = 时长×2），整段循环约 8s */
+@keyframes tw-setup-loop-1 {
+  0% {
+    opacity: 0;
+  }
+  12.5% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  82.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tw-setup-loop-2 {
+  0%,
+  12.5% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  82.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tw-setup-loop-3 {
+  0%,
+  25% {
+    opacity: 0;
+  }
+  37.5% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  82.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tw-setup-loop-4 {
+  0%,
+  37.5% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  82.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .tw-setup-track {
   margin: 12px auto 0;
   padding: 0;
@@ -18,6 +95,7 @@
   position: relative;
   flex-shrink: 0;
   height: 28px;
+  animation: tw-setup-loop-1 8s ease-in-out infinite;
 }
 
 .tw-setup-step:nth-child(1) {
@@ -27,14 +105,17 @@
 .tw-setup-step:nth-child(2) {
   width: 100%;
   max-width: 227px;
+  animation: tw-setup-loop-2 8s ease-in-out infinite;
 }
 
 .tw-setup-step:nth-child(3) {
   width: 185px;
+  animation: tw-setup-loop-3 8s ease-in-out infinite;
 }
 
 .tw-setup-step:nth-child(4) {
   width: 206px;
+  animation: tw-setup-loop-4 8s ease-in-out infinite;
 }
 
 .tw-setup-step__icon {
@@ -95,7 +176,7 @@
 
 .tw-setup-step--solid .tw-setup-step__pill {
   background: #ea580c;
-  border: 1px dashed #fff;
+  border: none;
   color: #fff;
 }
 
@@ -123,4 +204,11 @@
 .tw-setup-step:nth-child(4) .tw-setup-step__pill {
   left: 34px;
   width: 172px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-setup-step {
+    opacity: 1;
+    animation: none;
+  }
 }

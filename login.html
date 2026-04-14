@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typework - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./login.css" />
+  </head>
+  <body class="tw-login-page">
+    <main class="tw-login">
+      <section class="tw-login__left" aria-labelledby="tw-login-title">
+        <div class="tw-login-card">
+          <h1 id="tw-login-title" class="tw-login-card__title">Welcome back</h1>
+          <p class="tw-login-card__subtitle">Sign in to continue</p>
+
+          <form class="tw-login-form" action="#" method="post">
+            <label class="tw-login-form__label" for="email">Email address*</label>
+            <input
+              id="email"
+              class="tw-login-form__input"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="Email address*"
+              required
+            />
+            <button type="submit" class="tw-login-form__submit">Continue</button>
+          </form>
+
+          <p class="tw-login-card__meta">
+            Don't have an account?
+            <a href="#">Sign up</a>
+          </p>
+          <p class="tw-login-card__meta">
+            <a href="#">Forgot password?</a>
+          </p>
+
+          <div class="tw-login-card__divider">
+            <span>Or</span>
+          </div>
+
+          <button type="button" class="tw-login-google">
+            <span class="tw-login-google__mark" aria-hidden="true">G</span>
+            <span>Continue with google</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="tw-login__right" aria-label="Client testimonial">
+        <div class="tw-quote">
+          <span class="tw-quote__mark">“</span>
+          <p class="tw-quote__text">
+            "Typework AI helped our Hong Kong gym franchise with 22 locations handle 1,000+ daily
+            member inquiries efficiently, delivering exceptional results that transformed our customer
+            service operations."
+          </p>
+          <ul class="tw-quote__stats">
+            <li>99% reduction in response time</li>
+            <li>30% increase in member retention</li>
+            <li>76% reduction in service costs</li>
+            <li>53% improvement in satisfaction scores</li>
+          </ul>
+        </div>
+
+        <aside class="tw-brand-card" aria-label="Lean Fitness profile">
+          <div class="tw-brand-card__logo" aria-hidden="true">LEAN<br />FITNESS</div>
+          <h2 class="tw-brand-card__name">Lean Fitness</h2>
+          <p class="tw-brand-card__desc">Premium Gym Franchise</p>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

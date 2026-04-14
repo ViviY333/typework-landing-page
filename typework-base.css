@@ -97,6 +97,19 @@ a:hover {
   object-fit: contain;
 }
 
+.tw-brand__text {
+  display: block;
+  width: 97px;
+  height: 30px;
+  background-image: url("./typework字体.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
 .tw-nav {
   display: none;
   justify-content: center;
@@ -153,6 +166,39 @@ a:hover {
   box-shadow: 0 6px 12px rgba(23, 23, 23, 0.08);
 }
 
+.tw-lang-toggle {
+  min-width: 44px;
+  width: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.tw-lang-toggle:hover {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.tw-lang-toggle__icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: #7a7a7a;
+  -webkit-mask-image: url("./语言.svg");
+  mask-image: url("./语言.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .tw-btn--primary {
   position: relative;
   z-index: 0;
@@ -187,13 +233,14 @@ a:hover {
   cursor: pointer;
   grid-column: 3;
   justify-self: end;
+  color: #333333;
 }
 
 .tw-nav-toggle__bar {
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--tw-color-text);
+  background: #333333;
   border-radius: 1px;
 }
 
@@ -277,16 +324,40 @@ a:hover {
   gap: 40px;
 }
 
+.tw-footer__brand-block {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  row-gap: 12px;
+  align-items: center;
+  justify-items: start;
+}
+
+.tw-footer__logo {
+  grid-column: 1;
+  grid-row: 1;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 .tw-footer__brand {
-  font-family: var(--tw-font-display);
-  font-weight: 500;
-  font-size: 1.25rem;
-  line-height: 1.2;
-  margin: 0 0 12px;
-  color: #fff;
+  margin: 0;
+}
+
+.tw-footer__brand--wordmark {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  height: 24px;
+  width: auto;
+  align-self: center;
+  filter: brightness(0) invert(1);
 }
 
 .tw-footer__tagline {
+  grid-column: 2;
+  grid-row: 2;
   margin: 0;
   color: #d4d4d8;
   font-size: 0.95rem;
@@ -302,11 +373,11 @@ a:hover {
 
 .tw-footer__heading {
   margin: 0 0 14px;
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 400;
   line-height: 1.35;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
 }
 
 .tw-footer__cols a {
@@ -345,7 +416,6 @@ a:hover {
   align-items: center;
   margin-top: 56px;
   padding-top: 18px;
-  border-top: 1px solid #1d1d1d;
   font-size: 0.875rem;
   color: #6d6d6d;
 }

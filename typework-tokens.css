@@ -34,6 +34,8 @@
   --tw-color-muted: #52525b;
   --tw-color-tertiary: #79716b;
   --tw-color-border: #e4e4e7;
+  /* Feature canvas：白底弹窗/气泡统一弱灰描边（避免品类色边框抢眼） */
+  --tw-feat-canvas-border: rgba(24, 24, 27, 0.09);
   --tw-color-inverse: #ffffff;
   --tw-color-brand-primary: #ea580c;
   --tw-color-brand-accent: #f25533;

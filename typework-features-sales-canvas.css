@@ -1,0 +1,247 @@
+/* Sales & Support canvas — Figma 305:3189 / 305:3195（无点阵底、设备图贴底、无投影） */
+
+.tw-feat-stage--sales {
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(243, 227, 224, 0.2) 0%, rgba(255, 194, 148, 0.2) 99%);
+  box-shadow: inset 44px 0 100px -38px rgba(209, 61, 146, 0.1);
+}
+
+/* 设计稿：Sales 白画布无点阵 */
+.tw-feat-canvas--sales .tw-feat-stage__dots {
+  display: none;
+}
+
+.tw-feat-canvas--sales .tw-feat-stage__frame {
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+}
+
+.tw-feat-canvas--sales .tw-feat-stage__inner {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 桌面：内层无下内边距 + 场景区纵向撑满，设备 PNG 贴齐画布（白底）下沿 */
+@media (min-width: 900px) {
+  .tw-features__split--feat .tw-feat-canvas--sales .tw-feat-stage__inner {
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tw-features__split--feat .tw-feat-canvas--sales .tw-feat-sales {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tw-features__split--feat .tw-feat-canvas--sales .tw-feat-sales__scene {
+    flex: 1;
+    min-height: 0;
+    align-self: stretch;
+  }
+}
+
+.tw-feat-sales {
+  --tw-feat-sales-rose: #d13d92;
+  --tw-feat-sales-pink: #ea7ace;
+  --tw-feat-sales-purple: #c228ff;
+  --tw-feat-sales-chip: rgba(243, 227, 224, 0.4);
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tw-feat-sales__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 0;
+}
+
+.tw-feat-sales__scene {
+  position: relative;
+  min-height: clamp(380px, 48vh, 500px);
+  padding: 12px 8px 0;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.tw-feat-sales__pill {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px 20px;
+  background: #fff;
+  border: 1px solid var(--tw-feat-canvas-border);
+  border-radius: 17px;
+  box-shadow: 0 0 2.4px rgba(0, 0, 0, 0.13);
+  opacity: 0;
+}
+
+.tw-feat-sales__pill--accent {
+  left: 2%;
+  top: 18%;
+  max-width: min(52%, 280px);
+}
+
+.tw-feat-sales__pill:not(.tw-feat-sales__pill--accent):not(.tw-feat-sales__pill--end) {
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  max-width: min(90%, 260px);
+}
+
+.tw-feat-sales__pill--end {
+  right: 2%;
+  top: 12%;
+  max-width: min(48%, 220px);
+}
+
+.tw-feat-sales__pill-check {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border-radius: 10px;
+  background: var(--tw-feat-sales-chip);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--tw-feat-sales-rose);
+}
+
+.tw-feat-sales__pill-text {
+  font-family: var(--tw-font-body);
+  font-size: clamp(12px, 1.35vw, 15px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.15;
+  color: #18181b;
+}
+
+.tw-feat-sales__device {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  top: auto;
+  z-index: 1;
+  width: min(457px, 72%);
+  transform: translateX(-50%);
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  opacity: 0;
+}
+
+.tw-feat-canvas--run .tw-feat-sales__device {
+  opacity: 1;
+}
+
+.tw-feat-sales__device img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* 底图 size.png 随画布出现；仅三个 agent pill 依次淡入 */
+.tw-feat-canvas--run .tw-feat-sales__pill--accent {
+  animation: twFeatSalesReveal calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.28s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-sales__pill:not(.tw-feat-sales__pill--accent):not(.tw-feat-sales__pill--end) {
+  animation: twFeatSalesReveal calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.52s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-sales__pill--end {
+  animation: twFeatSalesReveal calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.76s * var(--tw-feat-speed, 1)) forwards;
+}
+
+@keyframes twFeatSalesReveal {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 899px) {
+  .tw-feat-canvas--sales .tw-feat-stage__inner {
+    padding: 0;
+  }
+
+  .tw-feat-sales {
+    height: auto;
+    min-height: 0;
+  }
+
+  .tw-feat-sales__image {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .tw-feat-sales__scene {
+    position: static;
+    min-height: 0;
+    padding: 0 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: none;
+  }
+
+  .tw-feat-sales__pill,
+  .tw-feat-sales__pill--accent,
+  .tw-feat-sales__pill--end {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    max-width: none;
+    opacity: 1;
+  }
+
+  .tw-feat-sales__device {
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 12px auto 0;
+    align-self: stretch;
+    opacity: 1;
+  }
+
+  .tw-feat-canvas--run .tw-feat-sales__pill {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-feat-canvas--run .tw-feat-sales__pill {
+    animation: none !important;
+  }
+
+  .tw-feat-sales__pill,
+  .tw-feat-sales__device {
+    opacity: 1 !important;
+  }
+}

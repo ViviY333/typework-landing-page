@@ -127,6 +127,7 @@
   font-size: clamp(1.65rem, 2.1vw, 2.75rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 .tw-industry-panel__desc {
@@ -134,7 +135,8 @@
   max-width: 26ch;
   font-size: clamp(1rem, 1.2vw, 1.56rem);
   line-height: 1.25;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
   font-style: italic;
 }
 
@@ -223,6 +225,7 @@
 .tw-industries-trust__logos img {
   height: 50px;
   width: auto;
+  border-radius: 100px;
   object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.7;

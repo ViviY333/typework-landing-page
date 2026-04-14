@@ -57,6 +57,11 @@
   background: #fff;
 }
 
+#faq {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
 .tw-faq__head {
   margin-bottom: var(--tw-space-10);
 }

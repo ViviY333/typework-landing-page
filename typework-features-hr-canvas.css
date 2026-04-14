@@ -1,0 +1,324 @@
+/* HR feature canvas — Figma 305:2049 / 305:2055 / 305:2057（点阵白画布与暖色画框关系 + 对话顶距） */
+
+.tw-feat-stage--hr {
+  background: linear-gradient(180deg, rgba(234, 189, 220, 0.2) 0%, rgba(255, 194, 148, 0.2) 99%);
+  box-shadow: inset 48px 0 96px -40px rgba(234, 189, 220, 0.18);
+}
+
+/* 整条链参与 flex，使 inner 获得可分配高度，便于垂直居中 */
+.tw-feat-canvas--hr {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tw-feat-canvas--hr .tw-feat-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tw-feat-canvas--hr .tw-feat-stage__frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+}
+
+.tw-feat-canvas--hr .tw-feat-stage__sheet {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tw-feat-canvas--hr .tw-feat-stage__inner {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+  /* 收紧点阵区顶缘到首条气泡的留白（默认 tw-feat-stage__inner 为 24px） */
+  padding: 8px var(--tw-space-4) var(--tw-space-4);
+}
+
+@media (min-width: 900px) {
+  /* 稿 305:2056/2057：白画布相对画框上/左约 10px 内缩，勿用 padding-top:0 顶死 */
+  .tw-features__split--feat .tw-feat-canvas--hr .tw-feat-stage__frame {
+    margin-top: 30px;
+    padding: 10px 0 0 10px;
+  }
+
+  /* 桌面分栏：略提高 zoom（全局 sheet 为 0.86），使 HR 对话更易读 */
+  .tw-features__split--feat .tw-feat-canvas--hr .tw-feat-stage__sheet {
+    zoom: 0.93;
+  }
+
+  .tw-features__split--feat .tw-feat-canvas--hr .tw-feat-stage__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 var(--tw-space-4) var(--tw-space-4);
+  }
+}
+
+.tw-feat-hr-chat {
+  --tw-feat-hr-purple: #a61fe0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: min(600px, 100%);
+  margin: 50px auto 0;
+  padding: 0 6px 14px;
+}
+
+.tw-feat-hr-chat__bubble {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tw-feat-hr-chat__bubble--user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px 16px 16px;
+  background: #fff;
+  /* Figma 305:2064 — user prompt card */
+  border: 1.5px solid #d4d4d8;
+  border-radius: 22px;
+  box-shadow: 0 0 3.5px rgba(0, 0, 0, 0.13);
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.tw-feat-hr-chat__avatar-wrap {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--tw-feat-canvas-border);
+  background: #f5f5f5;
+}
+
+.tw-feat-hr-chat__avatar {
+  display: block;
+  width: 120%;
+  height: 120%;
+  margin: -8% 0 0 -8%;
+  object-fit: cover;
+}
+
+.tw-feat-hr-chat__question {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(15px, 1.75vw, 18px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.25;
+  color: #18181b;
+}
+
+.tw-feat-hr-chat__bridge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 118px;
+  width: 100%;
+  opacity: 0;
+}
+
+.tw-feat-hr-chat__dash {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.tw-feat-hr-chat__dash img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 124px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.tw-feat-hr-agent {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 304px);
+  border-radius: 8px;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    #ea580c 0%,
+    #fed74b 34.6%,
+    #d89adf 67.8%,
+    #85befe 100%
+  );
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.tw-feat-hr-agent__glow {
+  display: none;
+}
+
+.tw-feat-hr-agent__label {
+  margin: 0;
+  padding: 12px 20px 13px;
+  border-radius: 6px;
+  background: #191919;
+  font-family: var(--tw-font-body);
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: var(--tw-fw-semibold);
+  line-height: 1.15;
+  color: #fff;
+  text-align: center;
+}
+
+.tw-feat-hr-chat__bubble--ai {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 4px;
+  padding: 20px 22px 18px 20px;
+  /* Figma 305:2106 — agent reply card */
+  background: #fdf7ff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tw-feat-hr-chat__logo {
+  flex-shrink: 0;
+  width: 66px;
+  height: 66px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f5f5f5;
+  border: 1px solid var(--tw-feat-canvas-border);
+}
+
+.tw-feat-hr-chat__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tw-feat-hr-chat__reply-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tw-feat-hr-chat__reply {
+  margin: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(14px, 1.55vw, 16px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.45;
+  color: #333;
+}
+
+.tw-feat-hr-chat__accent {
+  color: var(--tw-feat-hr-purple);
+  font-weight: var(--tw-fw-semibold);
+}
+
+.tw-feat-hr-chat__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.tw-feat-hr-chat__actions img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  opacity: 0.75;
+}
+
+.tw-feat-canvas--run .tw-feat-hr-chat__bubble--user {
+  animation: twFeatHrChatIn calc(0.52s * var(--tw-feat-speed, 1)) var(--tw-ease-out) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-hr-chat__bridge {
+  animation: twFeatHrBridgeIn calc(0.48s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.38s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-hr-agent {
+  animation: twFeatHrAgentIn calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.5s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-hr-chat__bubble--ai {
+  animation: twFeatHrChatIn calc(0.55s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.72s * var(--tw-feat-speed, 1)) forwards;
+}
+
+@keyframes twFeatHrChatIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes twFeatHrBridgeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes twFeatHrAgentIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-feat-canvas--run .tw-feat-hr-chat__bubble--user,
+  .tw-feat-canvas--run .tw-feat-hr-chat__bridge,
+  .tw-feat-canvas--run .tw-feat-hr-agent,
+  .tw-feat-canvas--run .tw-feat-hr-chat__bubble--ai {
+    animation: none !important;
+  }
+
+  .tw-feat-hr-chat__bubble--user,
+  .tw-feat-hr-chat__bridge,
+  .tw-feat-hr-agent,
+  .tw-feat-hr-chat__bubble--ai {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

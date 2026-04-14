@@ -27,6 +27,13 @@
   box-sizing: border-box;
 }
 
+/* Forms canvas — frame flush to stage edges except top-left (browser preview) */
+.tw-feat-canvas--forms .tw-feat-stage__frame {
+  border-radius: 26px 0 0 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+
 /* Layer 3: 白画布 + 点阵（Figma：纯白底 + 浅灰点阵） */
 .tw-feat-stage__sheet {
   position: relative;
@@ -61,8 +68,59 @@
     padding: 8px;
   }
 
+  .tw-feat-canvas--forms .tw-feat-stage__frame {
+    border-radius: 20px 0 0 0;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
   .tw-feat-stage__sheet {
     border-radius: 14px;
+  }
+}
+
+/* Figma 310:4438 — 桌面：画布与容器仅上/左留白，右/底贴齐；总高 500px 与左侧导航一致，内容整体缩放 */
+@media (min-width: 900px) {
+  .tw-features__split--feat .tw-feat-stage {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+    height: auto;
+    max-height: 100%;
+  }
+
+  .tw-features__split--feat .tw-feat-stage__frame {
+    margin: clamp(28px, 4vw, 44px) 0 0 clamp(16px, 2.8vw, 42px);
+    padding: 10px 0 0 10px;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px var(--tw-radius-lg) var(--tw-radius-lg) 24px;
+  }
+
+  .tw-features__split--feat .tw-feat-canvas--forms .tw-feat-stage__frame {
+    border-radius: 24px 0 0 0;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .tw-features__split--feat .tw-feat-stage__sheet {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px var(--tw-radius-lg) var(--tw-radius-lg) 16px;
+    zoom: 0.86;
+  }
+
+  .tw-features__split--feat .tw-feat-stage__inner {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding: var(--tw-space-4);
+    box-sizing: border-box;
   }
 }
 
@@ -93,6 +151,7 @@
 .tw-feat-wa {
   max-width: 280px;
   background: #fff;
+  border: 1px solid var(--tw-feat-canvas-border);
   border-radius: 14px;
   padding: var(--tw-space-4);
   box-shadow: 0 4px 24px rgba(23, 23, 23, 0.06);
@@ -101,7 +160,7 @@
 }
 
 .tw-feat-canvas--run .tw-feat-wa {
-  animation: twFeatWaIn 0.5s var(--tw-ease-out) forwards;
+  animation: twFeatWaIn calc(0.5s * var(--tw-feat-speed, 1)) var(--tw-ease-out) forwards;
 }
 
 @keyframes twFeatWaIn {
@@ -125,8 +184,9 @@
 .tw-feat-wa__wa {
   width: 22px;
   height: 22px;
-  border-radius: 6px;
-  background: #25d366;
+  border-radius: 0;
+  display: block;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -165,19 +225,23 @@
 }
 
 .tw-feat-canvas--run .tw-feat-step:nth-child(1) {
-  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.5s forwards;
+  animation: twFeatStepIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.5s * var(--tw-feat-speed, 1)) forwards;
 }
 
 .tw-feat-canvas--run .tw-feat-step:nth-child(2) {
-  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.65s forwards;
+  animation: twFeatStepIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.65s * var(--tw-feat-speed, 1)) forwards;
 }
 
 .tw-feat-canvas--run .tw-feat-step:nth-child(3) {
-  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.8s forwards;
+  animation: twFeatStepIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.8s * var(--tw-feat-speed, 1)) forwards;
 }
 
 .tw-feat-canvas--run .tw-feat-step:nth-child(4) {
-  animation: twFeatStepIn 0.45s var(--tw-ease-out) 0.95s forwards;
+  animation: twFeatStepIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.95s * var(--tw-feat-speed, 1)) forwards;
 }
 
 @keyframes twFeatStepIn {
@@ -221,6 +285,7 @@
 
 .tw-feat-step__card {
   background: #fff;
+  border: 1px solid var(--tw-feat-canvas-border);
   border-radius: 12px;
   padding: 10px 12px;
   box-shadow: 0 2px 16px rgba(23, 23, 23, 0.05);
@@ -251,7 +316,8 @@
 }
 
 .tw-feat-canvas--run .tw-feat-bridge {
-  animation: twFeatFadeIn 0.35s var(--tw-ease-out) 0.35s forwards;
+  animation: twFeatFadeIn calc(0.35s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.35s * var(--tw-feat-speed, 1)) forwards;
 }
 
 @keyframes twFeatFadeIn {
@@ -283,12 +349,12 @@
 .tw-feat-node {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
+  border-radius: 12px;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 1px rgba(234, 88, 12, 0.12);
+  box-shadow: none;
   opacity: 0.85;
   transform: scale(0.88);
   filter: brightness(0.95);
@@ -301,7 +367,8 @@
 }
 
 .tw-feat-canvas--run .tw-feat-node {
-  animation: twFeatNodePop 0.55s var(--tw-ease-out) 1s forwards;
+  animation: twFeatNodePop calc(0.55s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(1s * var(--tw-feat-speed, 1)) forwards;
 }
 
 @keyframes twFeatNodePop {
@@ -309,9 +376,7 @@
     opacity: 1;
     transform: scale(1);
     filter: brightness(1.05);
-    box-shadow:
-      0 0 0 1px rgba(234, 88, 12, 0.2),
-      0 0 28px rgba(251, 146, 60, 0.45);
+    box-shadow: none;
   }
 }
 
@@ -329,11 +394,13 @@
 }
 
 .tw-feat-canvas--run .tw-feat-seg--a {
-  animation: twFeatWireH 0.45s linear 0.85s forwards;
+  animation: twFeatWireH calc(0.45s * var(--tw-feat-speed, 1)) linear calc(0.85s * var(--tw-feat-speed, 1))
+    forwards;
 }
 
 .tw-feat-canvas--run .tw-feat-seg--b {
-  animation: twFeatWireH 0.45s linear 1.35s forwards;
+  animation: twFeatWireH calc(0.45s * var(--tw-feat-speed, 1)) linear calc(1.35s * var(--tw-feat-speed, 1))
+    forwards;
 }
 
 @keyframes twFeatWireH {
@@ -356,6 +423,7 @@
 /* —— Table —— */
 .tw-feat-table-wrap {
   background: #fff;
+  border: 1px solid var(--tw-feat-canvas-border);
   border-radius: 14px;
   padding: var(--tw-space-4);
   box-shadow: 0 8px 32px rgba(23, 23, 23, 0.07);
@@ -365,7 +433,8 @@
 }
 
 .tw-feat-canvas--run .tw-feat-table-wrap {
-  animation: twFeatTableIn 0.5s var(--tw-ease-out) 1.5s forwards;
+  animation: twFeatTableIn calc(0.5s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(1.5s * var(--tw-feat-speed, 1)) forwards;
 }
 
 @keyframes twFeatTableIn {
@@ -463,246 +532,6 @@
   }
 }
 
-/* —— HR canvas —— */
-.tw-feat-stage--hr {
-  background: linear-gradient(180deg, rgba(125, 119, 255, 0.2) 0%, rgba(153, 207, 255, 0.18) 100%);
-  box-shadow: inset 52px 0 110px -44px rgba(49, 46, 129, 0.14);
-}
-
-.tw-feat-hr-flow {
-  display: grid;
-  gap: var(--tw-space-5);
-  align-items: start;
-}
-
-@media (min-width: 960px) {
-  .tw-feat-hr-flow {
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
-    gap: var(--tw-space-6);
-  }
-}
-
-.tw-feat-hr-card {
-  background: #fff;
-  border: 1px solid rgba(99, 102, 241, 0.12);
-  border-radius: 14px;
-  padding: 14px;
-  box-shadow: 0 10px 30px rgba(67, 56, 202, 0.1);
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-.tw-feat-canvas--run .tw-feat-hr-card {
-  animation: twFeatHrCardIn 0.5s var(--tw-ease-out) forwards;
-}
-
-@keyframes twFeatHrCardIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tw-feat-hr-card__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.tw-feat-hr-card__badge {
-  font-size: 11px;
-  font-weight: 600;
-  color: #4338ca;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: rgba(99, 102, 241, 0.14);
-}
-
-.tw-feat-hr-card__meta {
-  font-size: 11px;
-  color: #6366f1;
-}
-
-.tw-feat-hr-card__body {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #3f3f46;
-}
-
-.tw-feat-hr-timeline {
-  list-style: none;
-  margin: var(--tw-space-4) 0 0;
-  padding: 0;
-}
-
-.tw-feat-hr-step {
-  position: relative;
-  display: grid;
-  grid-template-columns: 18px 1fr;
-  gap: 10px;
-  padding: 0 0 12px;
-  opacity: 0;
-  transform: translateX(-12px);
-}
-
-.tw-feat-canvas--run .tw-feat-hr-step:nth-child(1) {
-  animation: twFeatHrStepIn 0.4s var(--tw-ease-out) 0.45s forwards;
-}
-
-.tw-feat-canvas--run .tw-feat-hr-step:nth-child(2) {
-  animation: twFeatHrStepIn 0.4s var(--tw-ease-out) 0.58s forwards;
-}
-
-.tw-feat-canvas--run .tw-feat-hr-step:nth-child(3) {
-  animation: twFeatHrStepIn 0.4s var(--tw-ease-out) 0.71s forwards;
-}
-
-@keyframes twFeatHrStepIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.tw-feat-hr-step::after {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 20px;
-  bottom: -2px;
-  border-left: 2px dashed rgba(99, 102, 241, 0.35);
-}
-
-.tw-feat-hr-step:last-child::after {
-  display: none;
-}
-
-.tw-feat-hr-step__dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #818cf8 0%, #22d3ee 100%);
-  box-shadow: 0 6px 14px rgba(67, 56, 202, 0.22);
-  margin-top: 4px;
-}
-
-.tw-feat-hr-step__card {
-  border-radius: 12px;
-  background: #fff;
-  border: 1px solid rgba(99, 102, 241, 0.11);
-  padding: 10px 12px;
-}
-
-.tw-feat-hr-step__card strong {
-  display: block;
-  font-size: 13px;
-  color: #18181b;
-  margin-bottom: 4px;
-}
-
-.tw-feat-hr-step__card p {
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.4;
-  color: #71717a;
-}
-
-.tw-feat-hr-board {
-  background: #ffffff;
-  border-radius: 14px;
-  border: 1px solid rgba(99, 102, 241, 0.12);
-  padding: 14px;
-  box-shadow: 0 12px 32px rgba(56, 189, 248, 0.12);
-  opacity: 0;
-  transform: translateX(16px);
-}
-
-.tw-feat-canvas--run .tw-feat-hr-board {
-  animation: twFeatHrBoardIn 0.48s var(--tw-ease-out) 0.9s forwards;
-}
-
-@keyframes twFeatHrBoardIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.tw-feat-hr-board__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.tw-feat-hr-board__head h3 {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.2;
-}
-
-.tw-feat-hr-board__head span {
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  color: #4f46e5;
-  background: rgba(99, 102, 241, 0.12);
-  border-radius: 999px;
-  padding: 3px 8px;
-}
-
-.tw-feat-hr-metric-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.tw-feat-hr-metric {
-  background: linear-gradient(180deg, #eef2ff 0%, #f0f9ff 100%);
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.tw-feat-hr-metric p {
-  margin: 0 0 4px;
-  font-size: 10px;
-  color: #6366f1;
-}
-
-.tw-feat-hr-metric strong {
-  font-size: 20px;
-  line-height: 1;
-  color: #1f2937;
-}
-
-.tw-feat-hr-shifts {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.tw-feat-hr-shifts li {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 9px 10px;
-  border-radius: 10px;
-  background: #f8fafc;
-  font-size: 11px;
-  color: #334155;
-}
-
-.tw-feat-hr-shifts em {
-  font-style: normal;
-  color: #4f46e5;
-  white-space: nowrap;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .tw-feat-canvas--run .tw-feat-wa,
   .tw-feat-canvas--run .tw-feat-step,
@@ -710,10 +539,7 @@
   .tw-feat-canvas--run .tw-feat-node,
   .tw-feat-canvas--run .tw-feat-table-wrap,
   .tw-feat-canvas--run .tw-feat-seg--a,
-  .tw-feat-canvas--run .tw-feat-seg--b,
-  .tw-feat-canvas--run .tw-feat-hr-card,
-  .tw-feat-canvas--run .tw-feat-hr-step,
-  .tw-feat-canvas--run .tw-feat-hr-board {
+  .tw-feat-canvas--run .tw-feat-seg--b {
     animation: none !important;
   }
 
@@ -721,10 +547,7 @@
   .tw-feat-step,
   .tw-feat-bridge,
   .tw-feat-node,
-  .tw-feat-table-wrap,
-  .tw-feat-hr-card,
-  .tw-feat-hr-step,
-  .tw-feat-hr-board {
+  .tw-feat-table-wrap {
     opacity: 1 !important;
     transform: none !important;
   }

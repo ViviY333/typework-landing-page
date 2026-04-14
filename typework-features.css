@@ -1,6 +1,8 @@
 /* Features — layout + left nav (see typework-features-canvas.css for Forms canvas) */
 
 .tw-features {
+  /* 0.5× 播放速度：时长与延迟统一 ×2（与 typework.js 中 featAutoAdvanceMs 同步） */
+  --tw-feat-speed: 2;
   background: #fff;
 }
 
@@ -35,7 +37,9 @@
 .tw-features__split--feat {
   display: grid;
   gap: var(--tw-space-8);
-  align-items: start;
+  align-items: stretch;
+  /* Figma 310:4438 — 左侧导航与右侧画布同高 */
+  --tw-feat-split-height: 500px;
 }
 
 .tw-feat-panels {
@@ -43,10 +47,86 @@
   min-width: 0;
 }
 
+/* Cross-browser safeguard: hidden feature panel must never render */
+.tw-feat-panels > .tw-feat-canvas[hidden] {
+  display: none !important;
+}
+
+/* Features right-side modules: only top-left corner on frame/sheet */
+.tw-feat-panels,
+.tw-feat-panels > .tw-feat-canvas,
+.tw-feat-panels .tw-feat-stage {
+  border-radius: 0 !important;
+}
+
+.tw-feat-panels .tw-feat-stage__frame,
+.tw-feat-panels .tw-feat-stage__sheet {
+  border-radius: 0 !important;
+  border-top-left-radius: 20px !important;
+}
+
 @media (min-width: 900px) {
   .tw-features__split--feat {
     grid-template-columns: 360px minmax(0, 1fr);
-    gap: var(--tw-space-10);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .tw-features__split--feat > .tw-feat-nav,
+  .tw-features__split--feat > .tw-feat-panels {
+    height: var(--tw-feat-split-height);
+    max-height: var(--tw-feat-split-height);
+    min-height: var(--tw-feat-split-height);
+  }
+
+  .tw-features__split--feat > .tw-feat-nav {
+    min-height: 0;
+  }
+
+  .tw-feat-panels {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .tw-feat-panels > .tw-feat-canvas:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .tw-feat-panels > .tw-feat-stub:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* 六宫格均分 500px，避免单项 min-height 撑破总高 */
+  .tw-features__split--feat .tw-feat-nav__btn {
+    flex: 1 1 0;
+    min-height: 0;
+    transition: none;
+    overflow: hidden;
+  }
+
+  .tw-features__split--feat .tw-feat-nav__btn.is-active,
+  .tw-features__split--feat .tw-feat-nav__btn:hover,
+  .tw-features__split--feat .tw-feat-nav__btn:focus-visible {
+    min-height: 0;
+  }
+
+  .tw-features__split--feat .tw-feat-nav__btn.is-active .tw-feat-nav__desc,
+  .tw-features__split--feat .tw-feat-nav__btn:hover .tw-feat-nav__desc,
+  .tw-features__split--feat .tw-feat-nav__btn:focus-visible .tw-feat-nav__desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 }
 
@@ -56,21 +136,82 @@
   flex-direction: column;
   border: none;
   background: transparent;
+  height: 100%;
 }
 
 .tw-feat-nav__btn {
+  --tw-feat-accent: #ff6f58;
+  --tw-feat-accent-2: #fdba74;
+  --tw-feat-accent-soft: rgba(255, 111, 88, 0.12);
+  --tw-feat-desc-active: #7c6058;
   position: relative;
   display: grid;
   grid-template-columns: 40px 1fr 40px;
   gap: var(--tw-space-3);
-  align-items: start;
-  padding: var(--tw-space-4) var(--tw-space-4) calc(var(--tw-space-4) + 6px);
+  align-items: center;
+  min-height: 80px;
+  box-sizing: border-box;
+  padding: 12px var(--tw-space-4) 10px;
   border: none;
   background: transparent;
   cursor: pointer;
   text-align: left;
-  font: inherit;
+  font-family: var(--tw-font-display);
+  font-weight: var(--tw-fw-regular);
   color: inherit;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: min-height 0.28s var(--tw-ease-out);
+}
+
+.tw-feat-nav__btn.is-active,
+.tw-feat-nav__btn:hover,
+.tw-feat-nav__btn:focus-visible {
+  min-height: 130px;
+  align-items: start;
+}
+
+.tw-feat-nav__btn[data-tw-feature-style="forms"] {
+  --tw-feat-accent: #ff6f58;
+  --tw-feat-accent-2: #fdba74;
+  --tw-feat-accent-soft: rgba(255, 111, 88, 0.12);
+  --tw-feat-desc-active: #7c6058;
+}
+
+.tw-feat-nav__btn[data-tw-feature-style="hr"] {
+  --tw-feat-accent: #6d5efc;
+  --tw-feat-accent-2: #8b5cf6;
+  --tw-feat-accent-soft: rgba(109, 94, 252, 0.14);
+  --tw-feat-desc-active: #5b4fe6;
+}
+
+.tw-feat-nav__btn[data-tw-feature-style="finances"] {
+  --tw-feat-accent: #e09c1f;
+  --tw-feat-accent-2: #f0c14d;
+  --tw-feat-accent-soft: rgba(224, 156, 31, 0.14);
+  --tw-feat-desc-active: #9a7318;
+}
+
+.tw-feat-nav__btn[data-tw-feature-style="legal"] {
+  --tw-feat-accent: #3b82f6;
+  --tw-feat-accent-2: #60a5fa;
+  --tw-feat-accent-soft: rgba(59, 130, 246, 0.13);
+  --tw-feat-desc-active: #2563eb;
+}
+
+.tw-feat-nav__btn[data-tw-feature-style="sales"] {
+  --tw-feat-accent: #d13d92;
+  --tw-feat-accent-2: #ea7ace;
+  --tw-feat-accent-soft: rgba(209, 61, 146, 0.14);
+  --tw-feat-desc-active: #9d174d;
+}
+
+.tw-feat-nav__btn[data-tw-feature-style="marketing"] {
+  /* Figma 305:3461 — 营销画布主色：边框/标签 #65A900，强调 #7CCF00 */
+  --tw-feat-accent: #65a900;
+  --tw-feat-accent-2: #7ccf00;
+  --tw-feat-accent-soft: rgba(101, 169, 0, 0.16);
+  --tw-feat-desc-active: #4d7a00;
 }
 
 .tw-feat-nav__ico {
@@ -84,7 +225,7 @@
   background-color: unset;
   color: #71717a;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 0;
   transition: color 0.2s var(--tw-ease-out);
 }
 
@@ -155,15 +296,16 @@
   line-height: 1.25;
   letter-spacing: -0.02em;
   color: #71717a;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   transition: color 0.2s var(--tw-ease-out);
 }
 
 .tw-feat-nav__desc {
-  display: block;
-  font-size: 13px;
-  line-height: 1.45;
-  color: #a1a1aa;
+  display: none;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: var(--tw-fw-regular);
+  color: #95908b;
 }
 
 .tw-feat-nav__go {
@@ -181,7 +323,7 @@
     border-color 0.2s var(--tw-ease-out),
     color 0.2s var(--tw-ease-out);
   justify-self: end;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .tw-feat-nav__go::before {
@@ -202,22 +344,35 @@
   transform: rotate(90deg);
 }
 
-.tw-feat-nav__btn.is-active .tw-feat-nav__name {
-  color: #ff6f58;
-  font-weight: var(--tw-fw-semibold);
+.tw-feat-nav__btn.is-active .tw-feat-nav__name,
+.tw-feat-nav__btn:hover .tw-feat-nav__name,
+.tw-feat-nav__btn:focus-visible .tw-feat-nav__name {
+  margin-bottom: 2px;
+  color: var(--tw-feat-accent);
+  font-weight: var(--tw-fw-medium);
 }
 
-.tw-feat-nav__btn.is-active .tw-feat-nav__desc {
-  color: #79716b;
+.tw-feat-nav__btn.is-active .tw-feat-nav__desc,
+.tw-feat-nav__btn:hover .tw-feat-nav__desc,
+.tw-feat-nav__btn:focus-visible .tw-feat-nav__desc {
+  display: block;
+  color: #95908b;
 }
 
-.tw-feat-nav__btn.is-active .tw-feat-nav__ico {
-  color: #ff6f58;
+.tw-feat-nav__btn.is-active .tw-feat-nav__ico,
+.tw-feat-nav__btn:hover .tw-feat-nav__ico,
+.tw-feat-nav__btn:focus-visible .tw-feat-nav__ico {
+  margin-top: 2px;
+  color: var(--tw-feat-accent);
 }
 
-.tw-feat-nav__btn.is-active .tw-feat-nav__go {
-  border-color: #ff6f58;
-  color: #ff6f58;
+.tw-feat-nav__btn.is-active .tw-feat-nav__go,
+.tw-feat-nav__btn:hover .tw-feat-nav__go,
+.tw-feat-nav__btn:focus-visible .tw-feat-nav__go {
+  margin-top: 2px;
+  border-color: var(--tw-feat-accent);
+  color: var(--tw-feat-accent);
+  background: var(--tw-feat-accent-soft);
 }
 
 .tw-feat-nav__progress {
@@ -237,11 +392,16 @@
   width: 100%;
   transform-origin: left center;
   transform: scaleX(0);
-  background: linear-gradient(90deg, #ea580c 0%, #fb923c 50%, #fdba74 100%);
+  background: linear-gradient(
+    90deg,
+    var(--tw-feat-accent) 0%,
+    var(--tw-feat-accent-2) 55%,
+    var(--tw-feat-accent) 100%
+  );
 }
 
 .tw-feat-nav--run .tw-feat-nav__btn.is-active .tw-feat-nav__progress-fill {
-  animation: twFeatProgress 2s linear forwards;
+  animation: twFeatProgress calc(2.5s * var(--tw-feat-speed, 1)) linear forwards;
 }
 
 @keyframes twFeatProgress {
@@ -254,16 +414,41 @@
 }
 
 .tw-feat-stub {
+  --tw-feat-stub-accent: #bb8021;
+  --tw-feat-stub-accent-strong: #9a7318;
+  --tw-feat-stub-accent-soft: rgba(187, 128, 33, 0.12);
   position: relative;
   z-index: 1;
   min-height: 360px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--tw-space-10);
+  gap: var(--tw-space-5);
+  padding: var(--tw-space-8) var(--tw-space-6);
   text-align: center;
-  color: #a1a1aa;
   font-size: 15px;
+  line-height: 1.55;
+  color: var(--tw-feat-stub-accent-strong);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 243, 224, 0.45) 0%,
+    rgba(255, 255, 255, 0.92) 100%
+  );
+  border-radius: var(--tw-radius-md);
+  border: 1px solid var(--tw-feat-stub-accent-soft);
+}
+
+.tw-feat-stub__caption {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 14px;
+  color: var(--tw-feat-stub-accent-strong);
+}
+
+.tw-feat-stub__caption strong {
+  font-weight: var(--tw-fw-medium);
+  color: var(--tw-feat-stub-accent);
 }
 
 .tw-feat-stub[hidden] {
@@ -271,6 +456,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tw-feat-nav__btn {
+    transition: none;
+  }
+
   .tw-feat-nav--run .tw-feat-nav__btn.is-active .tw-feat-nav__progress-fill {
     animation: none !important;
   }

@@ -1,0 +1,315 @@
+/* Legal canvas — Figma 305:2929 (node 305:2929) */
+
+.tw-feat-stage--legal {
+  background: linear-gradient(180deg, rgba(33, 120, 187, 0.2) 0%, rgba(255, 194, 148, 0.2) 99%);
+  box-shadow: inset 48px 0 100px -40px rgba(59, 130, 246, 0.1);
+}
+
+.tw-feat-stage--legal .tw-feat-stage__frame {
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+}
+
+.tw-feat-stage--legal .tw-feat-stage__inner {
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+}
+
+.tw-feat-stage__sheet--legal {
+  position: relative;
+}
+
+.tw-feat-legal-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-size: 490px 490px;
+  background-position: top left;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.tw-feat-legal {
+  --tw-feat-legal-gold: #e09c1f;
+  --tw-feat-legal-slate: #5a5a72;
+  --tw-feat-legal-pill-bg: #f5f7f9;
+  --tw-feat-legal-pill-border: var(--tw-feat-canvas-border);
+
+  position: relative;
+  max-width: 100%;
+}
+
+.tw-feat-legal__query {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 26px 26px;
+  margin: 0 0 20px;
+  background: #fff;
+  border: 1px solid var(--tw-feat-canvas-border);
+  border-radius: 24px;
+  box-shadow: 0 0 3.5px rgba(0, 0, 0, 0.13);
+  max-width: min(100%, 560px);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.tw-feat-legal__query::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(24, 24, 27, 0.06);
+  opacity: 1;
+}
+
+.tw-feat-legal__avatar {
+  flex-shrink: 0;
+  width: 49px;
+  height: 49px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--tw-feat-canvas-border);
+}
+
+.tw-feat-legal__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tw-feat-legal__question {
+  margin: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(15px, 1.35vw, 19px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.35;
+  color: #18181b;
+}
+
+.tw-feat-legal__cascade {
+  position: relative;
+  min-height: 260px;
+  margin: 8px 0 18px 100px;
+}
+
+.tw-feat-legal__pill {
+  position: absolute;
+  box-sizing: border-box;
+  width: min(316px, 88%);
+  padding: 13px 28px 19px;
+  background: var(--tw-feat-legal-pill-bg);
+  border: 1px solid var(--tw-feat-legal-pill-border);
+  border-radius: 16px;
+  font-family: var(--tw-font-body);
+  font-size: clamp(14px, 1.25vw, 18px);
+  font-weight: var(--tw-fw-semibold);
+  line-height: 1.35;
+  color: var(--tw-feat-legal-slate);
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* Figma：自左上向右下阶梯排布 */
+.tw-feat-legal__pill:nth-child(1) {
+  left: calc(50% - min(342px, 42vw));
+  top: 0;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.tw-feat-legal__pill:nth-child(2) {
+  left: calc(50% - min(239px, 30vw));
+  top: 76px;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.tw-feat-legal__pill:nth-child(3) {
+  left: calc(50% - min(95px, 12vw));
+  top: 152px;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.tw-feat-legal__pill:nth-child(4) {
+  left: calc(50% - min(26px, 4vw));
+  top: 228px;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.tw-feat-legal__agent-pill {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+  max-width: min(100%, 336px);
+  margin-left: auto;
+  margin-right: 14px;
+  background: linear-gradient(
+    90deg,
+    #ea580c 0%,
+    #fed74b 34.6%,
+    #d89adf 67.8%,
+    #85befe 100%
+  );
+  padding-bottom: 4px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tw-feat-legal__agent-pill-inner {
+  background: #191919;
+  border-radius: 8px 8px 0 0;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+
+.tw-feat-legal__agent-pill-text {
+  margin: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(13px, 1.02vw, 15px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.25;
+  color: #fff;
+  text-align: center;
+}
+
+.tw-feat-canvas--run .tw-feat-legal__query {
+  animation: twFeatLegalIn calc(0.48s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.06s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-legal__pill:nth-child(1) {
+  animation: twFeatLegalPill calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.14s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-legal__pill:nth-child(2) {
+  animation: twFeatLegalPill calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.22s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-legal__pill:nth-child(3) {
+  animation: twFeatLegalPill calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.3s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-legal__pill:nth-child(4) {
+  animation: twFeatLegalPill calc(0.42s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.38s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-legal__agent-pill {
+  animation: twFeatLegalIn calc(0.48s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.46s * var(--tw-feat-speed, 1)) forwards;
+}
+
+@keyframes twFeatLegalIn {
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes twFeatLegalPill {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 899px) {
+  .tw-feat-legal__cascade {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 8px 0 14px;
+  }
+
+  .tw-feat-legal__pill {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    width: 100%;
+    max-width: none;
+    white-space: normal;
+    transform: none !important;
+  }
+
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(1),
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(2),
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(3),
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(4) {
+    animation: twFeatLegalIn calc(0.4s * var(--tw-feat-speed, 1)) var(--tw-ease-out) forwards;
+  }
+
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(1) {
+    animation-delay: calc(0.12s * var(--tw-feat-speed, 1));
+  }
+
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(2) {
+    animation-delay: calc(0.18s * var(--tw-feat-speed, 1));
+  }
+
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(3) {
+    animation-delay: calc(0.24s * var(--tw-feat-speed, 1));
+  }
+
+  .tw-feat-canvas--run .tw-feat-legal__pill:nth-child(4) {
+    animation-delay: calc(0.3s * var(--tw-feat-speed, 1));
+  }
+
+  .tw-feat-legal__agent-pill {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .tw-feat-canvas--run .tw-feat-legal__query,
+  .tw-feat-canvas--run .tw-feat-legal__agent-pill {
+    animation: twFeatLegalIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out) forwards;
+  }
+
+  .tw-feat-canvas--run .tw-feat-legal__agent-pill {
+    animation-delay: calc(0.36s * var(--tw-feat-speed, 1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-feat-canvas--run .tw-feat-legal__query,
+  .tw-feat-canvas--run .tw-feat-legal__pill,
+  .tw-feat-canvas--run .tw-feat-legal__agent-pill {
+    animation: none !important;
+  }
+
+  .tw-feat-legal__query,
+  .tw-feat-legal__agent-pill {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .tw-feat-legal__pill {
+    opacity: 1 !important;
+  }
+
+  @media (min-width: 900px) {
+    .tw-feat-legal__pill {
+      transform: translateX(-50%) translateY(0) !important;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .tw-feat-legal__pill {
+      transform: none !important;
+    }
+  }
+}

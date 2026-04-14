@@ -1,0 +1,296 @@
+/* Finances canvas — Figma 305:2660 (chat bubbles + Finances sheet) */
+
+.tw-feat-stage--finances {
+  background: linear-gradient(180deg, rgba(187, 128, 33, 0.2) 0%, rgba(255, 194, 148, 0.2) 99%);
+  box-shadow: inset 44px 0 96px -40px rgba(187, 128, 33, 0.12);
+}
+
+.tw-feat-canvas--finances .tw-feat-stage__frame {
+  border-radius: 20px 0px 0px 0px !important;
+  border-top-left-radius: 20px !important;
+}
+
+.tw-feat-canvas--finances .tw-feat-stage__inner {
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+}
+
+.tw-feat-stage__sheet--finances {
+  position: relative;
+}
+
+.tw-feat-fin-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("./figma-assets/tw-feat-fin-texture.png");
+  background-size: 490px 490px;
+  background-position: top left;
+  opacity: 0.15;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.tw-feat-stage__sheet--finances .tw-feat-stage__dots {
+  opacity: 0.22;
+}
+
+.tw-feat-fin {
+  --tw-feat-fin-gold: #e09c1f;
+  --tw-feat-fin-ai-bg: #f2e6d1;
+  --tw-feat-fin-ai-accent: #c47c00;
+  /* Figma 305:2660 — 与点阵画布同宽对齐，用户气泡靠左、助手气泡整体右移 */
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(36px, 4.2vw, 54px);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(8px, 1.2vw, 12px) clamp(4px, 1vw, 8px) 12px;
+  box-sizing: border-box;
+}
+
+.tw-feat-fin__user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px 14px 14px;
+  background: #fff;
+  border: 1.75px solid var(--tw-feat-fin-gold);
+  border-radius: 25px;
+  box-shadow: 0 0 3.5px rgba(0, 0, 0, 0.13);
+  max-width: min(100%, 581px);
+  width: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.tw-feat-fin__avatar-wrap {
+  flex-shrink: 0;
+  width: 49px;
+  height: 49px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1.75px solid #ddd;
+  background: #f5f5f5;
+}
+
+.tw-feat-fin__avatar-wrap img {
+  display: block;
+  width: 120%;
+  height: 120%;
+  margin: -8% 0 0 -8%;
+  object-fit: cover;
+}
+
+.tw-feat-fin__user-msg {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(14px, 1.55vw, 18px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.25;
+  color: #18181b;
+}
+
+.tw-feat-fin__response {
+  background: var(--tw-feat-fin-ai-bg);
+  border: 1.09px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 22px 22px 18px;
+  box-shadow: none;
+  max-width: min(100%, 584px);
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: calc(clamp(48px, 25.5vw, 329px) - 180px);
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.tw-feat-fin__response-inner {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 14px 16px;
+  align-items: start;
+}
+
+.tw-feat-fin__brand {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f5f5f5;
+  border: 1.5px solid #dedede;
+}
+
+.tw-feat-fin__brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tw-feat-fin__lead {
+  margin: 0 0 10px;
+  font-family: var(--tw-font-body);
+  font-size: clamp(15px, 1.45vw, 18px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.35;
+  color: #18181b;
+}
+
+.tw-feat-fin__lead-accent {
+  color: var(--tw-feat-fin-ai-accent);
+  font-weight: inherit;
+}
+
+.tw-feat-fin__list {
+  margin: 0;
+  padding: 0 0 0 1.35em;
+  font-family: var(--tw-font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: #5d5d5d;
+}
+
+.tw-feat-fin__list li {
+  margin-bottom: 4px;
+}
+
+.tw-feat-fin__list li:last-child {
+  margin-bottom: 0;
+}
+
+.tw-feat-fin__file {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.tw-feat-fin__file-preview {
+  position: relative;
+  flex-shrink: 0;
+  width: 51px;
+  height: 60px;
+  border-radius: 5.5px;
+  background: #fff;
+  border: 0.5px solid #ededed;
+  box-shadow: 0 0 5.5px rgba(156, 156, 156, 0.25);
+  overflow: visible;
+}
+
+.tw-feat-fin__file-preview::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 10px;
+  height: 2px;
+  border-radius: 6px;
+  background: #d9d9d9;
+  box-shadow: 0 8px 0 #d9d9d9, 0 16px 0 #d9d9d9;
+}
+
+.tw-feat-fin__file-preview::after {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 42px;
+  width: 16px;
+  height: 2px;
+  border-radius: 6px;
+  background: #d9d9d9;
+}
+
+.tw-feat-fin__file-tag {
+  position: absolute;
+  left: -2px;
+  bottom: 9px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: #b51e1e;
+  font-size: 9px;
+  font-weight: var(--tw-fw-bold);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.tw-feat-fin__file-meta {
+  min-width: 0;
+}
+
+.tw-feat-fin__file-title {
+  margin: 0 0 4px;
+  font-family: var(--tw-font-body);
+  font-size: 15px;
+  line-height: 1.2;
+  color: #3d3d3d;
+}
+
+.tw-feat-fin__file-date {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #b1b1b1;
+}
+
+.tw-feat-canvas--run .tw-feat-fin__user {
+  animation: twFeatFinIn 0.5s var(--tw-ease-out) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-fin__response {
+  animation: twFeatFinIn 0.52s var(--tw-ease-out) 0.2s forwards;
+}
+
+@keyframes twFeatFinIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 599px) {
+  .tw-feat-fin__user {
+    max-width: 100%;
+  }
+
+  .tw-feat-fin__response {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .tw-feat-fin__response-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .tw-feat-fin__brand {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-feat-canvas--run .tw-feat-fin__user,
+  .tw-feat-canvas--run .tw-feat-fin__response {
+    animation: none !important;
+  }
+
+  .tw-feat-fin__user,
+  .tw-feat-fin__response {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

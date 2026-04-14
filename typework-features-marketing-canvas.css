@@ -1,0 +1,588 @@
+/* Marketing canvas — Figma 305:3461 (node 305:3461) */
+
+/* 最外层渐变底：0 圆角；内层画框 + 白画布：仅左上角圆角（Figma 305:3461） */
+.tw-feat-stage--marketing {
+  background: linear-gradient(
+    180deg,
+    rgba(180, 220, 140, 0.14) 0%,
+    rgba(255, 248, 230, 0.32) 52%,
+    rgba(255, 252, 240, 0.4) 100%
+  );
+  box-shadow: inset 48px 0 100px -42px rgba(101, 169, 0, 0.09);
+  border-radius: 0;
+}
+
+.tw-features__split--feat .tw-feat-stage--marketing .tw-feat-stage__frame,
+.tw-feat-stage--marketing .tw-feat-stage__frame {
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+}
+
+.tw-features__split--feat .tw-feat-stage--marketing .tw-feat-stage__sheet,
+.tw-feat-stage--marketing .tw-feat-stage__sheet {
+  border-radius: 16px 0 0 0;
+}
+
+.tw-feat-stage--marketing .tw-feat-stage__inner {
+  border-radius: 20px 0 0 0;
+  border-top-left-radius: 20px;
+  padding-top: calc(var(--tw-space-6) + 40px);
+}
+
+@media (min-width: 900px) {
+  .tw-features__split--feat .tw-feat-stage--marketing .tw-feat-stage__frame {
+    border-radius: 20px 0 0 0;
+    border-top-left-radius: 20px;
+  }
+
+  .tw-features__split--feat .tw-feat-stage--marketing .tw-feat-stage__inner {
+    padding-top: calc(var(--tw-space-4) + 40px);
+  }
+
+  .tw-features__split--feat .tw-feat-stage--marketing .tw-feat-stage__sheet {
+    border-radius: 16px 0 0 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .tw-feat-stage--marketing .tw-feat-stage__frame {
+    border-radius: 20px 0 0 0;
+  }
+
+  .tw-feat-stage--marketing .tw-feat-stage__sheet {
+    border-radius: 14px 0 0 0;
+  }
+}
+
+.tw-feat-stage__sheet--marketing {
+  position: relative;
+}
+
+.tw-feat-mkt-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-size: 490px 490px;
+  background-position: top left;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.tw-feat-mkt {
+  --tw-feat-mkt-green: #65a900;
+  --tw-feat-mkt-lime: #7ccf00;
+  --tw-feat-mkt-mint: #ecffcf;
+  --tw-feat-mkt-ink: #18181b;
+
+  display: grid;
+  grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.12fr);
+  gap: 14px 18px;
+  align-items: center;
+  max-width: 100%;
+}
+
+@media (min-width: 900px) {
+  .tw-feat-mkt {
+    min-height: 360px;
+  }
+
+  /* 右侧消息流纵向居中，避免中间两条消息窗过于靠上 */
+  .tw-feat-mkt__rail-body {
+    justify-content: center;
+  }
+}
+
+/* 左侧：对话框在列内垂直居中（Figma 整卡视觉居中） */
+.tw-feat-mkt__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  min-height: 0;
+}
+
+.tw-feat-mkt__prompt {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border: 1px solid var(--tw-feat-canvas-border);
+  border-radius: 16px;
+  box-shadow: 0 2px 18px rgba(24, 24, 27, 0.06);
+  padding: 18px 16px 16px;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.tw-feat-mkt__prompt-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tw-feat-mkt__prompt-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--tw-feat-canvas-border);
+}
+
+.tw-feat-mkt__prompt-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tw-feat-mkt__prompt-lead {
+  margin: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(13px, 1.25vw, 17px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.25;
+  color: var(--tw-feat-mkt-ink);
+}
+
+.tw-feat-mkt__files {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tw-feat-mkt__file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--tw-feat-canvas-border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.tw-feat-mkt__file-thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 51px;
+  height: 60px;
+  border-radius: 5.5px;
+  border: 1px solid var(--tw-feat-canvas-border);
+  box-shadow: 0 0 5.5px rgba(156, 156, 156, 0.25);
+  overflow: visible;
+  background: #fff;
+}
+
+/* Figma 738:24821 — 缩略图在槽内居中裁切，避免整图拉伸变形 */
+.tw-feat-mkt__file-thumb-inner {
+  position: absolute;
+  top: 21.5%;
+  right: 33%;
+  bottom: 49.5%;
+  left: 33%;
+  overflow: hidden;
+}
+
+.tw-feat-mkt__file-thumb-inner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tw-feat-mkt__file-tag {
+  position: absolute;
+  left: -2px;
+  bottom: 10px;
+  z-index: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: var(--tw-feat-mkt-green);
+  font-family: var(--tw-font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.tw-feat-mkt__file-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tw-feat-mkt__file-name {
+  font-family: var(--tw-font-body);
+  font-size: 14px;
+  color: #3d3d3d;
+}
+
+.tw-feat-mkt__file-size {
+  font-family: var(--tw-font-body);
+  font-size: 12px;
+  color: #b1b1b1;
+}
+
+/* 右侧：黑条在上；绿色虚线与下方白底步骤条中的 ✓ 圆心对齐（Figma 305:3461） */
+.tw-feat-mkt__rail {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 0;
+  min-width: 0;
+}
+
+.tw-feat-mkt__below-agent {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  flex: 1;
+  min-height: 180px;
+}
+
+/* 与 .tw-feat-mkt__step 左 padding + 半枚对勾圆对齐，叠在弹窗背后（不用 transform，避免被 twFeatMktIn 覆盖） */
+.tw-feat-mkt__spine {
+  position: absolute;
+  /* 2px 线宽，使线条几何中心 = 12px + 9px（与 ✓ 圆心一致） */
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 2px;
+  padding: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.tw-feat-mkt__spine img {
+  width: 2px;
+  height: 100%;
+  min-height: 160px;
+  object-fit: fill;
+  display: block;
+}
+
+.tw-feat-mkt__rail-body {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tw-feat-mkt__agent-pill {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #ea580c 0%,
+    #fed74b 34.6%,
+    #d89adf 67.8%,
+    #85befe 100%
+  );
+  padding-bottom: 5px;
+  max-width: 100%;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.tw-feat-mkt__agent-pill-inner {
+  background: #191919;
+  border-radius: 8px 8px 0 0;
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  box-sizing: border-box;
+}
+
+.tw-feat-mkt__agent-pill-text {
+  margin: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.35;
+  color: #fff;
+  text-align: center;
+}
+
+.tw-feat-mkt__agent-pill-soft {
+  font-weight: var(--tw-fw-regular);
+}
+
+.tw-feat-mkt__agent-pill-text strong {
+  font-weight: var(--tw-fw-semibold);
+}
+
+.tw-feat-mkt__visuals {
+  position: relative;
+  opacity: 0;
+  transform: translateX(8px);
+}
+
+.tw-feat-mkt__visuals-cards {
+  position: relative;
+  height: clamp(120px, 22vw, 168px);
+  margin: 0 0 10px;
+}
+
+.tw-feat-mkt__promo {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.tw-feat-mkt__promo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tw-feat-mkt__promo--a {
+  left: 4%;
+  top: 0;
+  width: min(52%, 200px);
+  transform: rotate(-4.88deg);
+  z-index: 1;
+}
+
+.tw-feat-mkt__promo--b {
+  right: 6%;
+  top: 16px;
+  width: min(54%, 205px);
+  transform: rotate(5.92deg);
+  border-radius: 16px;
+  z-index: 2;
+}
+
+.tw-feat-mkt__step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--tw-feat-canvas-border);
+  border-radius: 16px;
+  box-shadow: 0 0 2.4px rgba(0, 0, 0, 0.13);
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.tw-feat-mkt__step--visuals {
+  margin-top: 8px;
+  position: relative;
+  z-index: 3;
+}
+
+.tw-feat-mkt__step--delivery {
+  padding-right: 12px;
+}
+
+.tw-feat-mkt__step-check {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--tw-feat-mkt-mint);
+  font-size: 9px;
+  font-weight: var(--tw-fw-regular);
+  line-height: 1;
+  color: var(--tw-feat-mkt-lime);
+}
+
+.tw-feat-mkt__step-label {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-family: var(--tw-font-body);
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: var(--tw-fw-medium);
+  line-height: 1.1;
+  color: var(--tw-feat-mkt-ink);
+}
+
+.tw-feat-mkt__step--delivery .tw-feat-mkt__step-label {
+  flex: 1 1 auto;
+}
+
+.tw-feat-mkt__socials {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.tw-feat-mkt__social {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tw-feat-mkt__social--ig,
+.tw-feat-mkt__social--fb {
+  width: 31px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.tw-feat-mkt__social--ig img,
+.tw-feat-mkt__social--fb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tw-feat-mkt__social--wa {
+  width: 31px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.tw-feat-mkt__social--wa img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tw-feat-canvas--run .tw-feat-mkt__prompt {
+  animation: twFeatMktIn calc(0.48s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.06s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-mkt__spine {
+  animation: twFeatMktIn calc(0.4s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.18s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-mkt__agent-pill {
+  animation: twFeatMktIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.12s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-mkt__visuals {
+  animation: twFeatMktIn calc(0.48s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.22s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-mkt__step--visuals {
+  animation: twFeatMktIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.34s * var(--tw-feat-speed, 1)) forwards;
+}
+
+.tw-feat-canvas--run .tw-feat-mkt__step--delivery {
+  animation: twFeatMktIn calc(0.45s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.42s * var(--tw-feat-speed, 1)) forwards;
+}
+
+@keyframes twFeatMktIn {
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 899px) {
+  .tw-feat-mkt {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: stretch;
+    min-height: 0;
+  }
+
+  .tw-feat-mkt__left {
+    align-items: flex-start;
+    justify-content: stretch;
+  }
+
+  .tw-feat-mkt__prompt {
+    max-width: none;
+  }
+
+  .tw-feat-mkt__below-agent {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .tw-feat-mkt__spine {
+    display: none;
+  }
+
+  .tw-feat-mkt__visuals-cards {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    height: auto;
+    min-height: 0;
+    margin-bottom: 8px;
+  }
+
+  .tw-feat-mkt__promo--a,
+  .tw-feat-mkt__promo--b {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    width: min(100%, 260px);
+    margin: 0;
+    transform: none;
+  }
+
+  .tw-feat-canvas--run .tw-feat-mkt__prompt,
+  .tw-feat-canvas--run .tw-feat-mkt__spine,
+  .tw-feat-canvas--run .tw-feat-mkt__agent-pill,
+  .tw-feat-canvas--run .tw-feat-mkt__visuals,
+  .tw-feat-canvas--run .tw-feat-mkt__step--visuals,
+  .tw-feat-canvas--run .tw-feat-mkt__step--delivery {
+    animation: none;
+  }
+
+  .tw-feat-mkt__prompt,
+  .tw-feat-mkt__spine,
+  .tw-feat-mkt__agent-pill,
+  .tw-feat-mkt__visuals,
+  .tw-feat-mkt__step {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-feat-canvas--run .tw-feat-mkt__prompt,
+  .tw-feat-canvas--run .tw-feat-mkt__spine,
+  .tw-feat-canvas--run .tw-feat-mkt__agent-pill,
+  .tw-feat-canvas--run .tw-feat-mkt__visuals,
+  .tw-feat-canvas--run .tw-feat-mkt__step--visuals,
+  .tw-feat-canvas--run .tw-feat-mkt__step--delivery {
+    animation: none !important;
+  }
+
+  .tw-feat-mkt__prompt,
+  .tw-feat-mkt__spine,
+  .tw-feat-mkt__agent-pill,
+  .tw-feat-mkt__visuals,
+  .tw-feat-mkt__step {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
