@@ -780,21 +780,6 @@
     whyResizeTimer = window.setTimeout(setupWhyShowcase, 180);
   });
 
-  /* Footer — Join waitlist toggles email field below */
-  const waitlistToggle = document.querySelector("[data-tw-footer-waitlist-toggle]");
-  const waitlistPanel = document.querySelector("[data-tw-footer-waitlist]");
-  if (waitlistToggle instanceof HTMLButtonElement && waitlistPanel) {
-    const waitlistInput = waitlistPanel.querySelector("#tw-footer-email");
-    waitlistToggle.addEventListener("click", () => {
-      const willOpen = waitlistPanel.hidden;
-      waitlistPanel.hidden = !willOpen;
-      waitlistToggle.setAttribute("aria-expanded", String(willOpen));
-      if (willOpen && waitlistInput instanceof HTMLInputElement) {
-        waitlistInput.focus();
-      }
-    });
-  }
-
   /* Help center — floating trigger + chat panel */
   const helpCenter = document.querySelector("[data-tw-help-center]");
   const helpToggle = document.querySelector("[data-tw-help-toggle]");

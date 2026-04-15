@@ -346,30 +346,11 @@ a:hover {
   display: block;
 }
 
-.tw-footer__action-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-  width: 100%;
-  max-width: 100%;
-}
-
 .tw-footer__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--tw-space-3);
   align-items: center;
-}
-
-.tw-footer__waitlist {
-  width: 100%;
-  max-width: min(100%, 320px);
-  margin-top: var(--tw-space-3);
-}
-
-.tw-footer__waitlist-input {
-  display: block;
 }
 
 .tw-footer__btn {
