@@ -248,11 +248,12 @@
 }
 
 .tw-feat-canvas--run .tw-feat-fin__user {
-  animation: twFeatFinIn 0.5s var(--tw-ease-out) forwards;
+  animation: twFeatFinIn calc(0.5s * var(--tw-feat-speed, 1)) var(--tw-ease-out) forwards;
 }
 
 .tw-feat-canvas--run .tw-feat-fin__response {
-  animation: twFeatFinIn 0.52s var(--tw-ease-out) 0.2s forwards;
+  animation: twFeatFinIn calc(0.52s * var(--tw-feat-speed, 1)) var(--tw-ease-out)
+    calc(0.2s * var(--tw-feat-speed, 1)) forwards;
 }
 
 @keyframes twFeatFinIn {

@@ -117,6 +117,12 @@
   transform: translateY(8px);
 }
 
+@media (min-width: 900px) {
+  .tw-feat-legal__pill {
+    margin-left: 40px;
+  }
+}
+
 /* Figma：自左上向右下阶梯排布 */
 .tw-feat-legal__pill:nth-child(1) {
   left: calc(50% - min(342px, 42vw));

@@ -1,8 +1,8 @@
 /* Features — layout + left nav (see typework-features-canvas.css for Forms canvas) */
 
 .tw-features {
-  /* 0.5× 播放速度：时长与延迟统一 ×2（与 typework.js 中 featAutoAdvanceMs 同步） */
-  --tw-feat-speed: 2;
+  /* 0.8× 播放速度：右侧画布动画时长与延迟统一 ×1.25 */
+  --tw-feat-speed: 1.25;
   background: #fff;
 }
 
@@ -401,7 +401,7 @@
 }
 
 .tw-feat-nav--run .tw-feat-nav__btn.is-active .tw-feat-nav__progress-fill {
-  animation: twFeatProgress calc(2.5s * var(--tw-feat-speed, 1)) linear forwards;
+  animation: twFeatProgress 2.5s linear forwards;
 }
 
 @keyframes twFeatProgress {

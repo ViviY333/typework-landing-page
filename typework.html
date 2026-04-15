@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./typework-tokens.css" />
     <link rel="stylesheet" href="./typework-base.css" />
     <link rel="stylesheet" href="./typework-hero.css" />
+    <link rel="stylesheet" href="./typework-hero-landing.css" />
     <link rel="stylesheet" href="./typework-hero-setup.css" />
     <link rel="stylesheet" href="./typework-industries.css" />
     <link rel="stylesheet" href="./typework-sections.css" />
@@ -29,7 +30,7 @@
   </head>
   <body class="tw-page">
     <main id="top">
-      <section class="tw-hero" aria-labelledby="tw-hero-title">
+      <section class="tw-hero" aria-labelledby="tw-hero-heading">
         <header class="tw-header">
           <div class="tw-container tw-header__inner">
             <a class="tw-brand" href="#top" data-tw-anchor>
@@ -48,18 +49,16 @@
               <a href="#features" data-tw-anchor>Features</a>
               <a href="#faq" data-tw-anchor>FAQ</a>
             </nav>
-            <div class="tw-header__actions">
+            <div class="tw-header__end">
               <button
                 type="button"
-                class="tw-btn tw-btn--ghost tw-lang-toggle"
+                class="tw-btn tw-btn--ghost tw-lang-toggle tw-lang-toggle--in-nav"
                 data-tw-lang-toggle
                 aria-label="Switch language"
               >
                 <span class="tw-lang-toggle__icon" aria-hidden="true"></span>
                 <span class="tw-visually-hidden" data-tw-lang-label>切换语言</span>
               </button>
-              <a class="tw-btn tw-btn--ghost" href="./login.html">Log in</a>
-              <a class="tw-btn tw-btn--primary" href="#">Get Started Free</a>
             </div>
             <button
               type="button"
@@ -89,8 +88,6 @@
                 <span class="tw-lang-toggle__icon" aria-hidden="true"></span>
                 <span class="tw-visually-hidden" data-tw-lang-label>切换语言</span>
               </button>
-              <a class="tw-btn tw-btn--ghost tw-nav-panel__full" href="./login.html">Log in</a>
-              <a class="tw-btn tw-btn--primary tw-nav-panel__full" href="#">Get Started Free</a>
             </nav>
           </div>
         </header>
@@ -106,10 +103,251 @@
           >
             <source src="./typework%20bg.mp4" type="video/mp4" />
           </video>
-          <div class="tw-hero__scrim"></div>
         </div>
-        <div class="tw-container tw-hero__content">
-          <h1 id="tw-hero-title" class="tw-hero__title">
+        <div class="tw-container tw-hero__shell">
+          <div class="tw-hero__grid">
+            <div class="tw-hero__media-col">
+              <div class="tw-hero__stack">
+                <video
+                  class="tw-hero__stack-video"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  data-tw-hero-case-video
+                  aria-label="Case highlight"
+                >
+                  <source src="./case%20vid.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+            <div class="tw-hero__cta-col">
+              <img
+                class="tw-hero__mark"
+                src="./Square%20Transparent%201.png"
+                width="80"
+                height="80"
+                alt="typework"
+              />
+              <h1 id="tw-hero-heading" class="tw-hero__headline">
+                typework enable everyone to do it.
+              </h1>
+              <form class="tw-hero__form" action="#" method="post" data-tw-hero-form>
+                <label class="tw-visually-hidden" for="tw-hero-email">Email</label>
+                <input
+                  id="tw-hero-email"
+                  class="tw-hero__input"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="your email address"
+                />
+                <button class="tw-hero__submit" type="submit">
+                  <span class="tw-visually-hidden">Get Early Access</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries" class="tw-section tw-industries">
+        <div class="tw-container">
+          <p class="tw-kicker tw-kicker--center">Industries</p>
+          <h2 class="tw-section-title tw-section-title--center">See How Our Clients Use Typework</h2>
+          <p class="tw-section-lead tw-section-lead--center">
+            Real businesses across the supply chain — from sourcing to delivery — are automating
+            their operations with AI agents.
+          </p>
+
+          <div
+            class="tw-industries-accordion"
+            role="region"
+            aria-label="Client case studies"
+            tabindex="0"
+            data-tw-industries
+            data-tw-active-index="0"
+          >
+            <article class="tw-industry-panel is-active" data-tw-industry-panel data-index="0" aria-current="true">
+              <img
+                class="tw-industry-panel__bg"
+                src="./figma-assets/industry-hero.png"
+                alt="Restaurant team reviewing operations on a tablet"
+                loading="lazy"
+              />
+              <img
+                class="tw-industry-panel__logo-mark"
+                src="./figma-assets/industry-logo-mark.png"
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+              />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Rush hours no longer break our workflow.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Typework connected bookings, prep, staffing, and delivery data into one live view.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+38%</strong>
+                  <span>Table turnover at peak</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="1">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-2.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Coach scheduling is finally predictable.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Attendance, PT sessions, shifts, and renewal alerts now run in one operating rhythm.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>-46%</strong>
+                  <span>Manual scheduling time</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="2">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-3.jpg" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Nurses don’t jump across three tools anymore.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Appointments, diagnostics, follow-ups, and billing now flow through one shared process.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>-31%</strong>
+                  <span>Average patient wait time</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="3">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-4.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Launch days no longer overwhelm ops.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Campaigns, orders, stock, and support tickets stay synced from one command layer.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+22%</strong>
+                  <span>Campaign conversion rate</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="4">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-5.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Our team finally works from one funnel.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Leads, tours, follow-ups, and closings are now tracked as one continuous pipeline.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+29%</strong>
+                  <span>Lead-to-tour conversion</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="tw-industries__status" aria-hidden="true">
+            <div class="tw-industries__dots" data-tw-industries-dots></div>
+          </div>
+
+          <div class="tw-industries-trust">
+            <p class="tw-industries-trust__line">Trusted by 10,000 business worldwide</p>
+            <div class="tw-industries-trust__logos" aria-hidden="true">
+              <img src="./figma-assets/industry-trust-1.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-2.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-3.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-4.png" alt="" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why-typework" class="tw-section tw-why">
+        <div class="tw-why-showcase" data-tw-why-showcase>
+          <div class="tw-container tw-why-showcase__head">
+            <p class="tw-kicker tw-kicker--center">Why Typework</p>
+            <h2 class="tw-section-title tw-section-title--center">
+              Your Business Doesn’t Need 10 Software Tools. It Needs One AI Platform.
+            </h2>
+          </div>
+
+          <div class="tw-why-showcase__stage" data-tw-why-pin>
+            <div class="tw-container tw-why-showcase__cols">
+              <div class="tw-why-showcase__left">
+                <article
+                  class="tw-why-stack-card is-active"
+                  data-tw-why-card="0"
+                  aria-current="true"
+                >
+                  <h3>AI sees your whole business</h3>
+                  <p>
+                    Not just your CRM or spreadsheets. Typework connects customers, inventory,
+                    production, and finance — so decisions are made with the full picture.
+                  </p>
+                </article>
+                <article class="tw-why-stack-card" data-tw-why-card="1" aria-current="false">
+                  <h3>Every Client Makes It Smarter</h3>
+                  <p>
+                    The scheduling system built for a gym works for a salon. The billing flow for a
+                    clinic works for a law firm. Every business we serve makes the platform more
+                    powerful for the next one.
+                  </p>
+                </article>
+              </div>
+
+              <div class="tw-why-showcase__center" aria-hidden="true">
+                <div class="tw-why-video-wrap">
+                  <video
+                    class="tw-why-video"
+                    data-tw-why-video
+                    src="./why%20type视频.mp4"
+                    muted
+                    playsinline
+                    preload="auto"
+                  ></video>
+                </div>
+              </div>
+
+              <div class="tw-why-showcase__right">
+                <article
+                  class="tw-why-stack-card tw-why-stack-card--enter"
+                  data-tw-why-card="2"
+                  aria-current="false"
+                >
+                  <h3>Real Business, Not Just Software</h3>
+                  <p>
+                    We don’t sell tools. Your workflows train the AI, turning your operational
+                    knowledge into a system that gets smarter every day.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="tw-section tw-how-it-works" aria-labelledby="tw-how-title">
+        <div class="tw-container">
+          <p class="tw-kicker tw-kicker--center">How it works</p>
+          <div class="tw-hero__content">
+          <h2 id="tw-how-title" class="tw-hero__title tw-how-it-works__title">
             <span class="tw-hero__title-line tw-hero__title-line--lead">
               <span class="tw-hero__title-nowrap" aria-live="polite">
                 Build your
@@ -119,7 +357,7 @@
               </span>
             </span>
             <span class="tw-hero__title-line">AI System</span>
-          </h1>
+          </h2>
           <div class="tw-prompt-card-shell">
             <div class="tw-prompt-card">
               <div class="tw-prompt-card__inner">
@@ -415,197 +653,6 @@
             </article>
           </div>
         </div>
-      </section>
-
-      <section id="industries" class="tw-section tw-industries">
-        <div class="tw-container">
-          <p class="tw-kicker tw-kicker--center">Industries</p>
-          <h2 class="tw-section-title tw-section-title--center">See How Our Clients Use Typework</h2>
-          <p class="tw-section-lead tw-section-lead--center">
-            Real businesses across the supply chain — from sourcing to delivery — are automating
-            their operations with AI agents.
-          </p>
-
-          <div
-            class="tw-industries-accordion"
-            role="region"
-            aria-label="Client case studies"
-            tabindex="0"
-            data-tw-industries
-            data-tw-active-index="0"
-          >
-            <article class="tw-industry-panel is-active" data-tw-industry-panel data-index="0" aria-current="true">
-              <img
-                class="tw-industry-panel__bg"
-                src="./figma-assets/industry-hero.png"
-                alt="Restaurant team reviewing operations on a tablet"
-                loading="lazy"
-              />
-              <img
-                class="tw-industry-panel__logo-mark"
-                src="./figma-assets/industry-logo-mark.png"
-                alt=""
-                loading="lazy"
-                aria-hidden="true"
-              />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Rush hours no longer break our workflow.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Typework connected bookings, prep, staffing, and delivery data into one live view.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>+38%</strong>
-                  <span>Table turnover at peak</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="1">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-2.png" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Coach scheduling is finally predictable.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Attendance, PT sessions, shifts, and renewal alerts now run in one operating rhythm.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>-46%</strong>
-                  <span>Manual scheduling time</span>
-                </div>
-              </div>
-            </article>
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="2">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-3.jpg" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Nurses don’t jump across three tools anymore.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Appointments, diagnostics, follow-ups, and billing now flow through one shared process.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>-31%</strong>
-                  <span>Average patient wait time</span>
-                </div>
-              </div>
-            </article>
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="3">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-4.png" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Launch days no longer overwhelm ops.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Campaigns, orders, stock, and support tickets stay synced from one command layer.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>+22%</strong>
-                  <span>Campaign conversion rate</span>
-                </div>
-              </div>
-            </article>
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="4">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-5.png" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Our team finally works from one funnel.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Leads, tours, follow-ups, and closings are now tracked as one continuous pipeline.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>+29%</strong>
-                  <span>Lead-to-tour conversion</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="tw-industries__status" aria-hidden="true">
-            <div class="tw-industries__dots" data-tw-industries-dots></div>
-          </div>
-
-          <div class="tw-industries-trust">
-            <p class="tw-industries-trust__line">Trusted by 10,000 business worldwide</p>
-            <div class="tw-industries-trust__logos" aria-hidden="true">
-              <img src="./figma-assets/industry-trust-1.png" alt="" loading="lazy" />
-              <img src="./figma-assets/industry-trust-2.png" alt="" loading="lazy" />
-              <img src="./figma-assets/industry-trust-3.png" alt="" loading="lazy" />
-              <img src="./figma-assets/industry-trust-4.png" alt="" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="why-typework" class="tw-section tw-why">
-        <div class="tw-why-showcase" data-tw-why-showcase>
-          <div class="tw-container tw-why-showcase__head">
-            <p class="tw-kicker tw-kicker--center">Why Typework</p>
-            <h2 class="tw-section-title tw-section-title--center">
-              Your Business Doesn’t Need 10 Software Tools. It Needs One AI Platform.
-            </h2>
-          </div>
-
-          <div class="tw-why-showcase__stage" data-tw-why-pin>
-            <div class="tw-container tw-why-showcase__cols">
-              <div class="tw-why-showcase__left">
-                <article
-                  class="tw-why-stack-card is-active"
-                  data-tw-why-card="0"
-                  aria-current="true"
-                >
-                  <h3>AI sees your whole business</h3>
-                  <p>
-                    Not just your CRM or spreadsheets. Typework connects customers, inventory,
-                    production, and finance — so decisions are made with the full picture.
-                  </p>
-                </article>
-                <article class="tw-why-stack-card" data-tw-why-card="1" aria-current="false">
-                  <h3>Every Client Makes It Smarter</h3>
-                  <p>
-                    The scheduling system built for a gym works for a salon. The billing flow for a
-                    clinic works for a law firm. Every business we serve makes the platform more
-                    powerful for the next one.
-                  </p>
-                </article>
-              </div>
-
-              <div class="tw-why-showcase__center" aria-hidden="true">
-                <div class="tw-why-video-wrap">
-                  <video
-                    class="tw-why-video"
-                    data-tw-why-video
-                    src="./why%20type视频.mp4"
-                    muted
-                    playsinline
-                    preload="auto"
-                  ></video>
-                </div>
-              </div>
-
-              <div class="tw-why-showcase__right">
-                <article
-                  class="tw-why-stack-card tw-why-stack-card--enter"
-                  data-tw-why-card="2"
-                  aria-current="false"
-                >
-                  <h3>Real Business, Not Just Software</h3>
-                  <p>
-                    We don’t sell tools. Your workflows train the AI, turning your operational
-                    knowledge into a system that gets smarter every day.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -1094,7 +1141,7 @@
                                   <span class="tw-feat-mkt__file-tag">jpg</span>
                                   <div class="tw-feat-mkt__file-thumb-inner">
                                     <img
-                                      src="./figma-assets/tw-feat-mkt-thumb.png"
+                                      src="./图片icon.png"
                                       alt=""
                                       loading="lazy"
                                       decoding="async"
@@ -1111,7 +1158,7 @@
                                   <span class="tw-feat-mkt__file-tag">jpg</span>
                                   <div class="tw-feat-mkt__file-thumb-inner">
                                     <img
-                                      src="./figma-assets/tw-feat-mkt-thumb.png"
+                                      src="./图片icon.png"
                                       alt=""
                                       loading="lazy"
                                       decoding="async"

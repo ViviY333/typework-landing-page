@@ -1,0 +1,206 @@
+/* Hero — case stack + logo, headline, CTA */
+.tw-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  min-height: min(100vh, 900px);
+  padding: calc(var(--tw-header-h) + var(--tw-space-8)) 0 var(--tw-space-16);
+  background: #fafafa;
+  overflow: hidden;
+}
+
+/* Background video — same asset as legacy hero; whole layer at 40% opacity */
+.tw-hero > .tw-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.tw-hero > .tw-header {
+  z-index: 2;
+}
+
+.tw-hero__shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tw-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.tw-hero__media-col {
+  min-width: 0;
+}
+
+/* Case media — looping video fills rounded frame */
+.tw-hero__stack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #14120f;
+  box-shadow:
+    0 24px 48px rgba(23, 23, 23, 0.12),
+    0 8px 16px rgba(23, 23, 23, 0.06);
+}
+
+.tw-hero__stack-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: translateZ(0) scale(1.035);
+  backface-visibility: hidden;
+}
+
+.tw-hero__cta-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  text-align: left;
+  min-width: 0;
+}
+
+@media (max-width: 880px) {
+  .tw-hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--tw-space-8);
+  }
+
+  .tw-hero__cta-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .tw-hero__headline {
+    max-width: none;
+  }
+
+  .tw-hero__form {
+    max-width: 100%;
+  }
+}
+
+.tw-hero__mark {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+.tw-hero__headline {
+  margin: 0;
+  font-family: var(--tw-font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--tw-color-text);
+  max-width: 22ch;
+}
+
+.tw-hero__form {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tw-hero__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.85rem 1rem;
+  font-family: var(--tw-font-body), Inter, sans-serif;
+  font-size: 1rem;
+  color: var(--tw-color-text);
+  background: #f5f5f4;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.tw-hero__input::placeholder {
+  color: #a8a29e;
+}
+
+.tw-hero__input:focus {
+  border-color: rgba(234, 88, 12, 0.45);
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+.tw-hero__submit {
+  display: block;
+  width: 100%;
+  aspect-ratio: 357 / 60;
+  min-height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent url("./get%20early%20access.svg") no-repeat center / 100% 100%;
+  transition: transform 0.15s var(--tw-ease-out);
+}
+
+.tw-hero__submit:hover {
+  transform: translateY(-1px);
+}
+
+/* How it works — migrated former hero prompt + cards */
+.tw-how-it-works {
+  padding-top: var(--tw-space-16);
+  padding-bottom: var(--tw-space-16);
+  background: var(--tw-color-bg);
+}
+
+.tw-how-it-works .tw-hero__content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.tw-how-it-works .tw-hero__title {
+  max-width: min(100%, 40rem);
+}
+
+.tw-how-it-works .tw-how-it-works__title {
+  margin: 0 auto var(--tw-space-8);
+}
+
+.tw-how-it-works .tw-hero__title-line,
+.tw-how-it-works .tw-hero__title-nowrap {
+  font-size: 32px;
+}
+
+.tw-how-it-works .tw-hero__title-line--lead {
+  white-space: nowrap;
+}
+
+.tw-how-it-works .tw-hero__title-nowrap {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  column-gap: 0.35em;
+}

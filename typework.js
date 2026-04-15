@@ -14,6 +14,7 @@
   const zhTextMap = new Map([
     ["Industries", "行业"],
     ["Why Typework", "为什么选择 Typework"],
+    ["How it works", "如何运作"],
     ["Features", "功能"],
     ["FAQ", "常见问题"],
     ["Log in", "登录"],
@@ -21,6 +22,10 @@
     ["Menu", "菜单"],
     ["Build your", "构建你的"],
     ["AI System", "AI 系统"],
+    ["typework enable everyone to do it.", "typework 让每个人都能做到。"],
+    ["your email address", "输入邮箱地址"],
+    ["Get Early Access", "抢先体验"],
+    ["Email", "邮箱"],
     ["Advanced", "先进"],
     ["AI Models", "AI 模型"],
     ["Multi-Format", "多格式"],
@@ -223,23 +228,35 @@
     window.localStorage.setItem(languageStorageKey, activeLanguage);
   };
 
-  /* Hero video */
-  const video = document.querySelector("[data-tw-hero-video]");
-  if (video instanceof HTMLVideoElement) {
-    const applyMotionPreference = () => {
+  const heroForm = document.querySelector("[data-tw-hero-form]");
+  if (heroForm instanceof HTMLFormElement) {
+    heroForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+  }
+
+  /* Hero background video + case loop video — respect reduced motion */
+  const applyVideoMotionPreference = (video) => {
+    if (!(video instanceof HTMLVideoElement)) return;
+    const apply = () => {
       if (prefersReducedMotion()) {
         video.pause();
         video.removeAttribute("autoplay");
       } else {
+        video.setAttribute("autoplay", "");
         const p = video.play();
         if (p && typeof p.catch === "function") {
           p.catch(() => {});
         }
       }
     };
-    applyMotionPreference();
-    window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", applyMotionPreference);
-  }
+    apply();
+    window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", apply);
+  };
+
+  document.querySelectorAll("[data-tw-hero-video], [data-tw-hero-case-video]").forEach((el) => {
+    applyVideoMotionPreference(el);
+  });
 
   /* Hero title — rotate highlight word */
   const heroRotating = document.querySelector("[data-tw-hero-rotating]");
