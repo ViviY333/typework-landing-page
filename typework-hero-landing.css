@@ -113,18 +113,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.35em;
+  gap: 0.1em;
   font-family: var(--tw-font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: clamp(1.75rem, 3.2vw, 2.25rem);
-  line-height: 1.2;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--tw-color-text);
-  max-width: min(100%, 22ch);
+  max-width: min(100%, 18rem);
 }
 
 .tw-hero__headline-line {
   display: block;
+}
+
+/* Wordmark: match adjacent headline cap height (same as former bold word) */
+.tw-hero__headline-accent {
+  display: inline-block;
+  height: 1em;
+  width: auto;
+  vertical-align: -0.14em;
+  object-fit: contain;
 }
 
 .tw-hero__form {
