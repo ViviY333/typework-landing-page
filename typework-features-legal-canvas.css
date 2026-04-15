@@ -96,6 +96,10 @@
   position: relative;
   min-height: 260px;
   margin: 8px 0 18px 100px;
+  /* 避免首颗 pill 在 overflow:hidden 的画布内因 translateX(-50%) 左侧被裁切 */
+  padding-left: clamp(12px, 2.5vw, 36px);
+  padding-right: clamp(8px, 1.5vw, 20px);
+  box-sizing: border-box;
 }
 
 .tw-feat-legal__pill {
@@ -117,33 +121,27 @@
   transform: translateY(8px);
 }
 
-@media (min-width: 900px) {
-  .tw-feat-legal__pill {
-    margin-left: 40px;
-  }
-}
-
-/* Figma：自左上向右下阶梯排布 */
+/* Figma：自左上向右下阶梯排布（整体略偏右，避免左侧裁切） */
 .tw-feat-legal__pill:nth-child(1) {
-  left: calc(50% - min(342px, 42vw));
+  left: calc(50% - min(252px, 30vw));
   top: 0;
   transform: translateX(-50%) translateY(8px);
 }
 
 .tw-feat-legal__pill:nth-child(2) {
-  left: calc(50% - min(239px, 30vw));
+  left: calc(50% - min(149px, 22vw));
   top: 76px;
   transform: translateX(-50%) translateY(8px);
 }
 
 .tw-feat-legal__pill:nth-child(3) {
-  left: calc(50% - min(95px, 12vw));
+  left: calc(50% - min(5px, 3vw));
   top: 152px;
   transform: translateX(-50%) translateY(8px);
 }
 
 .tw-feat-legal__pill:nth-child(4) {
-  left: calc(50% - min(26px, 4vw));
+  left: calc(50% + min(64px, 8vw));
   top: 228px;
   transform: translateX(-50%) translateY(8px);
 }
