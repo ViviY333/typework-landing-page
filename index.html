@@ -117,31 +117,20 @@
                   data-tw-hero-case-video
                   aria-label="Case highlight"
                 >
-                  <source src="./case%20vid.mp4" type="video/mp4" />
+                  <source src="./case.mp4" type="video/mp4" />
                 </video>
               </div>
             </div>
             <div class="tw-hero__cta-col">
-              <div class="tw-hero__brand-row">
-                <img
-                  class="tw-hero__mark"
-                  src="./Container.png"
-                  width="80"
-                  height="80"
-                  alt=""
-                  decoding="async"
-                />
-                <img
-                  class="tw-hero__wordmark"
-                  src="./typework字体.svg"
-                  alt="typework"
-                  width="107"
-                  height="22"
-                  decoding="async"
-                />
-              </div>
               <h1 id="tw-hero-heading" class="tw-hero__headline">
-                enable everyone to do it.
+                <img
+                  class="tw-hero__header-img"
+                  src="./header.png"
+                  alt="$401 M 2 People in 1 Year. typework — enable everyone to do it."
+                  width="722"
+                  height="114"
+                  decoding="async"
+                />
               </h1>
               <form class="tw-hero__form" action="#" method="post" data-tw-hero-form>
                 <label class="tw-visually-hidden" for="tw-hero-email">Email</label>
@@ -1371,9 +1360,30 @@
             <span class="tw-footer__headline-line">Ready to Put AI to Work</span>
             <span class="tw-footer__headline-line">for Your Business?</span>
           </h2>
-          <div class="tw-footer__actions">
-            <a class="tw-footer__btn tw-footer__btn--primary" href="#">Join waitlist</a>
-            <a class="tw-footer__btn tw-footer__btn--secondary" href="#">Talk to us</a>
+          <div class="tw-footer__action-stack">
+            <div class="tw-footer__actions">
+              <button
+                type="button"
+                class="tw-footer__btn tw-footer__btn--primary"
+                data-tw-footer-waitlist-toggle
+                aria-expanded="false"
+                aria-controls="tw-footer-waitlist"
+              >
+                Join waitlist
+              </button>
+              <a class="tw-footer__btn tw-footer__btn--secondary" href="#">Talk to us</a>
+            </div>
+            <div id="tw-footer-waitlist" class="tw-footer__waitlist" hidden data-tw-footer-waitlist>
+              <label class="tw-visually-hidden" for="tw-footer-email">Email</label>
+              <input
+                id="tw-footer-email"
+                class="tw-hero__input tw-footer__waitlist-input"
+                type="email"
+                name="email"
+                autocomplete="email"
+                placeholder="your email address"
+              />
+            </div>
           </div>
         </div>
         <div class="tw-footer__right">

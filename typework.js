@@ -25,6 +25,8 @@
     ["typework enable everyone to do it.", "typework 让每个人都能做到。"],
     ["your email address", "输入邮箱地址"],
     ["Get Early Access", "抢先体验"],
+    ["Join waitlist", "加入候补名单"],
+    ["Talk to us", "联系我们"],
     ["Email", "邮箱"],
     ["Advanced", "先进"],
     ["AI Models", "AI 模型"],
@@ -231,6 +233,20 @@
   if (heroForm instanceof HTMLFormElement) {
     heroForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      const emailInput = heroForm.querySelector("#tw-hero-email");
+      if (!(emailInput instanceof HTMLInputElement)) return;
+      const email = emailInput.value.trim();
+      if (!email) {
+        emailInput.reportValidity();
+        return;
+      }
+      if (!emailInput.checkValidity()) {
+        emailInput.reportValidity();
+        return;
+      }
+      const next = new URL("early-access.html", window.location.href);
+      next.searchParams.set("email", email);
+      window.location.assign(next.toString());
     });
   }
 
@@ -763,6 +779,21 @@
     window.clearTimeout(whyResizeTimer);
     whyResizeTimer = window.setTimeout(setupWhyShowcase, 180);
   });
+
+  /* Footer — Join waitlist toggles email field below */
+  const waitlistToggle = document.querySelector("[data-tw-footer-waitlist-toggle]");
+  const waitlistPanel = document.querySelector("[data-tw-footer-waitlist]");
+  if (waitlistToggle instanceof HTMLButtonElement && waitlistPanel) {
+    const waitlistInput = waitlistPanel.querySelector("#tw-footer-email");
+    waitlistToggle.addEventListener("click", () => {
+      const willOpen = waitlistPanel.hidden;
+      waitlistPanel.hidden = !willOpen;
+      waitlistToggle.setAttribute("aria-expanded", String(willOpen));
+      if (willOpen && waitlistInput instanceof HTMLInputElement) {
+        waitlistInput.focus();
+      }
+    });
+  }
 
   /* Help center — floating trigger + chat panel */
   const helpCenter = document.querySelector("[data-tw-help-center]");

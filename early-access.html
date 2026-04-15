@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Claim your credits — typework</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./typework-tokens.css" />
+    <link rel="stylesheet" href="./typework-early-access.css" />
+  </head>
+  <body class="tw-page tw-page--early-access">
+    <div class="tw-ea">
+      <header class="tw-ea__header">
+        <a class="tw-ea__brand" href="./index.html">
+          <img
+            class="tw-ea__brand-mark"
+            src="./Square%20Transparent%201.png"
+            width="44"
+            height="44"
+            alt=""
+          />
+          <img
+            class="tw-ea__brand-text"
+            src="./typework字体.svg"
+            alt="typework"
+            width="107"
+            height="22"
+            decoding="async"
+          />
+        </a>
+        <button
+          type="button"
+          class="tw-ea__lang"
+          data-tw-ea-lang-toggle
+          aria-label="Switch language"
+        >
+          <span class="tw-ea__lang-icon" aria-hidden="true"></span>
+          <span class="tw-visually-hidden" data-tw-ea-lang-label>Switch language</span>
+        </button>
+      </header>
+      <main class="tw-ea__main" id="main">
+        <div class="tw-ea__panel">
+          <h1 class="tw-ea__title" data-tw-ea-msg="heroTitle">Ready to outcompete?</h1>
+          <p class="tw-ea__subtitle" data-tw-ea-msg="heroSubtitle">60 seconds · 1,000 credits · Zero risk</p>
+
+          <div class="tw-ea__form-wrap" data-tw-ea-form-wrap>
+            <form class="tw-ea__form" data-tw-ea-form action="#" method="post" novalidate>
+              <div class="tw-ea__row">
+                <div class="tw-ea__field">
+                  <label class="tw-ea__label" for="tw-ea-name"
+                    ><span data-tw-ea-msg="labelName">Name</span>
+                    <span class="tw-ea__req" aria-hidden="true">*</span></label
+                  >
+                  <input
+                    id="tw-ea-name"
+                    class="tw-ea__input"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="tw-ea__field">
+                  <label class="tw-ea__label" for="tw-ea-email"
+                    ><span data-tw-ea-msg="labelEmail">Email</span>
+                    <span class="tw-ea__req" aria-hidden="true">*</span></label
+                  >
+                  <input
+                    id="tw-ea-email"
+                    class="tw-ea__input"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@company.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="tw-ea__field">
+                <label class="tw-ea__label tw-ea__label--accent" for="tw-ea-source"
+                  ><span data-tw-ea-msg="labelSource">How should we find your business?</span>
+                  <span class="tw-ea__req" aria-hidden="true">*</span></label
+                >
+                <select id="tw-ea-source" class="tw-ea__select" name="source" required data-tw-ea-source>
+                  <option value="website" data-tw-ea-opt="optWebsite">Website URL</option>
+                  <option value="instagram" data-tw-ea-opt="optInstagram">Instagram profile</option>
+                  <option value="linkedin" data-tw-ea-opt="optLinkedin">LinkedIn profile</option>
+                  <option value="profile" data-tw-ea-opt="optProfile">Any business profile</option>
+                </select>
+              </div>
+
+              <div class="tw-ea__field">
+                <label class="tw-ea__label tw-ea__label--accent" for="tw-ea-url"
+                  ><span data-tw-ea-url-label>Website URL</span>
+                  <span class="tw-ea__req" aria-hidden="true">*</span></label
+                >
+                <input
+                  id="tw-ea-url"
+                  class="tw-ea__input"
+                  name="url"
+                  type="text"
+                  inputmode="url"
+                  autocomplete="url"
+                  placeholder="https://yourbusiness.com"
+                  required
+                  data-tw-ea-url
+                />
+              </div>
+
+              <div class="tw-ea__field">
+                <label class="tw-ea__label tw-ea__label--optional" for="tw-ea-automate"
+                  ><span data-tw-ea-msg="labelAutomate">What do you want to automate? (optional)</span></label
+                >
+                <textarea
+                  id="tw-ea-automate"
+                  class="tw-ea__textarea"
+                  name="automate"
+                  rows="4"
+                  placeholder="e.g. lead follow-ups, social media, invoicing…"
+                ></textarea>
+              </div>
+
+              <button
+                class="tw-ea__submit"
+                type="submit"
+                data-tw-ea-submit
+                aria-label="Claim your 1000 credits"
+              >
+                <img
+                  class="tw-ea__submit-img"
+                  src="./claim.svg"
+                  alt=""
+                  width="520"
+                  height="48"
+                  decoding="async"
+                />
+              </button>
+              <p class="tw-ea__footer-note" data-tw-ea-msg="footerNote">
+                We verify your business, then send credits within 48 hours.
+              </p>
+            </form>
+          </div>
+
+          <div class="tw-ea__success" data-tw-ea-success role="status" aria-live="polite">
+            <h2 class="tw-ea__success-title" data-tw-ea-msg="successTitle">You’re on the list</h2>
+            <p data-tw-ea-msg="successBody">Thanks — we’ll verify your business and email you within 48 hours.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./typework-early-access.js" defer></script>
+  </body>
+</html>
