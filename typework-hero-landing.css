@@ -94,6 +94,7 @@
 
   .tw-hero__headline {
     max-width: none;
+    align-items: center;
   }
 
   .tw-hero__form {
@@ -109,13 +110,21 @@
 
 .tw-hero__headline {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35em;
   font-family: var(--tw-font-display);
   font-weight: 500;
   font-size: clamp(1.75rem, 3.2vw, 2.25rem);
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--tw-color-text);
-  max-width: 22ch;
+  max-width: min(100%, 22ch);
+}
+
+.tw-hero__headline-line {
+  display: block;
 }
 
 .tw-hero__form {
