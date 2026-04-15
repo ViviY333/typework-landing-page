@@ -182,7 +182,12 @@
 }
 
 .tw-how-it-works .tw-hero__title {
-  max-width: min(100%, 40rem);
+  max-width: min(100%, 48rem);
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.35em;
 }
 
 .tw-how-it-works .tw-how-it-works__title {
@@ -194,8 +199,20 @@
   font-size: 32px;
 }
 
+/* Override hero column layout: keep “Build your …” + “AI System” on one line */
+.tw-how-it-works .tw-hero__title-line {
+  display: inline-flex;
+  align-items: baseline;
+}
+
 .tw-how-it-works .tw-hero__title-line--lead {
   white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.tw-how-it-works .tw-hero__title-line:not(.tw-hero__title-line--lead) {
+  flex: 0 0 auto;
 }
 
 .tw-how-it-works .tw-hero__title-nowrap {

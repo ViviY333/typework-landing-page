@@ -1,16 +1,3 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>typework</title>
-    <meta http-equiv="refresh" content="0; url=./typework.html" />
-    <link rel="canonical" href="./typework.html" />
-  </head>
-  <body>
-    <p>Redirecting to <a href="./typework.html">typework.html</a>...</p>
-  </body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,6 +14,7 @@
     <link rel="stylesheet" href="./typework-tokens.css" />
     <link rel="stylesheet" href="./typework-base.css" />
     <link rel="stylesheet" href="./typework-hero.css" />
+    <link rel="stylesheet" href="./typework-hero-landing.css" />
     <link rel="stylesheet" href="./typework-hero-setup.css" />
     <link rel="stylesheet" href="./typework-industries.css" />
     <link rel="stylesheet" href="./typework-sections.css" />
@@ -38,10 +26,11 @@
     <link rel="stylesheet" href="./typework-features-finances-canvas.css" />
     <link rel="stylesheet" href="./typework-features-legal-canvas.css" />
     <link rel="stylesheet" href="./typework-features-marketing-canvas.css" />
+    <link rel="stylesheet" href="./typework-help-center.css" />
   </head>
   <body class="tw-page">
     <main id="top">
-      <section class="tw-hero" aria-labelledby="tw-hero-title">
+      <section class="tw-hero" aria-labelledby="tw-hero-heading">
         <header class="tw-header">
           <div class="tw-container tw-header__inner">
             <a class="tw-brand" href="#top" data-tw-anchor>
@@ -60,9 +49,16 @@
               <a href="#features" data-tw-anchor>Features</a>
               <a href="#faq" data-tw-anchor>FAQ</a>
             </nav>
-            <div class="tw-header__actions">
-              <a class="tw-btn tw-btn--ghost" href="#">Log in</a>
-              <a class="tw-btn tw-btn--primary" href="#">Get Started Free</a>
+            <div class="tw-header__end">
+              <button
+                type="button"
+                class="tw-btn tw-btn--ghost tw-lang-toggle tw-lang-toggle--in-nav"
+                data-tw-lang-toggle
+                aria-label="Switch language"
+              >
+                <span class="tw-lang-toggle__icon" aria-hidden="true"></span>
+                <span class="tw-visually-hidden" data-tw-lang-label>切换语言</span>
+              </button>
             </div>
             <button
               type="button"
@@ -83,8 +79,15 @@
               <a href="#why-typework" data-tw-anchor>Why Typework</a>
               <a href="#features" data-tw-anchor>Features</a>
               <a href="#faq" data-tw-anchor>FAQ</a>
-              <a class="tw-btn tw-btn--ghost tw-nav-panel__full" href="#">Log in</a>
-              <a class="tw-btn tw-btn--primary tw-nav-panel__full" href="#">Get Started Free</a>
+              <button
+                type="button"
+                class="tw-btn tw-btn--ghost tw-nav-panel__full tw-lang-toggle tw-lang-toggle--mobile"
+                data-tw-lang-toggle
+                aria-label="Switch language"
+              >
+                <span class="tw-lang-toggle__icon" aria-hidden="true"></span>
+                <span class="tw-visually-hidden" data-tw-lang-label>切换语言</span>
+              </button>
             </nav>
           </div>
         </header>
@@ -100,10 +103,251 @@
           >
             <source src="./typework%20bg.mp4" type="video/mp4" />
           </video>
-          <div class="tw-hero__scrim"></div>
         </div>
-        <div class="tw-container tw-hero__content">
-          <h1 id="tw-hero-title" class="tw-hero__title">
+        <div class="tw-container tw-hero__shell">
+          <div class="tw-hero__grid">
+            <div class="tw-hero__media-col">
+              <div class="tw-hero__stack">
+                <video
+                  class="tw-hero__stack-video"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  data-tw-hero-case-video
+                  aria-label="Case highlight"
+                >
+                  <source src="./case%20vid.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+            <div class="tw-hero__cta-col">
+              <img
+                class="tw-hero__mark"
+                src="./Square%20Transparent%201.png"
+                width="80"
+                height="80"
+                alt="typework"
+              />
+              <h1 id="tw-hero-heading" class="tw-hero__headline">
+                typework enable everyone to do it.
+              </h1>
+              <form class="tw-hero__form" action="#" method="post" data-tw-hero-form>
+                <label class="tw-visually-hidden" for="tw-hero-email">Email</label>
+                <input
+                  id="tw-hero-email"
+                  class="tw-hero__input"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="your email address"
+                />
+                <button class="tw-hero__submit" type="submit">
+                  <span class="tw-visually-hidden">Get Early Access</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries" class="tw-section tw-industries">
+        <div class="tw-container">
+          <p class="tw-kicker tw-kicker--center">Industries</p>
+          <h2 class="tw-section-title tw-section-title--center">See How Our Clients Use Typework</h2>
+          <p class="tw-section-lead tw-section-lead--center">
+            Real businesses across the supply chain — from sourcing to delivery — are automating
+            their operations with AI agents.
+          </p>
+
+          <div
+            class="tw-industries-accordion"
+            role="region"
+            aria-label="Client case studies"
+            tabindex="0"
+            data-tw-industries
+            data-tw-active-index="0"
+          >
+            <article class="tw-industry-panel is-active" data-tw-industry-panel data-index="0" aria-current="true">
+              <img
+                class="tw-industry-panel__bg"
+                src="./figma-assets/industry-hero.png"
+                alt="Restaurant team reviewing operations on a tablet"
+                loading="lazy"
+              />
+              <img
+                class="tw-industry-panel__logo-mark"
+                src="./figma-assets/industry-logo-mark.png"
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+              />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Rush hours no longer break our workflow.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Typework connected bookings, prep, staffing, and delivery data into one live view.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+38%</strong>
+                  <span>Table turnover at peak</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="1">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-2.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Coach scheduling is finally predictable.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Attendance, PT sessions, shifts, and renewal alerts now run in one operating rhythm.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>-46%</strong>
+                  <span>Manual scheduling time</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="2">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-3.jpg" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Nurses don’t jump across three tools anymore.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Appointments, diagnostics, follow-ups, and billing now flow through one shared process.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>-31%</strong>
+                  <span>Average patient wait time</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="3">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-4.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Launch days no longer overwhelm ops.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Campaigns, orders, stock, and support tickets stay synced from one command layer.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+22%</strong>
+                  <span>Campaign conversion rate</span>
+                </div>
+              </div>
+            </article>
+            <article class="tw-industry-panel" data-tw-industry-panel data-index="4">
+              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-5.png" alt="" loading="lazy" />
+              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
+              <div class="tw-industry-panel__content">
+                <h3 class="tw-industry-panel__quote">“Our team finally works from one funnel.”</h3>
+                <p class="tw-industry-panel__desc">
+                  Leads, tours, follow-ups, and closings are now tracked as one continuous pipeline.
+                </p>
+              </div>
+              <div class="tw-industry-panel__stats">
+                <div class="tw-industry-stat">
+                  <strong>+29%</strong>
+                  <span>Lead-to-tour conversion</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="tw-industries__status" aria-hidden="true">
+            <div class="tw-industries__dots" data-tw-industries-dots></div>
+          </div>
+
+          <div class="tw-industries-trust">
+            <p class="tw-industries-trust__line">Trusted by 10,000 business worldwide</p>
+            <div class="tw-industries-trust__logos" aria-hidden="true">
+              <img src="./figma-assets/industry-trust-1.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-2.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-3.png" alt="" loading="lazy" />
+              <img src="./figma-assets/industry-trust-4.png" alt="" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why-typework" class="tw-section tw-why">
+        <div class="tw-why-showcase" data-tw-why-showcase>
+          <div class="tw-container tw-why-showcase__head">
+            <p class="tw-kicker tw-kicker--center">Why Typework</p>
+            <h2 class="tw-section-title tw-section-title--center">
+              Your Business Doesn’t Need 10 Software Tools. It Needs One AI Platform.
+            </h2>
+          </div>
+
+          <div class="tw-why-showcase__stage" data-tw-why-pin>
+            <div class="tw-container tw-why-showcase__cols">
+              <div class="tw-why-showcase__left">
+                <article
+                  class="tw-why-stack-card is-active"
+                  data-tw-why-card="0"
+                  aria-current="true"
+                >
+                  <h3>AI sees your whole business</h3>
+                  <p>
+                    Not just your CRM or spreadsheets. Typework connects customers, inventory,
+                    production, and finance — so decisions are made with the full picture.
+                  </p>
+                </article>
+                <article class="tw-why-stack-card" data-tw-why-card="1" aria-current="false">
+                  <h3>Every Client Makes It Smarter</h3>
+                  <p>
+                    The scheduling system built for a gym works for a salon. The billing flow for a
+                    clinic works for a law firm. Every business we serve makes the platform more
+                    powerful for the next one.
+                  </p>
+                </article>
+              </div>
+
+              <div class="tw-why-showcase__center" aria-hidden="true">
+                <div class="tw-why-video-wrap">
+                  <video
+                    class="tw-why-video"
+                    data-tw-why-video
+                    src="./why%20type视频.mp4"
+                    muted
+                    playsinline
+                    preload="auto"
+                  ></video>
+                </div>
+              </div>
+
+              <div class="tw-why-showcase__right">
+                <article
+                  class="tw-why-stack-card tw-why-stack-card--enter"
+                  data-tw-why-card="2"
+                  aria-current="false"
+                >
+                  <h3>Real Business, Not Just Software</h3>
+                  <p>
+                    We don’t sell tools. Your workflows train the AI, turning your operational
+                    knowledge into a system that gets smarter every day.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="tw-section tw-how-it-works" aria-labelledby="tw-how-title">
+        <div class="tw-container">
+          <p class="tw-kicker tw-kicker--center">How it works</p>
+          <div class="tw-hero__content">
+          <h2 id="tw-how-title" class="tw-hero__title tw-how-it-works__title">
             <span class="tw-hero__title-line tw-hero__title-line--lead">
               <span class="tw-hero__title-nowrap" aria-live="polite">
                 Build your
@@ -113,7 +357,7 @@
               </span>
             </span>
             <span class="tw-hero__title-line">AI System</span>
-          </h1>
+          </h2>
           <div class="tw-prompt-card-shell">
             <div class="tw-prompt-card">
               <div class="tw-prompt-card__inner">
@@ -409,197 +653,6 @@
             </article>
           </div>
         </div>
-      </section>
-
-      <section id="industries" class="tw-section tw-industries">
-        <div class="tw-container">
-          <p class="tw-kicker tw-kicker--center">Industries</p>
-          <h2 class="tw-section-title tw-section-title--center">See How Our Clients Use Typework</h2>
-          <p class="tw-section-lead tw-section-lead--center">
-            Real businesses across the supply chain — from sourcing to delivery — are automating
-            their operations with AI agents.
-          </p>
-
-          <div
-            class="tw-industries-accordion"
-            role="region"
-            aria-label="Client case studies"
-            tabindex="0"
-            data-tw-industries
-            data-tw-active-index="0"
-          >
-            <article class="tw-industry-panel is-active" data-tw-industry-panel data-index="0" aria-current="true">
-              <img
-                class="tw-industry-panel__bg"
-                src="./figma-assets/industry-hero.png"
-                alt="Restaurant team reviewing operations on a tablet"
-                loading="lazy"
-              />
-              <img
-                class="tw-industry-panel__logo-mark"
-                src="./figma-assets/industry-logo-mark.png"
-                alt=""
-                loading="lazy"
-                aria-hidden="true"
-              />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Rush hours no longer break our workflow.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Typework connected bookings, prep, staffing, and delivery data into one live view.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>+38%</strong>
-                  <span>Table turnover at peak</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="1">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-2.png" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Coach scheduling is finally predictable.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Attendance, PT sessions, shifts, and renewal alerts now run in one operating rhythm.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>-46%</strong>
-                  <span>Manual scheduling time</span>
-                </div>
-              </div>
-            </article>
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="2">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-3.jpg" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Nurses don’t jump across three tools anymore.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Appointments, diagnostics, follow-ups, and billing now flow through one shared process.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>-31%</strong>
-                  <span>Average patient wait time</span>
-                </div>
-              </div>
-            </article>
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="3">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-4.png" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Launch days no longer overwhelm ops.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Campaigns, orders, stock, and support tickets stay synced from one command layer.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>+22%</strong>
-                  <span>Campaign conversion rate</span>
-                </div>
-              </div>
-            </article>
-            <article class="tw-industry-panel" data-tw-industry-panel data-index="4">
-              <img class="tw-industry-panel__bg" src="./figma-assets/industry-card-5.png" alt="" loading="lazy" />
-              <div class="tw-industry-panel__overlay" aria-hidden="true"></div>
-              <div class="tw-industry-panel__content">
-                <h3 class="tw-industry-panel__quote">“Our team finally works from one funnel.”</h3>
-                <p class="tw-industry-panel__desc">
-                  Leads, tours, follow-ups, and closings are now tracked as one continuous pipeline.
-                </p>
-              </div>
-              <div class="tw-industry-panel__stats">
-                <div class="tw-industry-stat">
-                  <strong>+29%</strong>
-                  <span>Lead-to-tour conversion</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="tw-industries__status" aria-hidden="true">
-            <div class="tw-industries__dots" data-tw-industries-dots></div>
-          </div>
-
-          <div class="tw-industries-trust">
-            <p class="tw-industries-trust__line">Trusted by 10,000 business worldwide</p>
-            <div class="tw-industries-trust__logos" aria-hidden="true">
-              <img src="./figma-assets/industry-trust-1.png" alt="" loading="lazy" />
-              <img src="./figma-assets/industry-trust-2.png" alt="" loading="lazy" />
-              <img src="./figma-assets/industry-trust-3.png" alt="" loading="lazy" />
-              <img src="./figma-assets/industry-trust-4.png" alt="" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="why-typework" class="tw-section tw-why">
-        <div class="tw-why-showcase" data-tw-why-showcase>
-          <div class="tw-container tw-why-showcase__head">
-            <p class="tw-kicker tw-kicker--center">Why Typework</p>
-            <h2 class="tw-section-title tw-section-title--center">
-              Your Business Doesn’t Need 10 Software Tools. It Needs One AI Platform.
-            </h2>
-          </div>
-
-          <div class="tw-why-showcase__stage" data-tw-why-pin>
-            <div class="tw-container tw-why-showcase__cols">
-              <div class="tw-why-showcase__left">
-                <article
-                  class="tw-why-stack-card is-active"
-                  data-tw-why-card="0"
-                  aria-current="true"
-                >
-                  <h3>AI sees your whole business</h3>
-                  <p>
-                    Not just your CRM or spreadsheets. Typework connects customers, inventory,
-                    production, and finance — so decisions are made with the full picture.
-                  </p>
-                </article>
-                <article class="tw-why-stack-card" data-tw-why-card="1" aria-current="false">
-                  <h3>Every Client Makes It Smarter</h3>
-                  <p>
-                    The scheduling system built for a gym works for a salon. The billing flow for a
-                    clinic works for a law firm. Every business we serve makes the platform more
-                    powerful for the next one.
-                  </p>
-                </article>
-              </div>
-
-              <div class="tw-why-showcase__center" aria-hidden="true">
-                <div class="tw-why-video-wrap">
-                  <video
-                    class="tw-why-video"
-                    data-tw-why-video
-                    src="./why%20type视频.mp4"
-                    muted
-                    playsinline
-                    preload="auto"
-                  ></video>
-                </div>
-              </div>
-
-              <div class="tw-why-showcase__right">
-                <article
-                  class="tw-why-stack-card tw-why-stack-card--enter"
-                  data-tw-why-card="2"
-                  aria-current="false"
-                >
-                  <h3>Real Business, Not Just Software</h3>
-                  <p>
-                    We don’t sell tools. Your workflows train the AI, turning your operational
-                    knowledge into a system that gets smarter every day.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -745,7 +798,7 @@
                             <div class="tw-feat-wa__top">
                               <img
                                 class="tw-feat-wa__wa"
-                                src="./whatsapp.png"
+                                src="./whatsapp.png?v=20260414"
                                 width="22"
                                 height="22"
                                 alt=""
@@ -1038,33 +1091,15 @@
                     <div class="tw-feat-stage__dots" aria-hidden="true"></div>
                     <div class="tw-feat-stage__inner">
                       <div class="tw-feat-sales">
-                        <div class="tw-feat-sales__scene">
-                          <div
-                            class="tw-feat-sales__pill tw-feat-sales__pill--accent"
-                            data-tw-feat-sales-pill
-                          >
-                            <span class="tw-feat-sales__pill-check" aria-hidden="true">✓</span>
-                            <span class="tw-feat-sales__pill-text">Sales Agent checks inventory</span>
-                          </div>
-                          <div class="tw-feat-sales__pill" data-tw-feat-sales-pill>
-                            <span class="tw-feat-sales__pill-check" aria-hidden="true">✓</span>
-                            <span class="tw-feat-sales__pill-text">Confirms stock</span>
-                          </div>
-                          <div class="tw-feat-sales__pill tw-feat-sales__pill--end" data-tw-feat-sales-pill>
-                            <span class="tw-feat-sales__pill-check" aria-hidden="true">✓</span>
-                            <span class="tw-feat-sales__pill-text">sends a buy link.</span>
-                          </div>
-                          <div class="tw-feat-sales__device">
-                            <img
-                              src="./size.png"
-                              width="507"
-                              height="386"
-                              alt=""
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          </div>
-                        </div>
+                        <img
+                          class="tw-feat-sales__image"
+                          src="./ins.png"
+                          width="1024"
+                          height="576"
+                          alt="Sales flow preview"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                     </div>
                   </div>
@@ -1083,62 +1118,60 @@
                     <div class="tw-feat-stage__dots" aria-hidden="true"></div>
                     <div class="tw-feat-stage__inner">
                       <div class="tw-feat-mkt">
-                        <div class="tw-feat-mkt__prompt">
-                          <div class="tw-feat-mkt__prompt-head">
-                            <span class="tw-feat-mkt__prompt-avatar">
-                              <img
-                                src="./figma-assets/tw-feat-mkt-avatar.png"
-                                width="32"
-                                height="32"
-                                alt=""
-                                loading="lazy"
-                                decoding="async"
-                              />
-                            </span>
-                            <p class="tw-feat-mkt__prompt-lead">
-                              &ldquo;Create a Valentine&rsquo;s Day promo for our top customers.&rdquo;
-                            </p>
-                          </div>
-                          <div class="tw-feat-mkt__files">
-                            <div class="tw-feat-mkt__file">
-                              <div class="tw-feat-mkt__file-thumb">
-                                <span class="tw-feat-mkt__file-tag">jpg</span>
+                        <div class="tw-feat-mkt__left">
+                          <div class="tw-feat-mkt__prompt">
+                            <div class="tw-feat-mkt__prompt-head">
+                              <span class="tw-feat-mkt__prompt-avatar">
                                 <img
-                                  src="./图片icon.png"
-                                  width="51"
-                                  height="60"
+                                  src="./figma-assets/tw-feat-mkt-avatar.png"
+                                  width="32"
+                                  height="32"
                                   alt=""
                                   loading="lazy"
                                   decoding="async"
                                 />
-                              </div>
-                              <div class="tw-feat-mkt__file-meta">
-                                <span class="tw-feat-mkt__file-name">Valentine&rsquo;s logo</span>
-                                <span class="tw-feat-mkt__file-size">1.1MB</span>
-                              </div>
+                              </span>
+                              <p class="tw-feat-mkt__prompt-lead">
+                                &ldquo;Create a Valentine&rsquo;s Day promo for our top customers.&rdquo;
+                              </p>
                             </div>
-                            <div class="tw-feat-mkt__file">
-                              <div class="tw-feat-mkt__file-thumb">
-                                <span class="tw-feat-mkt__file-tag">jpg</span>
-                                <img
-                                  src="./图片icon.png"
-                                  width="51"
-                                  height="60"
-                                  alt=""
-                                  loading="lazy"
-                                  decoding="async"
-                                />
+                            <div class="tw-feat-mkt__files">
+                              <div class="tw-feat-mkt__file">
+                                <div class="tw-feat-mkt__file-thumb">
+                                  <span class="tw-feat-mkt__file-tag">jpg</span>
+                                  <div class="tw-feat-mkt__file-thumb-inner">
+                                    <img
+                                      src="./图片icon.png"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="tw-feat-mkt__file-meta">
+                                  <span class="tw-feat-mkt__file-name">Valentine&rsquo;s logo</span>
+                                  <span class="tw-feat-mkt__file-size">1.1MB</span>
+                                </div>
                               </div>
-                              <div class="tw-feat-mkt__file-meta">
-                                <span class="tw-feat-mkt__file-name">Valentine&rsquo;s material</span>
-                                <span class="tw-feat-mkt__file-size">2.1MB</span>
+                              <div class="tw-feat-mkt__file">
+                                <div class="tw-feat-mkt__file-thumb">
+                                  <span class="tw-feat-mkt__file-tag">jpg</span>
+                                  <div class="tw-feat-mkt__file-thumb-inner">
+                                    <img
+                                      src="./图片icon.png"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="tw-feat-mkt__file-meta">
+                                  <span class="tw-feat-mkt__file-name">Valentine&rsquo;s material</span>
+                                  <span class="tw-feat-mkt__file-size">2.1MB</span>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-
-                        <div class="tw-feat-mkt__spine" aria-hidden="true">
-                          <img src="./figma-assets/tw-feat-mkt-dash.svg" width="2" height="280" alt="" />
                         </div>
 
                         <div class="tw-feat-mkt__rail">
@@ -1151,63 +1184,76 @@
                             </div>
                           </div>
 
-                          <div class="tw-feat-mkt__visuals">
-                            <div class="tw-feat-mkt__visuals-cards">
-                              <div class="tw-feat-mkt__promo tw-feat-mkt__promo--a">
-                                <img
-                                  src="./figma-assets/tw-feat-mkt-promo-1.png"
-                                  width="215"
-                                  height="215"
-                                  alt=""
-                                  loading="lazy"
-                                  decoding="async"
-                                />
-                              </div>
-                              <div class="tw-feat-mkt__promo tw-feat-mkt__promo--b">
-                                <img
-                                  src="./figma-assets/tw-feat-mkt-promo-2.png"
-                                  width="217"
-                                  height="217"
-                                  alt=""
-                                  loading="lazy"
-                                  decoding="async"
-                                />
-                              </div>
+                          <div class="tw-feat-mkt__below-agent">
+                            <div class="tw-feat-mkt__spine" aria-hidden="true">
+                              <img src="./figma-assets/tw-feat-mkt-dash.svg" alt="" />
                             </div>
-                            <div class="tw-feat-mkt__step tw-feat-mkt__step--visuals">
-                              <span class="tw-feat-mkt__step-check" aria-hidden="true">✓</span>
-                              <p class="tw-feat-mkt__step-label">Designs visuals</p>
-                            </div>
-                          </div>
+                            <div class="tw-feat-mkt__rail-body">
+                              <div class="tw-feat-mkt__visuals">
+                                <div class="tw-feat-mkt__visuals-cards">
+                                  <div class="tw-feat-mkt__promo tw-feat-mkt__promo--a">
+                                    <img
+                                      src="./figma-assets/tw-feat-mkt-promo-1.png"
+                                      width="215"
+                                      height="215"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </div>
+                                  <div class="tw-feat-mkt__promo tw-feat-mkt__promo--b">
+                                    <img
+                                      src="./figma-assets/tw-feat-mkt-promo-2.png"
+                                      width="217"
+                                      height="217"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="tw-feat-mkt__step tw-feat-mkt__step--visuals">
+                                  <span class="tw-feat-mkt__step-check" aria-hidden="true">✓</span>
+                                  <p class="tw-feat-mkt__step-label">Designs visuals</p>
+                                </div>
+                              </div>
 
-                          <div class="tw-feat-mkt__step tw-feat-mkt__step--delivery">
-                            <span class="tw-feat-mkt__step-check" aria-hidden="true">✓</span>
-                            <p class="tw-feat-mkt__step-label">Schedules delivery</p>
-                            <div class="tw-feat-mkt__socials" aria-hidden="true">
-                              <img
-                                src="./figma-assets/tw-feat-mkt-social-1.png"
-                                width="31"
-                                height="31"
-                                alt=""
-                                loading="lazy"
-                                decoding="async"
-                              />
-                              <img
-                                src="./figma-assets/tw-feat-mkt-social-2.png"
-                                width="31"
-                                height="32"
-                                alt=""
-                                loading="lazy"
-                                decoding="async"
-                              />
-                              <img
-                                src="./figma-assets/tw-feat-mkt-social-3.png"
-                                width="31"
-                                height="32"
-                                alt=""
-                                loading="lazy"
-                                decoding="async"
-                              />
+                              <div class="tw-feat-mkt__step tw-feat-mkt__step--delivery">
+                                <span class="tw-feat-mkt__step-check" aria-hidden="true">✓</span>
+                                <p class="tw-feat-mkt__step-label">Schedules delivery</p>
+                                <div class="tw-feat-mkt__socials" aria-hidden="true">
+                                  <span class="tw-feat-mkt__social tw-feat-mkt__social--ig">
+                                    <img
+                                      src="./figma-assets/tw-feat-mkt-social-ig.png"
+                                      width="31"
+                                      height="31"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </span>
+                                  <span class="tw-feat-mkt__social tw-feat-mkt__social--wa">
+                                    <img
+                                      src="./whatsapp.png"
+                                      width="31"
+                                      height="31"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </span>
+                                  <span class="tw-feat-mkt__social tw-feat-mkt__social--fb">
+                                    <img
+                                      src="./figma-assets/tw-feat-mkt-social-fb.png"
+                                      width="31"
+                                      height="32"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1360,6 +1406,103 @@
         </div>
       </div>
     </footer>
+
+    <aside class="tw-help-center" data-tw-help-center>
+      <section
+        id="tw-help-center-panel"
+        class="tw-help-center__panel"
+        aria-label="Help Center"
+        hidden
+        data-tw-help-panel
+      >
+        <header class="tw-help-center__header">
+          <div class="tw-help-center__agent">
+            <img
+              class="tw-help-center__avatar"
+              src="./figma-assets/tw-feat-fin-avatar.png"
+              width="38"
+              height="38"
+              alt="Henry avatar"
+            />
+            <div class="tw-help-center__meta">
+              <p class="tw-help-center__name">Henry</p>
+              <p class="tw-help-center__status">2min ago</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="tw-help-center__close"
+            aria-label="Close help center"
+            data-tw-help-close
+          >
+            ×
+          </button>
+        </header>
+
+        <div class="tw-help-center__body">
+          <p class="tw-help-center__day">417 days ago</p>
+          <div class="tw-help-center__msg-row">
+            <img
+              class="tw-help-center__msg-avatar"
+              src="./figma-assets/tw-feat-fin-avatar.png"
+              width="26"
+              height="26"
+              alt=""
+              aria-hidden="true"
+            />
+            <p class="tw-help-center__bubble">Hello! How can I help you today?</p>
+          </div>
+        </div>
+
+        <footer class="tw-help-center__footer">
+          <div class="tw-help-center__composer" aria-hidden="true">
+            <span class="tw-help-center__placeholder">Message...</span>
+            <div class="tw-help-center__tools">
+              <button type="button" class="tw-help-center__tool" tabindex="-1" aria-label="Voice message">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 16a3 3 0 0 0 3-3V7a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3ZM6 11a1 1 0 1 1 2 0 4 4 0 0 0 8 0 1 1 0 1 1 2 0 5.99 5.99 0 0 1-5 5.91V20h2a1 1 0 1 1 0 2H9a1 1 0 1 1 0-2h2v-3.09A5.99 5.99 0 0 1 6 11Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="tw-help-center__tool" tabindex="-1" aria-label="Attach image">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 4a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H5Zm0 2h14a1 1 0 0 1 1 1v7.53l-2.15-2.15a2 2 0 0 0-2.83 0L10 17.4l-2.59-2.6a2 2 0 0 0-2.82 0L4 15.4V7a1 1 0 0 1 1-1Zm-1 12.58 2-2 2.6 2.59a2 2 0 0 0 2.82 0l5.17-5.17L20 17v.01a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-.42ZM8 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="tw-help-center__tool tw-help-center__tool--send" tabindex="-1" aria-label="Send">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M21.1 3.3a1 1 0 0 0-1.04-.13L3.3 10.54a1 1 0 0 0 .09 1.86l6.5 2.34 2.33 6.5a1 1 0 0 0 .8.66.95.95 0 0 0 .17.02 1 1 0 0 0 .87-.5L21.24 4.2a1 1 0 0 0-.13-.9Zm-8.6 14.84-1.54-4.28 4.96-4.97a1 1 0 1 0-1.42-1.41l-4.97 4.96-4.28-1.54 13.49-6.03-6.24 13.27Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </footer>
+      </section>
+
+      <button
+        type="button"
+        class="tw-help-center__trigger"
+        aria-expanded="false"
+        aria-controls="tw-help-center-panel"
+        aria-label="Open help center"
+        data-tw-help-toggle
+      >
+        <span class="tw-help-center__logo-wrap">
+          <img
+            class="tw-help-center__logo"
+            src="./Square%20Transparent%201.png"
+            width="92"
+            height="92"
+            alt="Typework help center"
+          />
+        </span>
+      </button>
+    </aside>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
