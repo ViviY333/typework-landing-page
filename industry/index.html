@@ -10,19 +10,19 @@
   <main class="page" id="app">
     <section class="screen is-active" id="heroScreen" aria-label="行业首屏">
       <div class="hero-frame">
-        <video
-          id="heroVideo"
-          class="hero-frame__bg"
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="metadata"
-          aria-hidden="true"
-        >
-          <source src="./video%20(1).mp4" type="video/mp4" />
-        </video>
-        <div class="hero-frame__overlay"></div>
+        <div class="hero-frame__media" aria-hidden="true">
+          <video
+            id="heroVideo"
+            class="hero-frame__bg"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+          >
+            <source src="./video%20(1).mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="hero-content">
           <p class="hero-kicker">Find your industry</p>
           <h1 class="hero-title">Building customizable solutions for business</h1>
@@ -74,14 +74,13 @@
                 </span>
               </button>
             </article>
-            <img class="top-card-arrow" src="./image%2095.png" alt="" aria-hidden="true" />
             <article class="chat-card chat-card--bottom">
               <div id="chatOverlay" class="chat-thread" aria-live="polite"></div>
             </article>
           </div>
           <aside class="cards-panel">
             <div class="cards-head">
-              <h2 class="cards-title">Intelegence built in</h2>
+              <h2 class="cards-title">Intelligence built in</h2>
               <div class="cards-industry" id="cardsIndustry">E-commerce & Retail</div>
               <button type="button" class="cards-back" id="cardsBack">BACK</button>
             </div>
