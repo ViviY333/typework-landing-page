@@ -4,17 +4,25 @@
   --line: #d8d8d8;
   --accent: #f25533;
   --card-bg: #f7f7f7;
+  /* Hero 首屏 */
+  --stage-frame-height: min(52vw, 860px);
+  /* 详情页双栏：略低，便于左右底部对齐 */
+  --detail-row-height: min(46vw, 720px);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  background: transparent;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   font-family: "Inter", "Geist", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
 }
 
@@ -22,7 +30,7 @@ body {
   width: min(1720px, 95vw);
   margin: 28px auto;
   padding: 18px;
-  background: #f3f3f3;
+  background: transparent;
   border-radius: 24px;
 }
 
@@ -30,7 +38,7 @@ body {
   display: none;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.24s ease, transform 0.24s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .screen.is-active {
@@ -42,11 +50,21 @@ body {
 .hero-frame {
   position: relative;
   border-radius: 34px;
-  overflow: hidden;
-  min-height: min(52vw, 860px);
-  background: #999;
+  overflow: visible;
+  min-height: var(--stage-frame-height);
+  background: transparent;
   border: 1px solid #d0d0d0;
   isolation: isolate;
+}
+
+/* Clip video to rounded rect only; outer frame stays overflow:visible so the industry dropdown is not cut off. */
+.hero-frame__media {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-frame__bg {
@@ -56,14 +74,6 @@ body {
   height: 100%;
   object-fit: cover;
   transform: scale(1.015);
-}
-
-.hero-frame__overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 52% 50%, rgba(40, 40, 40, 0.12), rgba(10, 10, 10, 0.52)),
-    linear-gradient(180deg, rgba(16, 16, 16, 0.18), rgba(16, 16, 16, 0.46));
 }
 
 .hero-content {
@@ -77,6 +87,16 @@ body {
   padding: 58px 24px 24px;
   color: #fff;
   z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content .search-box {
+  pointer-events: auto;
+}
+
+.hero-kicker,
+.hero-title {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.45);
 }
 
 .hero-kicker {
@@ -163,6 +183,12 @@ body {
 .search-box__toggle svg {
   width: 20px;
   height: 20px;
+  transform-origin: center;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.search-box.is-open .search-box__toggle svg {
+  transform: rotate(90deg);
 }
 
 .search-box__options {
@@ -304,13 +330,24 @@ body {
 
 .detail-content {
   display: grid;
-  grid-template-columns: 1.08fr 1fr;
-  gap: 28px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 1fr);
+  gap: 20px;
   align-items: stretch;
+  min-height: var(--detail-row-height);
+  height: var(--detail-row-height);
+  max-height: var(--detail-row-height);
+}
+
+.cards-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Second-screen reveal: Soft Blur In–style (Animata text/soft-blur-in).
-   Gentle blur + upward settle, ~900ms ease, per-layer stagger in JS. */
+   Gentle blur + upward settle, ~1400ms ease, per-layer stagger in JS. */
 #detailScreen.detail-screen-enter .reveal-item {
   opacity: 0;
   transform: translateY(12px) scale(0.992);
@@ -322,28 +359,24 @@ body {
   transform: translateY(0) scale(1);
   filter: blur(0);
   transition:
-    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1400ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1400ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1400ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: transform, opacity, filter;
 }
 
-#detailScreen.detail-screen-enter.detail-screen-enter-active .reveal-item.reveal-item--card {
-  transition:
-    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 .demo-stage {
-  min-height: 700px;
+  min-height: 0;
+  height: 100%;
   border-radius: 36px;
   overflow: hidden;
   position: relative;
   border: 1px solid #d3d3d3;
   background: #bcbcbc;
   isolation: isolate;
+  container-type: size;
+  container-name: demo-stage;
 }
 
 .demo-stage__bg {
@@ -433,32 +466,99 @@ body {
 }
 
 .chat-card--top {
-  top: 70px;
-  left: 42px;
-  width: min(360px, 44%);
-  height: 255px;
+  top: clamp(22px, 5cqh, 70px);
+  left: clamp(10px, 3cqw, 42px);
+  width: min(44cqw, clamp(180px, 26vw, 300px));
+  max-width: min(48%, calc(100% - 20px));
+  z-index: 4;
+  height: auto;
   border-color: rgba(239, 239, 239, 1);
-  padding: 12px 12px 10px;
+  padding: clamp(12px, 2.5cqw, 20px) clamp(10px, 2cqw, 12px);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
   justify-content: flex-start;
   overflow: hidden;
 }
 
-.top-card-arrow {
-  position: absolute;
-  z-index: 3;
-  /* +40px vs chat-card--top left (42): move arrow right without touching overlay scrim */
-  left: 82px;
-  top: 336px;
-  width: 92px;
-  height: auto;
-  pointer-events: none;
+/* Browsers without container query length units (cqw / cqh) */
+@supports not (width: 1cqw) {
+  .chat-card--top {
+    width: min(42%, clamp(180px, 26vw, 300px));
+    top: clamp(22px, 5vh, 70px);
+    left: clamp(10px, 2.5vw, 42px);
+    padding: clamp(12px, 2vw, 20px) clamp(10px, 1.8vw, 12px);
+  }
+
+  .chat-card--bottom {
+    width: min(46%, clamp(180px, 28vw, 300px));
+    right: clamp(10px, 2.5vw, 54px);
+    bottom: clamp(10px, 3vh, 42px);
+  }
+
+  .demo-stage .chat-card__line {
+    font-size: clamp(13px, 1.6vw, 18px);
+  }
+
+  .demo-stage .chat-card__desc {
+    font-size: clamp(11px, 1.35vw, 15px);
+  }
+
+  .chat-card--top .demo-talk-chip__logo {
+    width: clamp(28px, 3.2vw, 34px);
+    height: clamp(28px, 3.2vw, 34px);
+  }
+
+  .chat-card--top .demo-talk-chip__text {
+    font-size: clamp(11px, 1.35vw, 13px);
+  }
+
+  .chat-card--top .demo-talk-chip__arrow {
+    width: clamp(26px, 3vw, 30px);
+    height: clamp(26px, 3vw, 30px);
+  }
+
+  .chat-card--top .demo-talk-chip {
+    height: clamp(34px, 8vh, 42px);
+  }
+
+  .chat-thread {
+    padding: 0;
+    min-height: 0;
+  }
+}
+
+.demo-stage .chat-card__line {
+  font-size: clamp(13px, 3.2cqw, 18px);
+}
+
+.demo-stage .chat-card__desc {
+  font-size: clamp(11px, 2.6cqw, 15px);
+}
+
+.chat-card--top .chat-card__line {
+  margin: 0 0 6px;
+}
+
+.chat-card--top .chat-card__desc {
+  margin: 0 0 8px;
 }
 
 .chat-card--top .chat-chip-row {
   margin-top: 0;
+  flex-wrap: nowrap;
+  gap: 6px;
+  align-items: stretch;
+}
+
+.chat-card--top .chat-chip {
+  font-size: 11px;
+  padding: 5px 6px;
+  border-radius: 10px;
+  line-height: 1.2;
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
 }
 
 .chat-card--top .demo-talk-chip {
@@ -466,36 +566,41 @@ body {
   z-index: auto;
   left: auto;
   bottom: auto;
-  width: 188px;
-  height: 42px;
-  margin-top: auto;
+  width: min(100%, 188px);
+  max-width: 100%;
+  height: clamp(36px, 9cqh, 42px);
+  margin-top: 12px;
+  margin-bottom: 0;
   padding: 4px 5px 4px 8px;
   border-radius: 64px;
 }
 
 .chat-card--top .demo-talk-chip__logo {
-  width: 34px;
-  height: 34px;
+  width: clamp(28px, 7cqw, 34px);
+  height: clamp(28px, 7cqw, 34px);
 }
 
 .chat-card--top .demo-talk-chip__text {
-  font-size: 13px;
+  font-size: clamp(11px, 2.8cqw, 13px);
 }
 
 .chat-card--top .demo-talk-chip__arrow {
-  width: 30px;
-  height: 30px;
+  width: clamp(26px, 7cqw, 30px);
+  height: clamp(26px, 7cqw, 30px);
 }
 
 .chat-card--bottom {
-  right: 54px;
-  bottom: 42px;
-  width: min(360px, 62%);
-  border: 0;
+  right: clamp(10px, 3cqw, 54px);
+  bottom: clamp(10px, 3cqh, 42px);
+  width: min(46cqw, clamp(180px, 28vw, 300px));
+  max-width: min(50%, calc(100% - 16px));
+  z-index: 3;
+  border: none;
   background: transparent;
   box-shadow: none;
-  padding: 12px;
-  overflow: hidden;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .chat-card__line {
@@ -504,6 +609,10 @@ body {
   line-height: 1.3;
   color: #3a3a3a;
   font-weight: 600;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .chat-card__desc {
@@ -511,6 +620,10 @@ body {
   color: #5e5e5e;
   font-size: 15px;
   line-height: 1.35;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .chat-chip-row {
@@ -533,14 +646,21 @@ body {
 
 .chat-thread {
   width: 100%;
-  min-height: 178px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #fffefd 0%, #fffbf6 100%);
-  border: 4px solid #f6eadf;
-  padding: 10px;
+  min-height: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
   display: grid;
   grid-template-rows: 1fr;
   gap: 0;
+}
+
+@supports not (min-height: 1cqh) {
+  .chat-thread {
+    min-height: 0;
+    padding: 0;
+  }
 }
 
 .chat-thread__messages {
@@ -590,13 +710,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .cards-title {
   margin: 0;
-  font-size: clamp(34px, 3vw, 48px);
+  font-size: clamp(22px, 2.2vw, 40px);
   letter-spacing: -0.03em;
   line-height: 1.1;
   color: #292929;
@@ -608,14 +729,14 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  height: 60px;
-  padding: 0 24px;
+  height: 48px;
+  padding: 0 18px;
   border: 0;
   border-radius: 10px;
   color: #fff;
   font-weight: 500;
-  font-size: 19.8px;
-  line-height: 29.7px;
+  font-size: 15px;
+  line-height: 1.2;
   background: #191919;
   white-space: nowrap;
   position: relative;
@@ -654,18 +775,28 @@ body {
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px 22px;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  align-content: stretch;
 }
 
 .use-card {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--card-bg);
-  min-height: 220px;
-  padding: 22px 18px 18px;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
+  padding: 14px 12px 16px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -699,37 +830,110 @@ body {
 }
 
 .use-card__title {
-  margin: 30px 0 10px;
+  margin: 18px 0 6px;
+  flex-shrink: 0;
   color: #303030;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 1.15;
+  font-size: 15px;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .use-card__desc {
   margin: 0;
+  flex: 1;
+  min-height: 0;
   color: #797979;
-  font-size: 20px;
+  font-size: 13px;
   line-height: 1.35;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .use-card--full {
-  grid-column: 1 / 2;
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 1440px) {
   .industry-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
 
+/* Stack detail only on narrow viewports; keep left–right on typical laptops. */
+@media (max-width: 900px) {
   .detail-content {
     grid-template-columns: 1fr;
+    min-height: 0;
+    height: auto;
+    max-height: none;
   }
 
   .demo-stage {
-    min-height: 560px;
+    min-height: min(56vw, 520px);
+    height: auto;
+  }
+
+  /* Stacked layout: stage is full width — shrink floating cards (~¼ stage area) to avoid overlap */
+  .chat-card--top {
+    width: min(34cqw, clamp(132px, 28vw, 220px));
+    max-width: min(38%, calc(100% - 14px));
+    top: clamp(14px, 3.5cqh, 48px);
+    left: clamp(6px, 2cqw, 24px);
+    padding: clamp(10px, 2cqw, 16px) clamp(8px, 1.6cqw, 10px);
+  }
+
+  .chat-card--bottom {
+    width: min(36cqw, clamp(132px, 30vw, 220px));
+    max-width: min(40%, calc(100% - 12px));
+    right: clamp(6px, 2cqw, 28px);
+    bottom: clamp(6px, 2.5cqh, 28px);
+    padding: 0;
+  }
+
+  .demo-stage .chat-card__line {
+    font-size: clamp(12px, 2.8cqw, 16px);
+  }
+
+  .demo-stage .chat-card__desc {
+    font-size: clamp(10px, 2.2cqw, 13px);
+  }
+
+  .chat-thread {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .chat-thread__bubble {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .chat-card--top .demo-talk-chip {
+    width: min(100%, clamp(120px, 28cqw, 160px));
+    height: clamp(32px, 7.5cqh, 38px);
+    margin-top: 10px;
+  }
+
+  .cards-panel {
+    height: auto;
+    overflow: visible;
+  }
+
+  .cards-grid {
+    flex: none;
+    min-height: 0;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    overflow-y: visible;
+  }
+
+  .use-card {
+    height: auto;
+    min-height: 140px;
   }
 }
 
@@ -777,6 +981,9 @@ body {
 
   .cards-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    gap: 20px;
   }
 
   .use-card--full {
@@ -784,11 +991,12 @@ body {
   }
 
   .use-card {
-    min-height: 180px;
+    min-height: 140px;
+    padding: 14px 12px 16px;
   }
 
   .use-card__title {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .use-card__desc {
