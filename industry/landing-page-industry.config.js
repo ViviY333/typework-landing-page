@@ -80,7 +80,7 @@ window.LANDING_PAGE_INDUSTRY_CONFIG = {
     "beauty-personal-care": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1714&q=80",
     "travel-hospitality": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1714&q=80",
     "food-beverage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1714&q=80",
-    "manufacturing": "https://images.unsplash.com/photo-1581092918484-8313b4ac1f0d?w=1714&q=80",
+    "manufacturing": "https://images.unsplash.com/photo-1565043589221-1a2fd8ae3cf9?w=1714&q=80",
     "logistics-supply-chain": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1714&q=80",
     "professional-services": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1714&q=80",
     "clinic-healthcare": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1714&q=80",
