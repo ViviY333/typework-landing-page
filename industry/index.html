@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Page - Industry</title>
-  <link rel="stylesheet" href="./landing-page-industry.css" />
+  <title>Landing — Industry Lab (preview visuals)</title>
+  <link rel="stylesheet" href="./landing-page-lab.css" />
 </head>
 <body>
-  <main class="page" id="app">
+  <main class="page page--industry-lab" id="app">
     <section class="screen is-active" id="heroScreen" aria-label="行业首屏">
       <div class="hero-frame">
         <div class="hero-frame__media" aria-hidden="true">
@@ -61,9 +61,7 @@
             <img id="detailBg" class="demo-stage__bg" alt="" />
             <div class="demo-stage__overlay"></div>
             <article class="chat-card chat-card--top">
-              <p class="chat-card__line" id="previewTitle"></p>
-              <p class="chat-card__desc" id="previewBody"></p>
-              <div class="chat-chip-row" id="previewChips"></div>
+              <div class="card-body" id="cardBody"></div>
               <button class="demo-talk-chip" type="button" aria-label="Talk to Max">
                 <img id="talkMaxIcon" class="demo-talk-chip__logo" alt="" />
                 <span class="demo-talk-chip__text">Talk to Max</span>
@@ -91,6 +89,6 @@
     </section>
   </main>
   <script src="./landing-page-industry.config.js"></script>
-  <script src="./landing-page-industry.js"></script>
+  <script src="./landing-page-lab.js"></script>
 </body>
 </html>
