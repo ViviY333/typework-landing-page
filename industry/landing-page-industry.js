@@ -20,7 +20,7 @@ const INDUSTRIES = [
         desc: "Upload SKU specs and photos, then let type work draft channel-ready product copy.",
         preview: {
           title: "Top SKU alert: Cheese +6% sales this week.",
-          body: "Type work has drafted optimized listing copy for 24 pending SKUs based on product specs and sales trend signals.",
+          body: "Type work has drafted copy for 24 pending SKUs from specs and sales signals.",
           chips: ["Review draft copy", "Check stock impact"]
         }
       },
@@ -67,7 +67,7 @@ const INDUSTRIES = [
     ]
   },
   { id: "health-wellness", name: "Health & wellness", aliases: ["health", "wellness", "fitness", "gym"], useCases: ["Turn class schedule changes into instant member notifications.", "Generate trainer follow-up summaries after each session.", "Build nutrition and recovery suggestions from member profiles.", "Create campaign copy for membership renewal offers.", "Auto-draft customer support replies for common wellness questions."] },
-  { id: "beauty-personal-care", name: "Beauty & Personal Care", aliases: ["beauty", "salon", "spa", "personal care"], useCases: ["Draft treatment descriptions for menus and social posts quickly.", "Create personalized post-visit care messages for each customer.", "Auto-generate package recommendations by customer preference history.", "Prepare campaign copy for seasonal promotions and gift bundles.", "Summarize customer reviews into action points for service improvement."] },
+  { id: "beauty-personal-care", name: "Beauty & Personal Care", aliases: ["beauty", "salon", "spa", "personal care"], useCases: ["Draft treatment blurbs for menus and social, tone-matched.", "Create post-visit care notes tailored to each customer.", "Auto-build package picks from preference history per client.", "Campaign lines for seasonal promos and gift bundles.", "Customer reviews distilled into concrete service fixes."] },
   { id: "travel-hospitality", name: "Travel & Hospitality", aliases: ["travel", "hotel", "hospitality", "tour"], useCases: ["Generate destination guides and itinerary snippets by traveler segment.", "Draft multilingual guest messages for check-in, upsell and support.", "Convert booking notes into quick CRM summaries for staff handover.", "Create campaign copy for weekend, holiday and loyalty offers.", "Build FAQ response templates from past guest enquiries."] },
   { id: "food-beverage", name: "Food & Beverage", aliases: ["food", "beverage", "f&b", "restaurant"], useCases: ["Generate menu highlight copy from dish name and ingredients.", "Draft social post variants for daily specials and combos.", "Turn review trends into weekly improvement action cards.", "Create repeat-customer reactivation messages with tailored offers.", "Produce staff-ready product scripts for upsell and add-ons."] },
   { id: "manufacturing", name: "Manufacturing", aliases: ["factory", "manufacturing", "industrial"], useCases: ["Transform product specs into clear channel-ready descriptions.", "Draft supplier communication messages based on order changes.", "Generate quality issue summaries for internal operations sync.", "Create training snippets from process documentation updates.", "Auto-build client update reports from production status data."] },
@@ -388,7 +388,7 @@ function toTitleCase(value) {
     .join(" ");
 }
 
-function pickTitleFromSentence(sentence) {
+function pickTitleFromSentence(sentence, maxWords = 4) {
   const base = String(sentence || "")
     .replace(/[.,;:!?]+$/g, "")
     .trim();
@@ -399,52 +399,49 @@ function pickTitleFromSentence(sentence) {
     .replace(/\s+(quickly|instantly|faster)$/i, "")
     .trim();
 
-  const words = clean.split(/\s+/).slice(0, 4);
+  const words = clean.split(/\s+/).slice(0, maxWords);
   if (!words.length) return "Operational Intelligence";
   return toTitleCase(words.join(" "));
 }
 
-function getIndustryKeyword(selectedIndustry) {
-  const name = (selectedIndustry?.name || "").toLowerCase();
-  if (name.includes("travel") || name.includes("hospitality") || name.includes("tour")) return "traveler segment";
-  if (name.includes("clinic") || name.includes("health")) return "patient flow";
-  if (name.includes("beauty") || name.includes("salon") || name.includes("spa")) return "appointment flow";
-  if (name.includes("food") || name.includes("restaurant") || name.includes("café")) return "menu demand";
-  if (name.includes("logistics") || name.includes("supply")) return "shipment status";
-  if (name.includes("manufacturing")) return "production line";
-  if (name.includes("financial") || name.includes("insurance")) return "customer portfolio";
-  if (name.includes("education")) return "learner progress";
-  if (name.includes("construction")) return "project milestone";
-  if (name.includes("agriculture") || name.includes("farming")) return "field operation";
-  return "business workflow";
+/** Short preview body for top-left card (~3 lines); no "Based on…" tail. */
+function compactPreviewBody(desc) {
+  let t = String(desc || "").trim();
+  if (!t) return "";
+  const first = t.split(/\.\s+/)[0];
+  t = first && first.length < t.length ? `${first}.` : t;
+  const maxLen = 105;
+  if (t.length <= maxLen) return t;
+  const cut = t.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${(lastSpace > 35 ? cut.slice(0, lastSpace) : cut).trim()}…`;
 }
 
 function normalizeUseCases(selectedIndustry, useCases) {
-  const keyword = getIndustryKeyword(selectedIndustry);
   return (useCases || []).map((useCaseItem, index) => {
     if (useCaseItem && typeof useCaseItem === "object") {
-      const fallbackTitle = pickTitleFromSentence(useCaseItem.desc || useCaseItem.title || "");
+      const fallbackTitle = pickTitleFromSentence(useCaseItem.desc || useCaseItem.title || "", 3);
       return {
         tag: useCaseItem.tag || `Use case ${index + 1}`,
         title: useCaseItem.title || fallbackTitle,
         desc: useCaseItem.desc || "",
         preview: useCaseItem.preview || {
-          title: `${fallbackTitle} ready for ${selectedIndustry.name}.`,
-          body: `${useCaseItem.desc || ""}`.trim(),
+          title: fallbackTitle,
+          body: compactPreviewBody(useCaseItem.desc || useCaseItem.title || ""),
           chips: ["View details", "Run with type work"]
         }
       };
     }
 
     const desc = String(useCaseItem || "");
-    const title = pickTitleFromSentence(desc);
+    const title = pickTitleFromSentence(desc, 3);
     return {
       tag: `Use case ${index + 1}`,
       title,
       desc,
       preview: {
-        title: `${title} tuned for ${selectedIndustry.name}.`,
-        body: `${desc} Based on selected ${keyword} context.`,
+        title,
+        body: compactPreviewBody(desc),
         chips: ["View details", "Run with type work"]
       }
     };
@@ -522,13 +519,16 @@ function runDetailRevealAnimation() {
   if (!detailScreen) return;
   const stage = detailScreen.querySelector(".demo-stage");
   const topCard = detailScreen.querySelector(".chat-card--top");
-  const arrow = detailScreen.querySelector(".top-card-arrow");
   const bottomCard = detailScreen.querySelector(".chat-card--bottom");
   const cardsHead = detailScreen.querySelector(".cards-head");
   const useCards = Array.from(detailScreen.querySelectorAll("#cardsGrid .use-card"));
-  const nodes = [stage, topCard, arrow, bottomCard, cardsHead, ...useCards].filter(Boolean);
-  /* Layer stagger ~100ms; use-case cards +55ms each (Animata soft-blur uses ~25ms/glyph — slower blocks here). */
-  const layerDelays = [0, 120, 240, 360, 480];
+  const nodes = [stage, topCard, bottomCard, cardsHead, ...useCards].filter(Boolean);
+  /* Layer stagger scaled to ~1400ms blur reveal (was 900ms). */
+  const layerDelays = [0, 187, 560, 747];
+
+  /* Use cards: stagger start times so each card visibly follows the previous (~165ms apart). */
+  const cardStaggerMs = 165;
+  const firstCardDelayMs = 900;
 
   nodes.forEach((node, idx) => {
     node.classList.add("reveal-item");
@@ -537,7 +537,7 @@ function runDetailRevealAnimation() {
     const delayMs =
       idx < layerDelays.length
         ? layerDelays[idx]
-        : 600 + (idx - layerDelays.length) * 55;
+        : firstCardDelayMs + (idx - layerDelays.length) * cardStaggerMs;
     node.style.setProperty("--reveal-delay", `${delayMs}ms`);
   });
 
