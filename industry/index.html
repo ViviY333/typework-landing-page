@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page - Industry</title>
+  <link rel="stylesheet" href="./landing-page-industry.css" />
+</head>
+<body>
+  <main class="page" id="app">
+    <section class="screen is-active" id="heroScreen" aria-label="行业首屏">
+      <div class="hero-frame">
+        <video
+          id="heroVideo"
+          class="hero-frame__bg"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="./video%20(1).mp4" type="video/mp4" />
+        </video>
+        <div class="hero-frame__overlay"></div>
+        <div class="hero-content">
+          <p class="hero-kicker">Find your industry</p>
+          <h1 class="hero-title">Building customizable solutions for business</h1>
+          <div class="search-box" id="searchBox">
+            <div class="search-box__control">
+              <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+                <path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2"></path>
+              </svg>
+              <input
+                id="industryInput"
+                class="search-box__input"
+                type="text"
+                placeholder="Type keywords and choose your industry"
+                autocomplete="off"
+                role="combobox"
+                aria-expanded="false"
+                aria-controls="industryOptions"
+              />
+              <button id="toggleBtn" class="search-box__toggle" type="button" aria-label="打开行业下拉">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+            <ul id="industryOptions" class="search-box__options" role="listbox"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="detailScreen" aria-label="行业详情页">
+      <div class="detail-shell">
+        <div class="detail-content">
+          <div class="demo-stage">
+            <img id="detailBg" class="demo-stage__bg" alt="" />
+            <div class="demo-stage__overlay"></div>
+            <article class="chat-card chat-card--top">
+              <p class="chat-card__line" id="previewTitle"></p>
+              <p class="chat-card__desc" id="previewBody"></p>
+              <div class="chat-chip-row" id="previewChips"></div>
+              <button class="demo-talk-chip" type="button" aria-label="Talk to Max">
+                <img id="talkMaxIcon" class="demo-talk-chip__logo" alt="" />
+                <span class="demo-talk-chip__text">Talk to Max</span>
+                <span class="demo-talk-chip__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </button>
+            </article>
+            <img class="top-card-arrow" src="./image%2095.png" alt="" aria-hidden="true" />
+            <article class="chat-card chat-card--bottom">
+              <div id="chatOverlay" class="chat-thread" aria-live="polite"></div>
+            </article>
+          </div>
+          <aside class="cards-panel">
+            <div class="cards-head">
+              <h2 class="cards-title">Intelegence built in</h2>
+              <div class="cards-industry" id="cardsIndustry">E-commerce & Retail</div>
+              <button type="button" class="cards-back" id="cardsBack">BACK</button>
+            </div>
+            <div class="cards-grid" id="cardsGrid"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="./landing-page-industry.config.js"></script>
+  <script src="./landing-page-industry.js"></script>
+</body>
+</html>
